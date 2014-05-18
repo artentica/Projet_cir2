@@ -1,8 +1,8 @@
 package gmoney;
 import java.util.Vector;
 /**
- *
- * @author miton
+ *  Classe Rates, permet de gerer les taux de changes
+ * @author miton artentica
  */
 public class Rates {
     
@@ -15,6 +15,13 @@ public class Rates {
 	v_rates = new Vector<Float>();
     }
     
+    
+    /**
+     * Récupère le taux d'une money donnée
+     * @param currency
+     *	unitée souhaiter
+     * @return float taux de la money demander	
+     */
     public float getRate ( String currency )
     {
 	int i;
@@ -27,10 +34,22 @@ public class Rates {
 	}
 	return 0;
     }
+    
+    /**
+     * Récupère les taux + money d'internet
+     * @return boolean true si tout c'est bien passer false sinon
+     */
     public boolean getDataFromInternet ()
     {
 	return true;
     }
+    
+    /**
+     * Récupère les données d'un fichier
+     * @param filename
+     *	nom du fichier a charger
+     * @return boolean true si le chargement a reussi false sinon
+     */
     public boolean getDataFromFile ( String filename )
     {
 	return true;
