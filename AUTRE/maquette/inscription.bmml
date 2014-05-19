@@ -1,0 +1,76 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1189" measuredH="682" mockupW="837" mockupH="682">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="352" y="0" w="837" h="682" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//inscription.php</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::FieldSet" x="514" y="95" w="513" h="464" measuredW="200" measuredH="170" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Inscription</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="746" y="117" w="-1" h="-1" measuredW="32" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nom</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="737" y="188" w="-1" h="-1" measuredW="51" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Pr%E9nom</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="750" y="266" w="-1" h="-1" measuredW="40" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>E-Mail</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="725" y="344" w="-1" h="-1" measuredW="91" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Classe%20/%20Statut</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="694" y="146" w="136" h="-1" measuredW="39" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>BOB</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::TextInput" x="694" y="224" w="136" h="-1" measuredW="43" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Boby</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::TextInput" x="694" y="302" w="136" h="-1" measuredW="114" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>bob.bobby@bob.fr</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::ComboBox" x="717" y="373" w="-1" h="-1" measuredW="95" measuredH="78" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Professeur%0AClasse%201%20%0AClasse%202%0AClasse%203</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="725" y="502" w="-1" h="-1" measuredW="80" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>index-prof%26bm%3Bindex-prof.bmml%26bm%3Bindex-prof.bmml%26bm%3Bindex-prof.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22373%2C502%2C453%2C529%22%20href%3D%22index-prof.bmml%22%20alt%3D%22index-prof%22%20id%3D%2210%22/%3E</map>
+        <text>Confirmer</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="590" y="466" w="-1" h="-1" measuredW="29" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cl%E9%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::TextInput" x="629" y="463" w="267" h="-1" measuredW="79" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::StickyNote" x="460" y="393" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Le%20champ%20cl%E9%20ne%20s%27affiche%20que%20si%20Professeur%20est%20selectionn%E9</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

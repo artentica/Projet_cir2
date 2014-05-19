@@ -1,0 +1,31 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1237" measuredH="588" mockupW="878" mockupH="587">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="359" y="1" w="878" h="587" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//Admin_projet_prof.php</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="359" y="172" w="150" h="188" measuredW="150" measuredH="240" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Classe%201%0A-%20Projet1%0A-%20Projet%202%0AClasse%202%0AClasse%203%0AClasse%204</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::MenuBar" x="526" y="95" w="-1" h="-1" measuredW="544" measuredH="29" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>%2Cnew_projet%26bm%3Bnew_projet.bmml%26bm%3Bnew_projet.bmml%26bm%3Bnew_projet.bmml%2Cmodif_projet%26bm%3Bmodif_projet.bmml%26bm%3Bmodif_projet.bmml%26bm%3Bmodif_projet.bmml%2Ctest_view%26bm%3Btest_view.bmml%26bm%3Btest_view.bmml%26bm%3Btest_view.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22302%2C100%2C404%2C121%22%20href%3D%22new_projet.bmml%22%20alt%3D%22new_projet%22%20id%3D%222_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22413%2C100%2C576%2C121%22%20href%3D%22modif_projet.bmml%22%20alt%3D%22modif_projet%22%20id%3D%222_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22585%2C100%2C702%2C121%22%20href%3D%22test_view.bmml%22%20alt%3D%22test_view%22%20id%3D%222_2%22/%3E%0A</map>
+        <text>Historique%20projet%2C%20Nouveau%20projet%2C%20Modification%20%26%20Suppression%2C%20Gestion%20des%20tests</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="551" y="164" w="495" h="235" measuredW="366" measuredH="173" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nom%5Cprenom%20%5E%2C%20date%20du%20dernier%20test%20%5Ev%2C%20Note%20actuelle%0AGiacomo%20Guilizzoni%2C%2012/12/12%2C%2016%0AMarco%20Botton%2C%2007/08/12%2C%208%0AMariah%20Maclachlan%2C%2009/05/12%2C%2022%0AValerie%20Liberty%2C%2006/02/12%2C%2015%0AGuido%20Jack%20Guilizzoni%2C%2001/04/12%2C%206%0A%7B65L%2C%200R%2C%2035%7D</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="1107" y="103" w="-1" h="-1" measuredW="96" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Deconnexion</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

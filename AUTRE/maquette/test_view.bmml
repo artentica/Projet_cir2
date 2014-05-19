@@ -1,0 +1,28 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1269" measuredH="584" mockupW="991" mockupH="584">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="278" y="0" w="991" h="584" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//test_view.php</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::ButtonBar" x="310" y="95" w="-1" h="-1" measuredW="107" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>index-etudiant%26bm%3Bindex-etudiant.bmml%26bm%3Bindex-etudiant.bmml%26bm%3Bindex-etudiant.bmml%2C</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2232%2C95%2C100%2C124%22%20href%3D%22index-etudiant.bmml%22%20alt%3D%22index-etudiant%22%20id%3D%221_0%22/%3E%0A</map>
+        <text>Retour</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::DataGrid" x="541" y="154" w="415" h="323" measuredW="509" measuredH="145" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <rowHeight>36</rowHeight>
+        <text>Test%20unitaire%5Cr%28fonction%20tester%29%20%5E%2C%20information%2C%20test%20passer%2C%20note%0AaddMoney%2C%20test%20ok%2C%20OK%2C%201%0AsubMoney%2C%20Error%3A%20at%20java.lang....%20nullpointerexception%2C%20KO%2C%200%0AcheckCurrency%2C%20test%20ok%2C%20OK%2C%203%0A%7B65L%2C%200R%2C%2035%2C%200C%7D</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="1122" y="96" w="-1" h="-1" measuredW="96" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Deconnexion</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
