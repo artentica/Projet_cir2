@@ -1,0 +1,34 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1261" measuredH="604" mockupW="984" mockupH="604">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="277" y="0" w="984" h="604" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//index-etudiant.php</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Tree" x="277" y="114" w="182" h="225" measuredW="300" measuredH="225" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.75</backgroundAlpha>
+        <text>%5B+%5D%20matiere%201%0A%5B+%5D%20matiere%202%0A..%20%5Bx%5D%20Projet%201%0A..%20%5Bx%5D%20Projet%202%0A..%20%5B%20%5D%20Projet%203%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::DataGrid" x="514" y="122" w="546" h="353" measuredW="333" measuredH="267" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hLines>true</hLines>
+        <rowHeight>46</rowHeight>
+        <text>Projet%201%20%5Cr%28n%B0%20de%20test%29%20%5E%2C%20Date%20depot%2C%20Date%20du%20test%20%2C%20Resultat%0A%201%2C%2012/02/12%2C%2013/02/12%2C%20voir%0A%202%2C%2012/02/12%2C%2014/02/12%2C%20voir%0A%203%2C%2012/02/12%2C%2014/02/12%2C%20voir%0A%204%2C12/02/12%2C%2014/02/12%2C%20voir%0A%205%2C16/02/12%2C%2017/02/12%2C%20voir%0A%7B0R%2C%2035%2C%200C%7D</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::MenuBar" x="584" y="79" w="-1" h="-1" measuredW="384" measuredH="29" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>%2Ctest_view%26bm%3Btest_view.bmml%26bm%3Btest_view.bmml%26bm%3Btest_view.bmml%2Cdepot-eleve%26bm%3Bdepot-eleve.bmml%26bm%3Bdepot-eleve.bmml%26bm%3Bdepot-eleve.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22428%2C85%2C560%2C106%22%20href%3D%22test_view.bmml%22%20alt%3D%22test_view%22%20id%3D%227_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22569%2C85%2C682%2C106%22%20href%3D%22depot-eleve.bmml%22%20alt%3D%22depot-eleve%22%20id%3D%227_1%22/%3E%0A</map>
+        <text>Tester%20projet%2C%20Afficher%20resultat%20test%2C%20D%E9poser%20sources</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="1119" y="99" w="-1" h="-1" measuredW="96" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Deconnexion</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
