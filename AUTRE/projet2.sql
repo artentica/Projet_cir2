@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  20/05/2014 15:13:20                      */
+/* Date de création :  20/05/2014 16:45:31                      */
 /*==============================================================*/
 
 
@@ -29,7 +29,7 @@ create table DEPOT
 /*==============================================================*/
 create table PROJET
 (
-   ID_PROJET            int not null,
+   ID_PROJET            int not null auto_increment,
    ID_TEST              int not null,
    NOM_PROJET           char(40) not null,
    DATE_DE_CREATION     datetime not null,
@@ -42,7 +42,7 @@ create table PROJET
 /*==============================================================*/
 create table TEST
 (
-   ID_TEST              int not null,
+   ID_TEST              int not null auto_increment,
    DATE_DE_CREATION     datetime,
    primary key (ID_TEST)
 );
