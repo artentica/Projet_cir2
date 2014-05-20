@@ -20,16 +20,28 @@
 	}
 
 	//Permet de faire des requettes de type SELECT dans la Base de donnée
-	function Select( $string ){
+	function Select( $string )
+	{
 
 		$tmp = $db->query( $string );
 		$rep = $tmp->fetchAll();
 		return ( $rep != NULL ) ? TRUE : FALSE; 
-
 	}
 
 	//Permet de faire des requettes de type INSERT ou DELETE dans la Base de donnée
-	function Insert( $string ){
-
+	function Insert( $string )
+	{
+		try
+		{
+			$db->exec( $string )
+		}
+		catch (Exception e)
+		{
+			echo ("Impossible d'executer la requette." . $e->getMessage() );
+			return false;
+		}
 	}
+
+	Select("SELECT * FROM qcqscqs");
+	print_r($rep);
 ?>
