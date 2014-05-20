@@ -1,4 +1,3 @@
-package gmoney;
 import java.util.Vector;
 /**
  *  Classe Rates, permet de gerer les taux de changes

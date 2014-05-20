@@ -1,4 +1,3 @@
-package gmoney;
 /**
  * Classe permetant de gerer les objets de type money
  * @author miton artentica
