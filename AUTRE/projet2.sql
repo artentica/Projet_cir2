@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  20/05/2014 14:36:40                      */
+/* Date de création :  20/05/2014 15:13:20                      */
 /*==============================================================*/
 
 
@@ -31,7 +31,7 @@ create table PROJET
 (
    ID_PROJET            int not null,
    ID_TEST              int not null,
-   NOM_PROJET           text not null,
+   NOM_PROJET           char(40) not null,
    DATE_DE_CREATION     datetime not null,
    DATE_BUTOIRE         datetime not null,
    primary key (ID_PROJET)
@@ -53,8 +53,8 @@ create table TEST
 create table UTILISATEUR
 (
    LOGIN                char(12) not null,
-   PASSWORD             text,
-   STATUE               text,
+   PASSWORD             char(20),
+   STATUE               char(15),
    primary key (LOGIN)
 );
 
