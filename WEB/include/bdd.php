@@ -10,7 +10,7 @@
 	try
 	{
 		// On se connecte à MySQL
-		$db = new new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $passwd);
+		$db = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $passwd);
 	}
 	catch(Exception $e)
 	{
@@ -25,7 +25,7 @@
 
 		$tmp = $db->query( $string );
 		$rep = $tmp->fetchAll();
-		return ( $rep != NULL ) ? TRUE : FALSE; 
+		return $rep; 
 	}
 
 	//Permet de faire des requettes de type INSERT ou DELETE dans la Base de donnée
@@ -40,8 +40,6 @@
 			echo ("Impossible d'executer la requette." . $e->getMessage() );
 			return false;
 		}
+		return true;
 	}
-
-	Select("SELECT * FROM qcqscqs");
-	print_r($rep);
 ?>
