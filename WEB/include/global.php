@@ -3,12 +3,12 @@
 
 	//Fonction qui affeiche le boutton pour deconnecter
 	function deco(){
-		echo('<a href="connexion.php" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-user"></span> Deconnexion</a>')
+		echo('<a href="connexion.php" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-user"></span> Deconnexion</a>');
 	}
 
 	//fonction de test d'identification , renvoi sur la page login si n'est pas identifier
 	function isco(){
-		if( !isset() OR $var != ""){						//     <-- A completer
+		if( !isset($var) OR $var != ""){						//     <-- A completer
 			header("Location: login.php");
 		}
 	}
