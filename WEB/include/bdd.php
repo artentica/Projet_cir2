@@ -17,7 +17,11 @@
 			$db = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['user'], $GLOBALS['passwd']);
 			//echo $string; //DEBUG
 			$tmp = $db->query( $string );
-			$rep = $tmp->fetchAll();
+			if($tmp != FALSE)
+			{
+				$rep = $tmp->fetchAll() ;
+				print_r($rep); 		//DEBUG
+			}
 			$db = NULL;
 			return $rep; 
 		}

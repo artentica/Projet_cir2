@@ -14,7 +14,7 @@
       </div>
       <div class="container" >
          <div class="row" >
-            <div class="col-sm-5 text-center alert alert-dismissable alert-warning">
+            <div class="col-sm-6 text-center col-sm-offset-3 alert alert-dismissable alert-warning">
                <button type="button" class="close" data-dismiss="alert">×</button>
                <?php
                   echo $_GET['erreur'] . " : ";
