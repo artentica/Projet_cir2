@@ -6,16 +6,21 @@
 	require 'include/head.php';
 	require 'include/bdd.php';
 
-
+	$panel="primary";
+	$instruction="Entrez votre identifiant et votre mot de passe";
 
 	if(isset($_POST['username']) && isset($_POST['password'])){
 
-		$rep=Select('SELECT username, password FROM utilisateur');
-		while($data = mysql_fetch_assoc($rep)){
+		$rep=Select('SELECT LOGIN, PASSWORD FROM UTILISATEUR');
+		foreach($rep as $key => $data){
            if ($data['LOGIN']==$_POST['username'] && $data['PASSWORD']==$_POST['password']) {
              $_SESSION['log'] = 'ok';
-             header('Location: choose.php');
+             header('Location: choose.php');             
            }
+        	else { 
+        		$panel="danger";
+        		$instruction="Couple Identifiant/Mot de passe Incorrect";
+        	}
 	}
 }
 	?>
@@ -27,9 +32,9 @@
 		<div class="row">
 
 
-			<div class="panel panel-primary">
+			<div class="panel panel-<?php echo $panel; ?>">
 				<div class="panel-heading">
-					<h3 class="panel-title">Entrez votre identifiant et votre mot de passe</h3>
+					<h3 class="panel-title"><?php echo $instruction; ?></h3>
 				</div>
 				<div class="panel-body">
 					<div class="row">
@@ -54,7 +59,7 @@
 
 							<!-- Button -->
 							<div class="form-group">
-								<div class="col-md-4 col-md-offset-4">
+								<div class="col-md-4 col-md-offset-5">
 									<button id="singlebutton" name="singlebutton" class="btn btn-primary">SE CONNECTER</button>
 								</div>
 							</div>
