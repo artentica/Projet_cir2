@@ -15,6 +15,7 @@
 		foreach($rep as $key => $data){
            if ($data['LOGIN']==$_POST['username'] && $data['PASSWORD']==$_POST['password']) {
              $_SESSION['log'] = 'ok';
+             $_SESSION['name'] = $_POST['username'];
              header('Location: choose.php');             
            }
         	else { 
@@ -45,7 +46,7 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="textinput">Identifiant:</label>  
 								<div class="col-md-4">
-									<input id="textinput" name="username" class="form-control input-md input-xs" type="text">  
+									<input id="textinput" name="username" class="form-control input-md input-xs" type="text" value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" required>  
 								</div>
 							</div>
 
@@ -53,7 +54,7 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="passwordinput">Mot de passe:</label>
 								<div class="col-md-4">
-									<input id="passwordinput" name="password" class="form-control input-md" type="password">
+									<input id="passwordinput" name="password" class="form-control input-md" type="password"  required>
 								</div>
 							</div>
 
