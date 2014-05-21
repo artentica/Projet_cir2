@@ -1,0 +1,1 @@
+//fonction de test d'identification , renvoi sur la page login si n'est pas identifier
