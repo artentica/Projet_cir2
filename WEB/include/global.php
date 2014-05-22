@@ -16,12 +16,16 @@
 
 	//fonction de test si la personne connéctée est un prof
 	function forprof(){
-		if(){
-
-		}
+			isco();
+			if( isset($_SESSION['statue']) && $_SESSION['status'] != "professeur"){
+				header("Location: erreur.php?erreur=droit");
+			}
 	}
 
 	//fonction de test si la personne connéctée est un élève
 	function foretud(){
-
+			isco();
+			if(isset($_SESSION['statue']) && $_SESSION['status'] != "etudiant"){
+				header("Location: erreur.php?erreur=droit");
+			}
 	}

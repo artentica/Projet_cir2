@@ -56,6 +56,9 @@
                      case '505':
                      echo 'Version HTTP non supportée.';
                      break;
+                     case 'droit':
+                     echo "Vous essayez d'acceder a du contenu qui ne vous etes pas destiné.";
+                     break;
                      default:
                      echo 'Erreur !';
                   }

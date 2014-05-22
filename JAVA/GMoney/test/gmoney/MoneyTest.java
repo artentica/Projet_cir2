@@ -32,7 +32,7 @@ public class MoneyTest {
     @Test
     public void testGetAmount() {
 	System.out.println("getAmount");
-	Money instance = new Money();
+	.Money instance = new .Money();
 	float expResult = 0.0F;
 	float result = instance.getAmount();
 	assertEquals(expResult, result, 0.0);
@@ -46,7 +46,7 @@ public class MoneyTest {
     @Test
     public void testGetCurrency() {
 	System.out.println("getCurrency");
-	Money instance = new Money();
+	.Money instance = new .Money();
 	String expResult = "";
 	String result = instance.getCurrency();
 	assertEquals(expResult, result);
@@ -60,8 +60,8 @@ public class MoneyTest {
     @Test
     public void testCheckCurrency_Money() {
 	System.out.println("checkCurrency");
-	Money m = null;
-	Money instance = new Money();
+	.Money m = null;
+	.Money instance = new .Money();
 	boolean expResult = false;
 	boolean result = instance.checkCurrency(m);
 	assertEquals(expResult, result);
@@ -76,7 +76,7 @@ public class MoneyTest {
     public void testCheckCurrency_String() {
 	System.out.println("checkCurrency");
 	String m = "";
-	Money instance = new Money();
+	.Money instance = new .Money();
 	boolean expResult = false;
 	boolean result = instance.checkCurrency(m);
 	assertEquals(expResult, result);
@@ -92,7 +92,7 @@ public class MoneyTest {
 	System.out.println("changeCurrency");
 	String s = "";
 	float rate = 0.0F;
-	Money instance = new Money();
+	.Money instance = new .Money();
 	instance.changeCurrency(s, rate);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -105,7 +105,7 @@ public class MoneyTest {
     public void testAdd_float() {
 	System.out.println("add");
 	float amount = 0.0F;
-	Money instance = new Money();
+	.Money instance = new .Money();
 	instance.add(amount);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -118,7 +118,7 @@ public class MoneyTest {
     public void testSub_float() {
 	System.out.println("sub");
 	float amount = 0.0F;
-	Money instance = new Money();
+	.Money instance = new .Money();
 	instance.sub(amount);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -130,8 +130,8 @@ public class MoneyTest {
     @Test
     public void testAdd_Money() {
 	System.out.println("add");
-	Money m = null;
-	Money instance = new Money();
+	.Money m = null;
+	.Money instance = new .Money();
 	instance.add(m);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -143,8 +143,8 @@ public class MoneyTest {
     @Test
     public void testSub_Money() {
 	System.out.println("sub");
-	Money m = null;
-	Money instance = new Money();
+	.Money m = null;
+	.Money instance = new .Money();
 	instance.sub(m);
 	// TODO review the generated test code and remove the default call to fail.
 	fail("The test case is a prototype.");
@@ -156,7 +156,7 @@ public class MoneyTest {
     @Test
     public void testToString() {
 	System.out.println("toString");
-	Money instance = new Money();
+	.Money instance = new .Money();
 	String expResult = "";
 	String result = instance.toString();
 	assertEquals(expResult, result);
