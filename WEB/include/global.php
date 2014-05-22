@@ -13,4 +13,15 @@
 			header("Location: login.php");
 		}
 	}
-?>
+
+	//fonction de test si la personne connéctée est un prof
+	function forprof(){
+		if(){
+
+		}
+	}
+
+	//fonction de test si la personne connéctée est un élève
+	function foretud(){
+
+	}

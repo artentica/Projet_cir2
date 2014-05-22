@@ -11,11 +11,12 @@
 
 	if(isset($_POST['username']) && isset($_POST['password'])){
 
-		$rep=Select('SELECT LOGIN, PASSWORD FROM UTILISATEUR');
+		$rep=Select('SELECT LOGIN, PASSWORD, STATUE FROM UTILISATEUR');
 		foreach($rep as $key => $data){
            if ($data['LOGIN']==$_POST['username'] && $data['PASSWORD']==$_POST['password']) {
              $_SESSION['log'] = 'ok';
              $_SESSION['name'] = $_POST['username'];
+             $_SESSION['statue'] = $data['STATUE'];
              header('Location: choose.php');             
            }
         	else { 
