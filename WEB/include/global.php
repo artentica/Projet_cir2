@@ -30,6 +30,7 @@
 			}
 	}
 
+	// Ajoute un boutton acceuil
 	function acc(){
 		$page = ($_SESSION['statut'] == 'professeur') ? "choose-p" : "choose-e" ;
       	echo ('
@@ -37,6 +38,11 @@
         		<a class="navbar-brand" href="choose-p.php">Accueil</a>
       		</div>
       	');
+	}
+
+	// ajoute boutton creer un projet
+	function cre(){
+		echo '<li>	<a href="create.php" >Créer un projet</a></li>';
 	}
 
 	//fonction hello a vincent ;-)

@@ -15,8 +15,9 @@
 
 			<nav class="navbar navbar-inverse">
 				<ul class="nav navbar-nav">
-					<?php acc(); ?>
-					<li>	<a href="#" >Créer un projet</a>	</li>
+					<?php acc(); 
+						  cre();
+					?>
 					<form class="navbar-form pull-right">  
 						<li class="">	<?php deco(); ?>	</li>
 					</form>
