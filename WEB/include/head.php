@@ -1,5 +1,15 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="CSS/main.css" rel="stylesheet">
+<link href="CSS/global.css" rel="stylesheet">
+<?php
+	// COMPPILATION DU CSS
+	include("include/lessc.inc.php");
+	try {
+    	lessc::ccompile('css/global.less', 'css/global.css');
+	} 
+	catch (exception $ex) {
+    	exit('Erreur de compilation less:'.$ex->getMessage());
+	}
+?>
 
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

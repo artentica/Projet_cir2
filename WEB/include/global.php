@@ -4,7 +4,7 @@
 
 	//Fonction qui affeiche le boutton pour deconnecter
 	function deco(){
-		echo('<a href="connexion.php" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-user"></span> Deconnexion</a>');
+		echo('<a href="deconnexion.php" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user"></span> Deconnexion</a>');
 	}
 
 	//fonction de test d'identification , renvoi sur la page login si n'est pas identifier
@@ -17,7 +17,7 @@
 	//fonction de test si la personne connéctée est un prof
 	function forprof(){
 			isco();
-			if( isset($_SESSION['statue']) && $_SESSION['status'] != "professeur"){
+			if( !isset($_SESSION['statut']) OR $_SESSION['statut'] != "professeur"){
 				header("Location: erreur.php?erreur=droit");
 			}
 	}
@@ -29,3 +29,18 @@
 				header("Location: erreur.php?erreur=droit");
 			}
 	}
+
+	function acc(){
+		$page = ($_SESSION['statut'] == 'professeur') ? "choose-p" : "choose-e" ;
+      	echo ('
+      		<div class="navbar-header">
+        		<a class="navbar-brand" href="choose-p.php">Accueil</a>
+      		</div>
+      	');
+	}
+
+	//fonction hello a vincent ;-)
+	function hello(){
+		echo( "<p>Bonjour " . $_SESSION['name'] . ", il est <b>". date("H:i") ."</b> nous sommes le <b>" . date("d/m/Y") . "</b></p>" );
+	}
+?>
