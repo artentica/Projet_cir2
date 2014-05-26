@@ -17,7 +17,7 @@
 	//fonction de test si la personne connéctée est un prof
 	function forprof(){
 			isco();
-			if( !isset($_SESSION['statut']) OR $_SESSION['statut'] != "professeur"){
+			if( !isset($_SESSION['statut']) OR $_SESSION['statut'] != "Personel"){
 				header("Location: erreur.php?erreur=droit");
 			}
 	}

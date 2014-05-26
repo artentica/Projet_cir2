@@ -20,7 +20,7 @@
 			if($tmp != FALSE)
 			{
 				$rep = $tmp->fetchAll() ;
-				//print_r($rep); 		//DEBUG
+				print_r($rep); 		//DEBUG
 			}
 			$db = NULL;
 			return $rep;

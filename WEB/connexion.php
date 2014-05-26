@@ -11,7 +11,7 @@
 
 	if(isset($_POST['username']) && isset($_POST['password'])){
 
-		$rep=Select('SELECT LOGIN, PASSWORD, STATUE FROM UTILISATEUR');
+		$rep=Select('SELECT LOGIN, PASSWORD, STATUS FROM USER');
 		foreach($rep as $key => $data){
            if ($data['LOGIN']==$_POST['username'] && $data['PASSWORD']==$_POST['password']) {
             	$_SESSION['log'] = 'ok';
