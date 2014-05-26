@@ -64,7 +64,7 @@ create table SUBTEST
    TEST_NUM             int not null,
    SUBTEST_NUM          int not null,
    KIND                 varchar(20),
-   "VALUES"             varchar(50),
+   VALEUR               varchar(50),
    primary key (PROJECT_ID, TEST_NUM, SUBTEST_NUM)
 );
 
