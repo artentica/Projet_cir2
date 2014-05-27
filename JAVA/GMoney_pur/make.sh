@@ -1,3 +1,4 @@
+rm *.class
 javac Money.java
 
 #compile la classe de test
