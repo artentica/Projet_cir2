@@ -2,7 +2,7 @@
 	  require 'include/global.php';
 	  forprof();
 
-	  $projets = Select("SELECT * FROM PROJECT");
+	  //$projets = Select("SELECT * FROM PROJECT");
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,7 +41,7 @@
 					<!-- Text input-->
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="nom">Nom du projet</label>  
-					  <div class="col-md-4">
+					  <div class="col-md-3">
 					  	<input class="form-control input-sm" id="nom" name="nom" type="text" placeholder="caffard en C++"  required>
 					  	<span class="help-block">entrez une phrase qui décrit le projet</span>  
 					  </div>
@@ -55,23 +55,26 @@
   									<i class="glyphicon glyphicon-calendar"></i>
   								</span>
 						</div>
+						<span class="help-block col-xs-offset-5">00/00/0000 par defaut.</span>
 					</div>
 					<!--  CLOCK PICKER-->
 					<div class="form-group " data-placement="right" data-align="top" data-autoclose="true">
 						<label class="col-md-4 control-label" for="heure">Heure</label>
 						<div class="clockpicker input-group">
-						    <input type="text" class="form-control" name="heure">
+						    <input type="text" class="form-control" name="heure" required>
 						    <span class="input-group-addon">
 						        <span class="glyphicon glyphicon-time"></span>
 						    </span>
 						</div>
+						<span class="help-block col-xs-offset-5">00:00 par defaut.</span>
 					</div>
 
 					<!-- File Button --> 
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="class">Fichier de test ( attendu: xxx.java)</label>
+					  <label class="col-md-4 control-label" for="class">Fichier de test</label>
 					  <div class="col-md-4">
-					    <input id="class" name="class" class="input-file" type="file" >
+					    <input id="class" name="class" class="input-file" type="file" required>
+					    <span class="help-block ">Format attendu: .java .jar .zip</span>
 					  </div>
 					</div>
 
@@ -88,26 +91,65 @@
 
 		</div>
 		<?php
-			if(isset($_POST['nom']) && isset($_POST['date']) && isset($_POST['heure']) /*&& isset($_FILES['icone']['name'])*/)		//LE FORMULAIRE EST REMPLI
+			if(isset($_POST['nom']) && isset($_POST['date']) && isset($_POST['heure']) && isset($_FILES['class']) )		//LE FORMULAIRE EST REMPLI
 			{
-				$date = $_POST['date'] . " " . $_POST['heure'] . ":00";
-				$req = "INSERT INTO PROJECT (NAME, DATE_BUTOIRE) VALUES ('". $_POST['nom'] ."', '". $date ."')";	
-				echo $req;	//DEBUG
-				$id = Ins( $req );
-				echo('
-					<div class="col-sm-8 col-sm-offset-2 alert alert-dismissable alert-success">
-    					<button type="button" class="close" data-dismiss="alert">×</button>
-    					<strong>Le projet a été créé avec succes</strong> Nom: ' . $_POST['nom'] . '  <a href="gestion-p.php?P='. $id .'" class="alert-link"> Voir le projet</a>.
-					</div>
+				if( $_FILES['class']['error'] > 0) 
+				{ 					
+					$erreur = "Le transfert du fichier a échoué"; 
+					erreur( $erreur);
+				}
+				else{						//LE FICHIER EST BIEN TRANSFERER
 
-				');
+					$extension = strrchr($_FILES['class']['name'], '.');
+					if( !in_array($extension, $extensions) )
+					{
+						erreur("Le format du fichier ne correspond pas...");
+					}
+					else
+					{
+
+						$T = Select("SELECT PROJECT_ID FROM PROJECT WHERE NAME='". $_POST['nom'] ."'");
+						if( $T )
+						{	//verifier nom et date
+							erreur( "Le nom ou l'heure n'est pas valide....");
+						}
+						else
+						{
+							$date = $_POST['date'] . " " . $_POST['heure'] . ":00";
+							$req = "INSERT INTO PROJECT (NAME, DATE_BUTOIRE) VALUES ('". $_POST['nom'] ."', '". $date ."')";	
+							echo $req;	//DEBUG
+							$id = Ins( $req );
+
+							if( $id == 0) 
+							{
+								erreur( "La requette n'est pas passer, vérifiez le nom ainsi que la date et l'heure.");
+							}
+							else
+							{			//LA REQUETTE EST PASSEE
+
+								mkdir("upload/project". $id, 0777);
+								mkdir("upload/project". $id . "/tests", 0777);
+
+								//$resultat = move_uploaded_file($_FILES['class']['tmp_name'], "upload/project". $id ."/tests/". $_FILES['class']['tmp_name']);
+
+								$nom = "upload/project". $id ."/tests/".$_FILES['class']['name'];
+								$resultat = move_uploaded_file($_FILES['class']['tmp_name'], $nom);
+
+
+								if( !$resultat) { erreur( "Le dossier n'a pas pu etre creer et le fichier copier..." ); }
+								else
+								{
+									success( '<strong>Le projet a été créé avec succès</strong> Nom: ' . $_POST['nom'] . '  <a href="gestion-p.php?P='. $id .'" class="alert-link"> Voir le projet</a>.');
+								}
+							}
+						}
+					}
+				}
 			}
-
-
 
 		?>
 	</body>
-	<script type="text/javascript">
+	<script type="application/javascript">
 		$('.input-group.date').datepicker({
 		    format: "yyyy-mm-dd",
 		    todayBtn: true,
