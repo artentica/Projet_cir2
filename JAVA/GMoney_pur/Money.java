@@ -86,8 +86,7 @@ public class Money {
      *	montant a ajouter
      */
     public void add ( float amount )
-    {	    if(amount>0) this.amount += amount;
-	    else System.out.println("Le nombre doit être positif");}
+    {	    if(amount>0) this.amount += amount;}
     
     /**
      * Retire un montant a une money
@@ -95,8 +94,7 @@ public class Money {
      *	montant a retirer
      */
     public void sub ( float amount )
-    {	    if(amount>0)this.amount -= amount;
-	    else System.out.println("Le nombre doit être positif");}
+    {	    if(amount>0)this.amount -= amount;}
     
     /**
      * Ajoute 2 money si elles ont la meme unitée

@@ -47,7 +47,6 @@ public class MoneyTest {
 		nb_test++;
 		money.add(send);
 		float result = money.getAmount();
-		System.out.println(nb_test);
 		try{
 			nb_test_ok++;
 			Assert.assertEquals(result, resultexpected,0);
@@ -61,7 +60,10 @@ public class MoneyTest {
 
 
 	@AfterClass public static void logout() {
-          database.logout();
+		if (nb_test==nb_test_ok){
+		    System.out.println("OK");
+		}
+		else System.out.println("KO");
     }
 
 
