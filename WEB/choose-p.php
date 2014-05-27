@@ -38,16 +38,15 @@
 									<div class="panel panel-default">
 										<div class="panel-heading">
 											<h4 class="panel-title">
-												<a class="panel-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse'. $val[0] .'">' . $val[2] . '</a>
+												<a class="panel-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse'. $val[0] .'">' . $val[1] . '</a>
 											</h4>
 										</div>
 										<div id="collapse'. $val[0] .'" class="panel-body collapse">
 											<div class="panel-inner">
 												Projet N°'. $val[0] . ":
 												<ul>
-													<li> Nom: <b>" . $val[2] . "</b></li>
-													<li> date de création: <b>". $val[3] . "</b></li>
-													<li> date butoire: <b>". $val[4] .'</b></li>
+													<li> Nom: <b>" . $val[1] . "</b></li>
+													<li> date butoire: <b>". $val[2] .'</b></li>
 												</ul>
 												<a href="gestion-p.php?P=' . $val[0] . '" class="col-md-2 col-md-offset-10 btn btn-primary btn-warning">
 													<span class="glyphicon glyphicon-briefcase"></span>

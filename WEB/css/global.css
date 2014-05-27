@@ -13,3 +13,10 @@ body,
   margin-left: 15px;
   width: 200px;
 }
+.clockpicker {
+  width: 250px !important;
+}
+.clockpicker input {
+  margin-left: 15px;
+  width: 200px !important;
+}
