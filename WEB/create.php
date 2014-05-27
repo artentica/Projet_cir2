@@ -40,12 +40,19 @@
 
 					<!-- Text input-->
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="nom">Nom du projet</label>  
-					  <div class="col-md-3">
-					  	<input class="form-control input-sm" id="nom" name="nom" type="text" placeholder="caffard en C++"  required>
-					  	<span class="help-block">entrez une phrase qui décrit le projet</span>  
-					  </div>
+						<label class="col-md-4 control-label" for="nom">Nom du projet</label>  
+					  		<div class="col-md-3">
+						  		<div class="input-group">
+						  			<input class="form-control input-sm" name="nom" type="text" placeholder="caffard en C++"  required>
+						    		<span class="input-group-addon ">
+							        	<i class="glyphicon glyphicon-folder-open"></i>
+						    		</span>
+						  		</div>
+							</div>
+					<span class="help-block col-lg-3 col-lg-offset-4">entrez une phrase qui décrit le projet</span>  
 					</div>
+
+
 					<!--  DATE PICKER-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="date">Date limite de depot</label>
@@ -68,7 +75,6 @@
 						</div>
 						<span class="help-block col-xs-offset-5">00:00 par defaut.</span>
 					</div>
-
 					<!-- File Button --> 
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="class">Fichier de test</label>
@@ -81,8 +87,11 @@
 					<!-- Button -->
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="submit">créer le projet</label>
-					  <div class="col-md-4">
-					    <input type="submit" class="btn btn-default" />
+					  <div class="col-md-1 input-group">
+					    <input type="submit" class="btn btn-success" />
+					    <span class="input-group-addon">
+						    <i class="glyphicon glyphicon-ok"></i>
+					    </span>
 					  </div>
 					</div>
 
@@ -117,8 +126,13 @@
 						{
 							$date = $_POST['date'] . " " . $_POST['heure'] . ":00";
 							$req = "INSERT INTO PROJECT (NAME, DATE_BUTOIRE) VALUES ('". $_POST['nom'] ."', '". $date ."')";	
-							echo $req;	//DEBUG
+							//echo $req;	//DEBUG
 							$id = Ins( $req );
+
+
+							$e = "INSERT INTO TEACHER_PROJECT (LOGIN, PROJECT_ID ) VALUES ('". $_SESSION['login'] ."', ". $id .")";
+							//echo $e;
+							$req = Ins($e);
 
 							if( $id == 0) 
 							{
