@@ -18,7 +18,7 @@
 			    	Vous venez d'être déconnécter...
 			    	Vous allez être rediriger...
 			    		<script type="text/javascript">
-							var obj = 'window.location.replace("connexion.php");';
+							var obj = 'window.location.replace("<?= $GLOBALS['page_connexion'] ?>");';
 							setTimeout(obj,5000); 
 						</script>
 			  	</div>

@@ -2,7 +2,7 @@
 		require 'include/global.php';
 		forprof();
 
-		$projets = Select("SELECT * FROM PROJET");
+		$projets = Select("SELECT * FROM PROJECT");
 ?>
 <!DOCTYPE html>
 <html>

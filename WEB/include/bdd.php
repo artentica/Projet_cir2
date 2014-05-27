@@ -2,7 +2,7 @@
 
 	$GLOBALS['host'] = "127.0.0.1";
 	$GLOBALS['dbname'] = "administrateur";
-	$GLOBALS['user'] = "administrateur";
+	$GLOBALS['userdb'] = "administrateur";
 	$GLOBALS['passwd'] = "adminadmin";
 
 	error_reporting(E_ALL);
@@ -14,8 +14,8 @@
 		try
 		{
 			// On se connecte à MySQL
-			$db = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['user'], $GLOBALS['passwd']);
-			//echo $string; //DEBUG
+			$db = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd'], array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+			echo $string; //DEBUG
 			$tmp = $db->query( $string );
 			if($tmp != FALSE)
 			{
@@ -23,7 +23,7 @@
 				print_r($rep); 		//DEBUG
 			}
 			$db = NULL;
-			return $rep;
+			return (isset($rep)) ? $rep : False;
 		}
 		catch(Exception $e)
 		{
@@ -34,22 +34,15 @@
 	}
 
 	//Permet de faire des requettes de type INSERT ou DELETE dans la Base de donnée
-	function Insert( $string )
+	function Ins( $string )
 	{
 		try
 		{
 			// On se connecte à MySQL
-			$db = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['user'], $GLOBALS['passwd']);
-				try
-				{
-					$db->exec( $string );
-				}
-				catch ( PDOException $e )
-				{
-					echo ("Impossible d'executer la requette." );
-					return false;
-				}
-				return true;
+			$db = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd']);
+			$nb = $db->exec( utf8_decode($string) );
+			$dba = NULL;
+			return ;
 		}
 		catch(Exception $e)
 		{

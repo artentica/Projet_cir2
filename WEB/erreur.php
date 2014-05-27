@@ -10,7 +10,7 @@
     <body>
       <div class="jumbotron" >
       <h1>Une erreur est survenue...</h1>
-      <a href="connexion.php" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-home"></span> Retour au site</a>
+      <a href="<?= $GLOBALS['page_connexion'] ?>" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-home"></span> Retour au site</a>
       </div>
       <div class="container" >
          <div class="row" >
