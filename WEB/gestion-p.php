@@ -80,9 +80,6 @@
                     system('rm -rf ' . escapeshellarg("upload/project".$_GET['del']), $retval);
                     $nb = Ins("DELETE FROM PROJECT WHERE PROJECT_ID=".$_GET['del'] );
 
-
-
-
                   }
                   else{
                     echo('Impossible de trouver le projet concerné...');
