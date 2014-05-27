@@ -41,8 +41,7 @@
 			// On se connecte à MySQL
 			$db = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd']);
 			$nb = $db->exec( utf8_decode($string) );
-			$dba = NULL;
-			return ;
+			return $db->lastInsertId();
 		}
 		catch(Exception $e)
 		{
