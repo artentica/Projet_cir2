@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  26/05/2014 13:59:21                      */
+/* Date de création :  27/05/2014 09:27:23                      */
 /*==============================================================*/
 
 
@@ -25,7 +25,7 @@ create table PROJECT
 (
    PROJECT_ID           int not null,
    NAME                 varchar(20),
-   ENABLED              bool,
+   DATE_BUTOIRE         datetime,
    primary key (PROJECT_ID)
 );
 
