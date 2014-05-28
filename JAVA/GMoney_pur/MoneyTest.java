@@ -22,24 +22,27 @@ import java.util.Collection;
 public class MoneyTest {
 
 
-		private static int nb_test_ok=0;
+		private static int nb_test_ok_add=0;
+		private static int nb_test_ok_sub=0;
 		private static int nb_test=0;
-		private static Money money=new Money();
+		private Money money=new Money();
 	
 
 	@Parameters
 	public static Collection<Object[]> params() {
 		return Arrays.asList(
-			new Object[] { 0.20F, 0.20F},
-			new Object[] { -1F, 0.2F},
-			new Object[] { 0.80F, 1F}
+			new Object[] { 0.40F, 0.40F,-0.4F},
+			new Object[] { -1F, 0F,0F},
+			new Object[] { 0.80F, 0.8F,-0.8F}
 			);
 	}
-	private float resultexpected;
+	private float resultexpectedadd;
+	private float resultexpectedsub;
 	private float send;
 
-	public MoneyTest(float send, float resultexpected) {
-		this.resultexpected = resultexpected;
+	public MoneyTest(float send, float resultexpectedadd, float resultexpectedsub) {
+		this.resultexpectedadd = resultexpectedadd;
+		this.resultexpectedsub = resultexpectedsub;
 		this.send = send;
 
 	}
@@ -48,22 +51,42 @@ public class MoneyTest {
 		money.add(send);
 		float result = money.getAmount();
 		try{
-			nb_test_ok++;
-			Assert.assertEquals(result, resultexpected,0);
+			nb_test_ok_add++;
+			Assert.assertEquals(result, resultexpectedadd,0);
 		}
 		catch (AssertionError e) {
-			nb_test_ok--;
+			nb_test_ok_add--;
 			System.out.println(e);
 			Assert.fail("fonction fail");
 		}		
 	}
 
+	@Test public void sub() {
+		money.sub(send);
+		float result = money.getAmount();
+		try{
+			nb_test_ok_sub++;
+			Assert.assertEquals(result, resultexpectedsub,0);
+		}
+		catch (AssertionError e) {
+			nb_test_ok_sub--;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}		
+	}
+
+	
+
+
+
 
 	@AfterClass public static void logout() {
-		if (nb_test==nb_test_ok){
-		    System.out.println("OK");
+		if (nb_test==nb_test_ok_add){
+		    System.out.println("La fonction add() est: OK");
 		}
-		else System.out.println("KO");
+		if (nb_test==nb_test_ok_sub){
+		    System.out.println("La fonction sub() est: OK");
+		}
     }
 
 
