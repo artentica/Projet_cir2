@@ -3,6 +3,7 @@
     <head>
         <?php 
          require 'include/head.php';
+         require 'include/global.conf';
         ?>
        
     </head>

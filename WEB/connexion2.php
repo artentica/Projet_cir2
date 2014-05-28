@@ -9,17 +9,17 @@
 	require 'include/global.php';
 
 //========================================================DONNEES FACTICES
-	/*$userData["Login"]		 = 		"rcolli17";
+	$userData["Login"]		 = 		"rcolli17";
 	$userData["FirstName"]	 = 		"rémi";
 	$userData["LastName"]	 = 		"collignon";
 	$userData["Mail"] 		 = 		"rcd18@hotmail.fr";
-	$groupeISEN 			 = 		"CIR2";*/
+	$groupeISEN 			 = 		"CIR2";
 
-	$userData["Login"]		 = 		"prof1";
+	/*$userData["Login"]		 = 		"prof1";
 	$userData["FirstName"]	 = 		"mîckàèl";
 	$userData["LastName"]	 = 		"Aaron";
 	$userData["Mail"] 		 = 		"rcd18@hotmail.fr";
-	$groupeISEN 			 = 		"Personnel";
+	$groupeISEN 			 = 		"Personnel";*/
 
 
 
@@ -58,13 +58,10 @@
 			$nb = Ins("INSERT INTO STUDENT (LOGIN, LASTNAME, FIRSTNAME, MAIL) VALUES ('". $_SESSION['login'] ."', '". $_SESSION['nom'] ."', '". $_SESSION['prenom'] ."', '". $_SESSION['mail'] ."')" );
 		}
 	}
-
-	$link = ( $prof ) ? "choose-p" : "choose-e" ;
-
 ?>
 		</div>
 		<div class="row col-sm-2 col-sm-offset-5">
-			<a href="<?= $link ?>.php" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-new-window"></span> Acceder a la page d'acceuil</a>
+			<a href="choose-p.php" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-new-window"></span> Acceder a la page d'acceuil</a>
 		</div>
 	</div>
 	</body>
