@@ -15,6 +15,7 @@
         <ul class="nav navbar-nav">
           <?php acc(); 
                 cre();
+                depot();
           ?>
           <li>
             <a id="check_del" href="gestion-p.php?del=<?= $_GET['P'] ?>" > Supprimer le projet </a>

@@ -12,7 +12,9 @@
 
       		<nav class="navbar navbar-inverse">
         		<ul class="nav navbar-nav">
-          			<?php acc(); ?>
+          			<?php acc(); 
+          				  depot();
+          			?>
           			<form class="navbar-form pull-right">  
           				<li>	<?php deco(); ?>	</li>
           			</form>

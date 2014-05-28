@@ -20,12 +20,17 @@
 		echo '<li>	<a href="create.php" >Créer un projet</a></li>';
 	}
 
+	//PERMET DE DEPOSER UN FICHIER
+	function depot(){
+		echo('<li><a href="depot.php?P=' . $_GET['P'] . '">Déposer les sources</a></li>');
+	}
+
 	//Fonction qui affeiche le boutton pour deconnecter
 	function deco()
 	{
 		echo('<a href="deconnexion.php" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user"></span> Deconnexion</a>');
 	}
-	
+
 	//fonction hello a vincent ;-)
 	function hello()
 	{
@@ -33,7 +38,8 @@
 	}
 
 	//fonction de test si la personne connéctée est un prof
-	function C_prof(){
+	function C_prof()
+	{
 		return ($_SESSION['groupe'] == $GLOBALS['p_group'] ) ? TRUE : FALSE ;
 	}
 
