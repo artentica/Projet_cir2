@@ -78,11 +78,11 @@
                   elseif( isset($_GET['del'])){
 
                     system('rm -rf ' . escapeshellarg("upload/project".$_GET['del']), $retval);
+                    $nb = Ins("DELETE FROM SUBTEST WHERE PROJECT_ID=".$_GET['del'] );
+                    $nb = Ins("DELETE FROM TEST WHERE PROJECT_ID=".$_GET['del'] );
+                    $nb = Ins("DELETE FROM RESULT WHERE PROJECT_ID=".$_GET['del'] );
+                    $nb = Ins("DELETE FROM TEACHER_PROJECT WHERE PROJECT_ID=".$_GET['del'] );
                     $nb = Ins("DELETE FROM PROJECT WHERE PROJECT_ID=".$_GET['del'] );
-
-
-
-
                   }
                   else{
                     echo('Impossible de trouver le projet concerné...');

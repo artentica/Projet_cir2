@@ -32,7 +32,7 @@
 	$_SESSION['groupe'] = $groupeISEN;
 //========================================================================
 
-	$prof = ( $_SESSION['groupe'] == "Personnel" ) ? TRUE : FALSE ;
+	$prof = ( $_SESSION['groupe'] == $GLOBALS['p_group'] ) ? TRUE : FALSE ;
 
 	$user = ($prof) ? Select("SELECT * FROM TEACHER WHERE TEACHER.LOGIN='" . $userData["Login"] ."'") : Select("SELECT * FROM STUDENT WHERE STUDENT.LOGIN='" . $userData["Login"] ."'");
 
