@@ -17,7 +17,7 @@ import java.util.Collection;
 
 
 
-//TEST PARAM2TRIQUES////////////
+//TEST PARAMETRIQUES////////////
 @RunWith(Parameterized.class)
 public class MoneyTest {
 
