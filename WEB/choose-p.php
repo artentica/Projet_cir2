@@ -1,25 +1,32 @@
 <?php require 'include/bdd.php';
-		require 'include/global.php';
-		forprof();
+	  require 'include/global.php';
 
-		$projets = Select("SELECT * FROM PROJECT");
+	  $projets = Select("SELECT * FROM PROJECT");
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php require 'include/head.php'; ?>
+		<?php require 'include/head.php'; 
+			if( C_prof() ){
+				$prof = 'p';
+			}
+			else{
+				$prof = 'e';
+			}
+		?>
 	</head>
 
 	<body>
 		<div class="container">
-
 			<nav class="navbar navbar-inverse">
 				<ul class="nav navbar-nav">
 					<?php acc(); 
-						  cre();
+						  if( C_prof() ){ 	cre();	  } //SI PROF ALORS ECRIT LE LIEN CREATION PROJET
 					?>
 					<form class="navbar-form pull-right">  
-						<li class="">	<?php deco(); ?>	</li>
+						<li class="">
+							<?php deco(); ?>
+						</li>
 					</form>
 				</ul>
 			</nav>
@@ -48,7 +55,7 @@
 													<li> Nom: <b>" . $val[1] . "</b></li>
 													<li> date butoire: <b>". $val[2] .'</b></li>
 												</ul>
-												<a href="gestion-p.php?P=' . $val[0] . '" class="col-md-2 col-md-offset-10 btn btn-primary btn-warning">
+												<a href="gestion-'. $prof .'.php?P=' . $val[0] . '" class="col-md-2 col-md-offset-10 btn btn-primary btn-warning">
 													<span class="glyphicon glyphicon-briefcase"></span>
 													Voir le Projet
 												</a>
@@ -58,59 +65,6 @@
 									');
 							}
 						?>
-				          <!--div class="panel panel-default">
-				            <div class="panel-heading">
-				              <h4 class="panel-title">
-				                <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">Collapsible Group #1</a>
-				              </h4>
-				            </div>
-				            <div id="collapseOne" class="panel-body collapse">
-				              <div class="panel-inner">
-				                This is a simple accordion inner content...
-				              </div>
-				            </div>
-				          </div>
-				          <div class="panel panel-default">
-				            <div class="panel-heading">
-				              <h4 class="panel-title">
-				                <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">Collapsible Group #2 (With nested accordion inside)</a>
-				              </h4>
-				            </div>
-				            <div id="collapseTwo" class="panel-body collapse">
-				              <div class="panel-inner">
-
-				              	<!-- Here we insert another nested accordion -->
-
-				                <!--div class="panel-group" id="accordion2">
-				                  <div class="panel panel-default">
-				                    <div class="panel-heading">
-				                      <h4 class="panel-title"><a class="panel-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseInnerOne">
-				                        Collapsible Inner Group Item #1</a>
-				                      </h4>
-				                    </div>
-				                    <div id="collapseInnerOne" class="panel-body collapse">
-				                      <div class="panel-inner">
-				                        Anim pariatur cliche...
-				                      </div>
-				                    </div>
-				                  </div>
-				                  <div class="panel panel-default">
-				                    <div class="panel-heading">
-				                      <h4 class="panel-title"><a class="panel-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseInnerTwo">
-				                        Collapsible Inner Group Item #2
-				                        </a>
-				                      </h4>
-				                    </div>
-				                    <div id="collapseInnerTwo" class="panel-body collapse">
-				                      <div class="panel-inner">
-				                        Anim pariatur cliche...
-				                      </div>
-				                    </div>
-				                  </div>
-				                </div>
-
-				                <!-- Inner accordion ends here -->
-
 	            	</div>
 	        	</div>
 	    	</div>
