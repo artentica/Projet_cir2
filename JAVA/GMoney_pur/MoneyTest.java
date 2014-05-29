@@ -94,8 +94,11 @@ public class MoneyTest {
 
 
 	public Money m;
+	public Money m2 = new Money(2.45F,"USR");
 	public static int nb_test_ok=0;
 	public static int nb_test=0;
+	public static int nb_test_ko=0;
+
 
 	@Before
 	public final void setUp() {
@@ -116,52 +119,87 @@ public class MoneyTest {
 
 		try{
 			nb_test_ok++;
+			Assert.assertEquals("KO" , expected, m.getAmount(),0);
 			System.out.println("getAmount :\n 	attendu : " + expected +"\n 	resultat : " + m.getAmount());
 			
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
 		}
-		System.out.println((nb_test_ok==nb_test)?"	getAmount : OK":"	getAmount : KO");
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
 	}
 
 	@Test
-	public void testgetCurrency(){
-		String expected = "EUR";
+	public void testgetAmount2(){
+		float expected = 2.45F;
 
-
-		try{		
+		try{
 			nb_test_ok++;
-
-			Assert.assertEquals("KO" , expected, m.getCurrency());
-			System.out.println("getCurrency : OK");
+			Assert.assertEquals("KO" , expected, m2.getAmount(),0);
+			System.out.println("getAmount :\n 	attendu : " + expected +"\n 	resultat : " + m2.getAmount());
+			
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
 		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
 	}
 
-	@Test
-	public void testcheckCurrency ()
-    {
-    	Money money= new Money();
+	// @Test
+	// public void testgetCurrency(){
+	// 	String expected = "EUR";
 
 
-    	try{		
-			nb_test_ok++;
-			Assert.assertTrue("KO", m.checkCurrency(money));
-			System.out.println("checkCurrency : OK");
-		}
-		catch (AssertionError e) {
-			nb_test_ok--;
-			System.out.println(e);
-			Assert.fail("fonction fail");
-		}
-    }
+
+	// 	try{
+	// 		nb_test_ok++;
+	// 		System.out.println("getAmount :\n 	attendu : " + expected +"\n 	resultat : " + m2.getAmount());
+			
+	// 	}
+	// 	catch (AssertionError e) {
+	// 		nb_test_ok--;
+	// 		nb_test_ko++;
+	// 		System.out.println(e);
+	// 		Assert.fail("fonction fail");
+	// 	}
+	// 	System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
+
+	// 	try{		
+	// 		nb_test_ok++;
+
+	// 		Assert.assertEquals("KO" , expected, m.getCurrency());
+	// 		System.out.println("getCurrency : OK");
+	// 	}
+	// 	catch (AssertionError e) {
+	// 		nb_test_ok--;
+	// 		nb_test_ko++;
+	// 		System.out.println(e);
+	// 		Assert.fail("fonction fail");
+	// 	}
+	// }
+
+	// @Test
+	// public void testcheckCurrency ()
+ //    {
+ //    	Money money= new Money();
+
+
+ //    	try{		
+	// 		nb_test_ok++;
+	// 		Assert.assertTrue("KO", m.checkCurrency(money));
+	// 	}
+	// 	catch (AssertionError e) {
+	// 		nb_test_ok--;
+	// 		System.out.println(e);
+	// 		Assert.fail("fonction fail");
+	// 	}
+ //    }
 
 
 	public static void main (String [] arg)
