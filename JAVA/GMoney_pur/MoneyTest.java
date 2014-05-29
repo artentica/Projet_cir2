@@ -117,16 +117,14 @@ public class MoneyTest {
 		try{
 			nb_test_ok++;
 			System.out.println("getAmount :\n 	attendu : " + expected +"\n 	resultat : " + m.getAmount());
-			Assert.assertEquals("KO",expected, m.getAmount(),0);
-
-			System.out.println("getAmount : OK");
+			
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
 			System.out.println(e);
 			Assert.fail("fonction fail");
 		}
-
+		System.out.println((nb_test_ok==nb_test)?"	getAmount : OK":"	getAmount : KO");
 	}
 
 	@Test
@@ -136,6 +134,7 @@ public class MoneyTest {
 
 		try{		
 			nb_test_ok++;
+
 			Assert.assertEquals("KO" , expected, m.getCurrency());
 			System.out.println("getCurrency : OK");
 		}
