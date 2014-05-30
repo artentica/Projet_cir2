@@ -151,55 +151,126 @@ public class MoneyTest {
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
 	}
 
-	// @Test
-	// public void testgetCurrency(){
-	// 	String expected = "EUR";
+	@Test
+	public void testgetCurrency(){
+		String expected = "EUR";
 
+		
+		try{		
+			nb_test_ok++;
+			Assert.assertEquals("KO" , expected, m.getCurrency());
+			System.out.println("getCurrency :\n 	attendu : " + expected +"\n 	resultat : " + m.getCurrency());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getCurrency : OK":"	getCurrency : KO");
 
+	}
 
-	// 	try{
-	// 		nb_test_ok++;
-	// 		System.out.println("getAmount :\n 	attendu : " + expected +"\n 	resultat : " + m2.getAmount());
-			
-	// 	}
-	// 	catch (AssertionError e) {
-	// 		nb_test_ok--;
-	// 		nb_test_ko++;
-	// 		System.out.println(e);
-	// 		Assert.fail("fonction fail");
-	// 	}
-	// 	System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
+	@Test
+	public void testgetCurrency2(){
+		String expected = "USR";
 
-	// 	try{		
-	// 		nb_test_ok++;
+		
+		try{		
+			nb_test_ok++;
+			Assert.assertEquals("KO" , expected, m2.getCurrency());
+			System.out.println("getCurrency :\n 	attendu : " + expected +"\n 	resultat : " + m2.getCurrency());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getCurrency : OK":"	getCurrency : KO");
 
-	// 		Assert.assertEquals("KO" , expected, m.getCurrency());
-	// 		System.out.println("getCurrency : OK");
-	// 	}
-	// 	catch (AssertionError e) {
-	// 		nb_test_ok--;
-	// 		nb_test_ko++;
-	// 		System.out.println(e);
-	// 		Assert.fail("fonction fail");
-	// 	}
-	// }
+	}
 
-	// @Test
-	// public void testcheckCurrency ()
- //    {
- //    	Money money= new Money();
+	@Test
+	public void testcheckCurrency (){
 
+		
+		try{		
+			nb_test_ok++;
+			Assert.assertFalse(m.checkCurrency(m2));
+			System.out.println("checkCurrency :\n 	attendu : " + m.checkCurrency(m2) +"\n 	resultat : " + m.checkCurrency(m2));
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
 
- //    	try{		
-	// 		nb_test_ok++;
-	// 		Assert.assertTrue("KO", m.checkCurrency(money));
-	// 	}
-	// 	catch (AssertionError e) {
-	// 		nb_test_ok--;
-	// 		System.out.println(e);
-	// 		Assert.fail("fonction fail");
-	// 	}
- //    }
+	}
+
+	@Test
+	public void testcheckCurrency2 (){
+
+		
+		try{		
+			nb_test_ok++;
+			Assert.assertTrue(m.checkCurrency(m));
+			System.out.println("checkCurrency :\n 	attendu : " + m.checkCurrency(m) +"\n 	resultat : " + m.checkCurrency(m));
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
+
+	}
+
+	@Test
+	public void testcheckCurrency3 (){
+		String expected = "EUR";
+		
+		try{		
+			nb_test_ok++;
+			Assert.assertTrue(m.checkCurrency(expected));
+			System.out.println("checkCurrency :\n 	attendu : " + expected +"\n 	resultat : " + m.getCurrency());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
+
+	}
+
+	@Test
+	public void testchangeCurrency (){
+		float rate = 0.42F;
+		String currency = "EUR";
+		float amount= m.getAmount()*rate;
+		
+		try{		
+			nb_test_ok++;
+			m.changeCurrency(currency,rate);
+			Assert.assertEquals("KO" , currency, m.getCurrency());
+			Assert.assertEquals("KO" , amount, m.getAmount(),0);
+			System.out.println("changeCurrency :\n 	attendu : (" + amount+","+currency +")\n 	resultat : (" + m.getAmount()+","+m.getCurrency()+")");
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	changeCurrency : OK":"	changeCurrency : KO");
+
+	}
+		
 
 
 	public static void main (String [] arg)
