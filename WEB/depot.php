@@ -50,12 +50,8 @@
     <?php   //DEPOT DES SOURCES
       if( isset($_GET['P']) ){
         $_SESSION['p_temp'] = $_GET['P'];
-        echo('COUCOUCOCUOCOCOUCOUCUCO');
-        echo $_GET['P'];
-        echo $_SESSION['p_temp'];
       }
-
-      if( isset($_FILE['src']) ) // ON A ENVOYER UN FICHIER
+      if( isset($_FILES['src']) ) // ON A ENVOYER UN FICHIER
       {
         if( $_FILES['src']['error'] > 0) 
         {           
@@ -70,23 +66,26 @@
               }
               else               //C EST LE BON FORMAT
               {              
-                  $doss = "upload/projet" . $_SESSION['p_temp'] . "/" . $_SESSION['login'];
-                  echo $doss;
+                  $doss = "upload/project" . $_SESSION['p_temp'] . "/" . $_SESSION['login'] . "/";
+                  //echo $doss;
 
-                  if( !file_exists( $doss ) ) //SI LE REPERTOIRE N EXISTE PAS
+                  if( !is_dir( $doss ) ) //SI LE REPERTOIRE N EXISTE PAS
                   {
-                    mkdir($doss , 0777);
-                    echo('dossier créer!');
+                    if(mkdir($doss , 0777, true)){
+                      echo('dossier créer! '. $doss);
+                    }
+                    else{
+                      echo('le dossier aurais du etre creer mais non....');
+                    }
                   }
-                  $output = shell_exec( "rm -R " . $doss . "/"); // VIDE LE DOSSIER
+                  $output = shell_exec( "rm -R " . $doss . "*" ); // VIDE LE DOSSIER
 
-                  $resultat = move_uploaded_file($_FILES['src']['tmp_name'], $nom . "/");
-
+                  $resultat = move_uploaded_file($_FILES['src']['tmp_name'], $doss . $_FILES['src']['name'] );
 
                   if( !$resultat) { erreur( "Le dossier n'a pas pu etre creer et le fichier copier..." ); }
                   else
                   {
-                    success( '<strong>Le projet a été créé avec succès</strong> Nom: ' . $_POST['nom'] . '  <a href="gestion-p.php?P='. $id .'" class="alert-link"> Voir le projet</a>.');
+                    success( '<strong>Vos sources ont bien été déposer</strong>.' );
                   }
               }
         }
