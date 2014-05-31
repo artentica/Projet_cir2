@@ -95,6 +95,7 @@ public class MoneyTest {
 
 	public Money m;
 	public Money m2 = new Money(2.45F,"USR");
+	public Money m3 = new Money(-2.45F,"EUR");
 	public static int nb_test_ok=0;
 	public static int nb_test=0;
 	public static int nb_test_ko=0;
@@ -271,6 +272,190 @@ public class MoneyTest {
 
 	}
 		
+
+    @Test
+	public void testadd (){
+		float add = 1.23F;
+		float amount= m.getAmount();
+		
+		try{		
+			nb_test_ok++;
+			m.add(add);
+			amount +=add;
+			Assert.assertEquals("KO" , amount, m.getAmount(),0);
+			System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
+
+	}
+
+	@Test
+	public void testadd2(){
+		float add = -1.23F;
+		float amount= m.getAmount();
+		
+		try{		
+			nb_test_ok++;
+			m.add(add);
+			Assert.assertEquals("KO" , amount, m.getAmount(),0);
+			System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
+
+	}
+
+	@Test
+	public void testadd3(){
+		m2.changeCurrency("EUR",1F);
+		float amount= m.getAmount()+ m2.getAmount();
+		
+		try{		
+			nb_test_ok++;
+			m.add(m2);
+			Assert.assertEquals("KO" , amount, m.getAmount(),0);
+			System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
+
+	}
+
+	@Test
+	public void testadd4(){
+		m2.changeCurrency("EUR",1F);
+		float amount= m2.getAmount();
+
+		try{		
+			nb_test_ok++;
+			m2.add(m3);
+			Assert.assertEquals("KO" , amount, m2.getAmount(),0);
+			System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m2.getAmount());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
+
+	}
+
+
+
+
+
+
+
+
+
+	@Test
+	public void testsub(){
+		float sub = -1.23F;
+		float amount= 0F;
+		
+		try{		
+			nb_test_ok++;
+			m.sub(sub);
+			Assert.assertEquals("KO" , amount, m.getAmount(),0);
+			System.out.println("sub :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
+
+	}
+
+	@Test
+	public void testsub2(){
+		float sub = 1.23F;
+		float amount= m.getAmount()-sub;
+		
+		try{		
+			nb_test_ok++;
+			m.sub(sub);
+			Assert.assertEquals("KO" , amount, m.getAmount(),0);
+			System.out.println("sub :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
+
+	}
+
+	@Test
+	public void testsub3(){
+		m2.changeCurrency("EUR",1F);
+		float amount= m.getAmount() - m2.getAmount();
+		
+		try{		
+			nb_test_ok++;
+			m.sub(m2);
+			Assert.assertEquals("KO" , amount, m.getAmount(),0);
+			System.out.println("sub :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
+
+	}
+
+	@Test
+	public void testsub4(){
+		m2.changeCurrency("EUR",1F);
+		float amount= m2.getAmount();
+
+		try{		
+			nb_test_ok++;
+			m2.sub(m3);
+			Assert.assertEquals("KO" , amount, m2.getAmount(),0);
+			System.out.println("sub :\n 	attendu : " + amount+"\n 	resultat : " + m2.getAmount());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
+
+	}
+
+
+
+
+
+
+
 
 
 	public static void main (String [] arg)
