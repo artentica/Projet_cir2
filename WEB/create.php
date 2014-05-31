@@ -6,30 +6,28 @@
 <html>
 	<head>
 		<?php require 'include/head.php'; ?>
-		<link rel="stylesheet" type="text/css" href="css/datepicker.css">
-		<link rel="stylesheet" type="text/css" href="css/datepicker3.css">
-		<link rel="stylesheet" type="text/css" href="css/clockpicker.css">
+		<link 	type="text/css" rel="stylesheet"  href="css/datepicker.css">
+		<link 	type="text/css" rel="stylesheet"  href="css/datepicker3.css">
+		<link 	type="text/css" rel="stylesheet"  href="css/clockpicker.css">
 		<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 		<script type="text/javascript" src="js/clockpicker.js"></script>
-
 	</head>
 
 	<body>
 		<div class="container">
 
-			<nav class="navbar navbar-inverse">
+			<nav 	class="navbar navbar-inverse">
 				<ul class="nav navbar-nav">
-					<?php acc(); 
-						  cre();
+					<?php 
+						acc(); 
+						cre();
 					?>
 					<form class="navbar-form pull-right">  
-						<li class="">	<?php deco(); ?>	</li>
+						<li>	<?php deco(); ?>	</li>
 					</form>
 				</ul>
 			</nav>
-
 			<?php hello(); ?>
-
 			<form class="form-horizontal" method="POST" enctype="multipart/form-data">
 				<fieldset>
 
@@ -101,23 +99,20 @@
 			if(isset($_POST['nom']) && isset($_POST['date']) && isset($_POST['heure']) && isset($_FILES['class']) )		//LE FORMULAIRE EST REMPLI
 			{
 				if( $_FILES['class']['error'] > 0) 
-				{ 					
-					$erreur = "Le transfert du fichier a échoué"; 
-					erreur( $erreur);
+				{ 					 
+					erreur( "Le transfert du fichier a échoué" );
 				}
 				else{						//LE FICHIER EST BIEN TRANSFERER
-
 					$extension = strrchr($_FILES['class']['name'], '.');
 					if( !in_array($extension, $extensions) )
 					{
 						erreur("Le format du fichier ne correspond pas...");
 					}
-					else
+					else 					//LE FICHIER EST BON
 					{
-
 						$T = Select("SELECT PROJECT_ID FROM PROJECT WHERE NAME='". $_POST['nom'] ."'");
 						if( $T )
-						{	//verifier nom et date
+						{	//SI DEJA PRESENT EN BDD 
 							erreur( "Le nom ou l'heure n'est pas valide....");
 						}
 						else
@@ -141,9 +136,6 @@
 
 								mkdir("upload/project". $id, 0777);
 								mkdir("upload/project". $id . "/tests", 0777);
-
-								//$resultat = move_uploaded_file($_FILES['class']['tmp_name'], "upload/project". $id ."/tests/". $_FILES['class']['tmp_name']);
-
 								$nom = "upload/project". $id ."/tests/".$_FILES['class']['name'];
 								$resultat = move_uploaded_file($_FILES['class']['tmp_name'], $nom);
 

@@ -49,7 +49,7 @@
                           echo('<tr class=" text-center ">
                               <td>' . $val[0] . '</td>
                               <td>
-                                <a href="#" class="btn btn-primary btn-success">
+                                <a href="view.php?P='. $_GET['P'] .'&U='. $val[0] .'" class="btn btn-primary btn-success">
                                   <span class="glyphicon glyphicon-eye-open"></span> Voir
                                 </a>
                               </td>

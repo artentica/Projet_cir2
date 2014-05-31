@@ -34,15 +34,15 @@
 				                            <caption class="text-success" >' . $pro['NAME'] . '</caption>
 				                      <thead>
 				                        <tr>
-				                            <th></th>
-				                            <th></th>
+				                            <th>Date butoire</th>
+				                            <th>Résultat du test</th>
 				                        </tr>
 				                      </thead>
 				                      <tbody>');
 				                          echo('<tr class=" text-center ">
-				                              <td>' . '</td>
+				                              <td>' . $pro[2] . '</td>
 				                              <td>
-				                                <a href="#" class="btn btn-primary btn-success">
+				                                <a href="view.php?P='. $pro[0] .'&U='. $_SESSION['login'] .'" class="btn btn-primary btn-success">
 				                                  <span class="glyphicon glyphicon-eye-open"></span> Voir
 				                                </a>
 				                              </td>

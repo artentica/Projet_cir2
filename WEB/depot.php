@@ -59,7 +59,7 @@
         
         $req = Select('SELECT DATE_BUTOIRE FROM PROJECT WHERE PROJECT_ID=' . $_SESSION['p_temp'] );
         $D_B = strtotime( $req[0]{0} );
-        echo $D_B - time();
+        //echo $D_B - time();   //DEBUG
 
         if( ( $D_B - time()) < 0 ){
 
