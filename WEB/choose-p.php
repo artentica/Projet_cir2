@@ -1,18 +1,13 @@
 <?php require 'include/bdd.php';
 	  require 'include/global.php';
-
-	  $projets = Select("SELECT * FROM PROJECT");
+	  connect();
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<?php require 'include/head.php'; 
-			if( C_prof() ){
-				$prof = 'p';
-			}
-			else{
-				$prof = 'e';
-			}
+			$prof =  ( C_prof() ) ? 'p' : 'e';
+			$projets = ( C_prof() ) ? Select("SELECT * FROM PROJECT") : Select("SELECT * FROM PROJECT"); 
 		?>
 	</head>
 
@@ -24,9 +19,7 @@
 						  if( C_prof() ){ 	cre();	  } //SI PROF ALORS ECRIT LE LIEN CREATION PROJET
 					?>
 					<form class="navbar-form pull-right">  
-						<li class="">
-							<?php deco(); ?>
-						</li>
+						<li>	<?php deco(); ?>	</li>
 					</form>
 				</ul>
 			</nav>

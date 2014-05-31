@@ -38,6 +38,11 @@
 	}
 
 	//fonction de test si la personne connéctée est un prof
+	function connect(){
+		if( !isset($_SESSION['login']) ){
+			header("Location: erreur.php?erreur=droit");
+		}
+	}
 	function C_prof()
 	{
 		return ($_SESSION['groupe'] == $GLOBALS['p_group'] ) ? TRUE : FALSE ;
