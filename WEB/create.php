@@ -1,8 +1,6 @@
 <?php require 'include/bdd.php';
 	  require 'include/global.php';
 	  forprof();
-
-	  //$projets = Select("SELECT * FROM PROJECT");
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,6 +1,6 @@
 <?php require 'include/bdd.php';
 	  require 'include/global.php';
-
+	  connect();
 	  $projets = Select("SELECT * FROM PROJECT");
 ?>
 <!DOCTYPE html>
@@ -24,9 +24,7 @@
 						  if( C_prof() ){ 	cre();	  } //SI PROF ALORS ECRIT LE LIEN CREATION PROJET
 					?>
 					<form class="navbar-form pull-right">  
-						<li class="">
-							<?php deco(); ?>
-						</li>
+						<li>	<?php deco(); ?>	</li>
 					</form>
 				</ul>
 			</nav>

@@ -48,46 +48,62 @@
         </div>
       </div>
     <?php   //DEPOT DES SOURCES
-      if( isset($_GET['P']) ){
-        $_SESSION['p_temp'] = $_GET['P'];
+
+      if( isset(  $_GET['P']  ) )
+      {  
+          $_SESSION['p_temp'] = $_GET['P'];
       }
-      if( isset($_FILES['src']) ) // ON A ENVOYER UN FICHIER
+
+      if( isset( $_FILES['src'] ) ) // ON A ENVOYER UN FICHIER
       {
-        if( $_FILES['src']['error'] > 0) 
-        {           
-          erreur( "Le transfert du fichier a échoué" );
+        
+        $req = Select('SELECT DATE_BUTOIRE FROM PROJECT WHERE PROJECT_ID=' . $_SESSION['p_temp'] );
+        $D_B = strtotime( $req[0]{0} );
+        echo $D_B - time();
+
+        if( ( $D_B - time()) < 0 ){
+
+          erreur( 'Il est trop tard pour déposer vos sources.' );
         }
-        else                     //LE FICHIER BIEN ETE TRANSFERER
-        {                    
-              $extension = strrchr($_FILES['src']['name'], '.');
-              if( !in_array($extension, $extensions_src) )
-              {
-                erreur("Le format du fichier ne correspond pas...");
-              }
-              else               //C EST LE BON FORMAT
-              {              
-                  $doss = "upload/project" . $_SESSION['p_temp'] . "/" . $_SESSION['login'] . "/";
-                  //echo $doss;
+        else{                     // LES TEMPS SONT RESPECTES
 
-                  if( !is_dir( $doss ) ) //SI LE REPERTOIRE N EXISTE PAS
-                  {
-                    if(mkdir($doss , 0777, true)){
-                      echo('dossier créer! '. $doss);
+          if( $_FILES['src']['error'] > 0) 
+          {           
+            erreur( "Le transfert du fichier a échoué" );
+          }
+          else                     //LE FICHIER BIEN ETE TRANSFERER
+          {                    
+                $extension = strrchr($_FILES['src']['name'], '.');
+
+                if( !in_array($extension, $extensions_src) )
+                {
+                  erreur("Le format du fichier ne correspond pas...");
+                }
+                else               //C EST LE BON FORMAT
+                {              
+                    $doss = "upload/project" . $_SESSION['p_temp'] . "/" . $_SESSION['login'] . "/";
+                    //echo $doss;
+
+                    if( !is_dir( $doss ) ) //SI LE REPERTOIRE N EXISTE PAS
+                    {
+                      if(mkdir($doss , 0777, true)){
+                        echo('dossier créer! '. $doss);
+                      }
+                      else{
+                        echo('le dossier aurais du etre creer mais non....');
+                      }
                     }
-                    else{
-                      echo('le dossier aurais du etre creer mais non....');
+                    $output = shell_exec( "rm -R " . $doss . "*" ); // VIDE LE DOSSIER
+
+                    $resultat = move_uploaded_file($_FILES['src']['tmp_name'], $doss . $_FILES['src']['name'] );
+
+                    if( !$resultat) { erreur( "Le dossier n'a pas pu etre creer et le fichier copier..." ); }
+                    else
+                    {
+                      success( '<strong>Vos sources ont bien été déposer</strong>.' );
                     }
-                  }
-                  $output = shell_exec( "rm -R " . $doss . "*" ); // VIDE LE DOSSIER
-
-                  $resultat = move_uploaded_file($_FILES['src']['tmp_name'], $doss . $_FILES['src']['name'] );
-
-                  if( !$resultat) { erreur( "Le dossier n'a pas pu etre creer et le fichier copier..." ); }
-                  else
-                  {
-                    success( '<strong>Vos sources ont bien été déposer</strong>.' );
-                  }
-              }
+                }
+          }
         }
       }
     ?>
