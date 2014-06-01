@@ -37,17 +37,18 @@
 		echo( "<p>Bonjour " . $_SESSION['prenom'] ." ". $_SESSION['nom'] .", il est <b>". date("H:i") ."</b> nous sommes le <b>" . date("d/m/Y") . "</b></p>" );
 	}
 
-	//fonction de test si la personne connéctée est un prof
-	function connect(){
+	function connect()
+	{
 		if( !isset($_SESSION['login']) ){
 			header("Location: erreur.php?erreur=droit");
 		}
 	}
+	//fonction de test si la personne connéctée est un prof
 	function C_prof()
 	{
 		return ($_SESSION['groupe'] == $GLOBALS['p_group'] ) ? TRUE : FALSE ;
 	}
-
+	// pages reserver aux professeurs
 	function forprof()
 	{
 			if( !C_prof() ){
@@ -55,7 +56,7 @@
 			}
 	}
 
-	//fonction de test si la personne connéctée est un élève
+	// pages reservées aux etudiants
 	function foretud()
 	{
 			if( !in_array( $_SESSION['groupe'], $GLOBALS['p_group'] ) ){
