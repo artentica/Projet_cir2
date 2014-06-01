@@ -450,12 +450,43 @@ public class MoneyTest {
 
 	}
 
+	@Test
+	public void testtoString(){
 
+		try{		
+			nb_test_ok++;
+			String expected = m.getAmount() +" "+m.getCurrency();
+			Assert.assertEquals("KO" , expected , m.toString());
+			System.out.println("toString :\n 	attendu : " + expected+"\n 	resultat : " + m.toString());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	toString : OK":"	toString : KO");
 
+	}
 
+	@Test
+	public void testtoString2(){
 
+		try{		
+			nb_test_ok++;
+			String expected = m3.getAmount() +" "+m3.getCurrency();
+			Assert.assertEquals("KO" , expected , m3.toString());
+			System.out.println("toString :\n 	attendu : " + expected+"\n 	resultat : " + m3.toString());
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			System.out.println(e);
+			Assert.fail("fonction fail");
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	toString : OK":"	toString : KO");
 
-
+	}
 
 
 	public static void main (String [] arg)
