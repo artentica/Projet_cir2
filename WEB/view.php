@@ -1,6 +1,6 @@
 <?php require 'include/bdd.php';
       require 'include/global.php';
-      forprof();
+      //forprof();
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,15 +17,17 @@
   </head>
 
   <body>
-    <div class="container">
+    <div    class="container">
 
-      <nav class=" navbar navbar-inverse">
+      <nav  class=" navbar navbar-inverse">
         <ul class="navbar-nav nav">
           <?php acc(); 
                 cre();
           ?>
           <li>
-            <a id="check_del" href="gestion-p.php?del=<?= $_GET['P'] ?>" > Supprimer le projet </a>
+            <a id="check_del" href="gestion-p.php?del=<?= $_GET['P'] ?>" >
+              Supprimer le projet 
+            </a>
           </li>
           <form class="navbar-form pull-right">  
             <li>	<?php deco(); ?>	</li>
@@ -34,14 +36,16 @@
       </nav>
 
       <?php hello(); ?>
-      <div class="row" >
-        <article class="col-sm-8 col-sm-offset-2">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">Résultats:</h3>
+      <div        class="row" >
+        <article  class="col-sm-8 col-sm-offset-2">
+          <div    class="panel panel-primary">
+            <div  class="panel-heading">
+              <h3 class="panel-title">
+                Résultats:
+              </h3>
             </div>
-            <div class="panel-body">
-              <table class="table table-striped table-bordered table-hover text-center" >
+            <div      class="panel-body">
+              <table  class="table table-striped table-bordered table-hover text-center" >
                 <thead>
                   <tr>
                     <th>Fonction testée</th>
@@ -69,11 +73,18 @@
 
                     WHERE R.PROJECT_ID=$pro 
                       AND R.LOGIN='$use'";
-             $rep = Select( $sql );
+            
+            $rep = Select( $sql );
 
-             foreach ($rep as $key => $val) {
-               echo( "<tr><td> $val[0] </td><td> $val[4] / $val[1] </td><td> $val[2] </td><td> $val[3] </td><td> $val[5] </td></tr>" );
-             }
+            foreach ($rep as $key => $val) {
+              echo "<tr>
+                      <td> $val[0] </td>
+                      <td> $val[4] / $val[1] </td>
+                      <td> $val[2] </td>
+                      <td> $val[3] </td>
+                      <td> $val[5] </td>
+                    </tr>" ;
+            }
           ?>
               </table>
             </div>

@@ -9,14 +9,17 @@
     </head>
 
     <body>
-      <div class="jumbotron" >
+      <div  class="jumbotron" >
       <h1>Une erreur est survenue...</h1>
-      <a href="<?= $GLOBALS['page_connexion'] ?>" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-home"></span> Retour au site</a>
+      <a    class="btn btn-lg btn-warning" href="<?= $GLOBALS['page_connexion'] ?>" >
+         <span class="glyphicon glyphicon-home"></span>
+         Retour au site
+      </a>
       </div>
-      <div class="container" >
-         <div class="row" >
-            <div class="col-sm-6 text-center col-sm-offset-3 alert alert-dismissable alert-warning">
-               <button type="button" class="close" data-dismiss="alert">×</button>
+      <div              class="container" >
+         <div           class="row" >
+            <div        class="col-sm-6 text-center col-sm-offset-3 alert alert-dismissable alert-warning">
+               <button  class="close" type="button"  data-dismiss="alert">×</button>
                <?php
                   echo $_GET['erreur'] . " : ";
                   switch($_GET['erreur'])
