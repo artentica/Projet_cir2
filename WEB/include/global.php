@@ -13,30 +13,37 @@
       		</div>
       	');
 	}
-
 	// ajoute boutton creer un projet
 	function cre()
 	{
 		echo '<li>	<a href="create.php" >Créer un projet</a></li>';
 	}
-
 	//PERMET DE DEPOSER UN FICHIER
-	function depot(){
+	function depot()
+	{
 		echo('<li><a href="depot.php?P=' . $_GET['P'] . '">Déposer les sources</a></li>');
 	}
-
+	//PERMET DE RETOURNER A LA FICHE DU PROJET
+	function retour()
+	{
+		$page    = ( C_prof() ) ? 'p' : 'e';
+		echo('<li>
+            	<a href="gestion-' . $page . '.php?P=' . $_GET['P'] . '" >
+              		Retour au projet 
+            	</a>
+          	</li>');
+	}
 	//Fonction qui affeiche le boutton pour deconnecter
 	function deco()
 	{
 		echo('<a href="deconnexion.php" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user"></span> Deconnexion</a>');
 	}
-
 	//fonction hello a vincent ;-)
 	function hello()
 	{
 		echo( "<p>Bonjour " . $_SESSION['prenom'] ." ". $_SESSION['nom'] .", il est <b>". date("H:i") ."</b> nous sommes le <b>" . date("d/m/Y") . "</b></p>" );
 	}
-
+	//VERIFIE SI L UTILISATEUR EST CONNECTER
 	function connect()
 	{
 		if( !isset($_SESSION['login']) ){
@@ -55,7 +62,6 @@
 				header("Location: erreur.php?erreur=droit");
 			}
 	}
-
 	// pages reservées aux etudiants
 	function foretud()
 	{
@@ -63,7 +69,6 @@
 				header("Location: erreur.php?erreur=droit");
 			}
 	}
-
 	//fonction pour afficher les erreurs
 	function erreur( $E )
 	{
@@ -74,7 +79,6 @@
 			</div>
 		');
 	}
-
 	//AFFICHE UNE BOX POUR QUELQUE CHOSE QUI A REUSSI
 	function success( $S )
 	{
@@ -84,5 +88,12 @@
 				'. $S .'
 			</div>
 		');
+	}
+	function bareme( $id, $note, $nom ){
+		if( !in_array( $nom, $_SESSION['bareme_a']))
+		{
+			$_SESSION['bareme'] += $note;
+			array_push ( $_SESSION['bareme_a'], $nom);
+		}
 	}
 ?>
