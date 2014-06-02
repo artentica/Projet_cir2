@@ -93,39 +93,36 @@ public class MoneyTest {
 
 
 
-	public Money m;
+	public Money m = new Money();
 	public Money m2 = new Money(2.45F,"USR");
 	public Money m3 = new Money(-2.45F,"EUR");
 	public static int nb_test_ok=0;
 	public static int nb_test=0;
 	public static int nb_test_ko=0;
+	public static int nb_test_ok_getAmount=0, nb_test_ok_getCurrency=0, nb_test_ok_checkCurrency=0, nb_test_ok_changeCurrency=0, nb_test_ok_add=0, nb_test_ok_sub=0, nb_test_ok_tostring=0;
+
 
 
 	@Before
 	public final void setUp() {
-		m = new Money();
-		nb_test++;  
+		nb_test++;
+		nb_test_ok++;  
 	}
 
-	@After
-	public final void tearDown() { 
-		m = null; 
-	}
-
+	
 	
 	@Test
 	public void testgetAmount(){
 		float expected = 0F;
-
-
+		nb_test_ok_getAmount++;
 		try{
-			nb_test_ok++;
 			Assert.assertEquals("KO" , expected, m.getAmount(),0);
 			System.out.println("getAmount :\n 	attendu : " + expected +"\n 	resultat : " + m.getAmount());
 			
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_getAmount--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -136,9 +133,9 @@ public class MoneyTest {
 	@Test
 	public void testgetAmount2(){
 		float expected = 2.45F;
+		nb_test_ok_getAmount++;
 
 		try{
-			nb_test_ok++;
 			Assert.assertEquals("KO" , expected, m2.getAmount(),0);
 			System.out.println("getAmount :\n 	attendu : " + expected +"\n 	resultat : " + m2.getAmount());
 			
@@ -146,6 +143,7 @@ public class MoneyTest {
 		catch (AssertionError e) {
 			nb_test_ok--;
 			nb_test_ko++;
+			nb_test_ok_getAmount--;
 			System.out.println(e);
 			Assert.fail("fonction fail");
 		}
@@ -155,16 +153,16 @@ public class MoneyTest {
 	@Test
 	public void testgetCurrency(){
 		String expected = "EUR";
-
+		nb_test_ok_getCurrency++;
 		
 		try{		
-			nb_test_ok++;
 			Assert.assertEquals("KO" , expected, m.getCurrency());
 			System.out.println("getCurrency :\n 	attendu : " + expected +"\n 	resultat : " + m.getCurrency());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
 			nb_test_ko++;
+			nb_test_ok_getCurrency--;
 			System.out.println(e);
 			Assert.fail("fonction fail");
 		}
@@ -175,15 +173,15 @@ public class MoneyTest {
 	@Test
 	public void testgetCurrency2(){
 		String expected = "USR";
-
+		nb_test_ok_getCurrency++;
 		
 		try{		
-			nb_test_ok++;
 			Assert.assertEquals("KO" , expected, m2.getCurrency());
 			System.out.println("getCurrency :\n 	attendu : " + expected +"\n 	resultat : " + m2.getCurrency());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_getCurrency--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -194,16 +192,16 @@ public class MoneyTest {
 
 	@Test
 	public void testcheckCurrency (){
-
+		nb_test_ok_checkCurrency++;
 		
 		try{		
-			nb_test_ok++;
 			Assert.assertFalse(m.checkCurrency(m2));
 			System.out.println("checkCurrency :\n 	attendu : " + m.checkCurrency(m2) +"\n 	resultat : " + m.checkCurrency(m2));
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
 			nb_test_ko++;
+			nb_test_ok_checkCurrency--;
 			System.out.println(e);
 			Assert.fail("fonction fail");
 		}
@@ -213,15 +211,15 @@ public class MoneyTest {
 
 	@Test
 	public void testcheckCurrency2 (){
-
+		nb_test_ok_checkCurrency++;
 		
 		try{		
-			nb_test_ok++;
 			Assert.assertTrue(m.checkCurrency(m));
 			System.out.println("checkCurrency :\n 	attendu : " + m.checkCurrency(m) +"\n 	resultat : " + m.checkCurrency(m));
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_checkCurrency--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -233,15 +231,15 @@ public class MoneyTest {
 	@Test
 	public void testcheckCurrency3 (){
 		String expected = "EUR";
-		
+		nb_test_ok_checkCurrency++;
 		try{		
-			nb_test_ok++;
 			Assert.assertTrue(m.checkCurrency(expected));
 			System.out.println("checkCurrency :\n 	attendu : " + expected +"\n 	resultat : " + m.getCurrency());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
 			nb_test_ko++;
+			nb_test_ok_checkCurrency--;
 			System.out.println(e);
 			Assert.fail("fonction fail");
 		}
@@ -254,9 +252,8 @@ public class MoneyTest {
 		float rate = 0.42F;
 		String currency = "EUR";
 		float amount= m.getAmount()*rate;
-		
+		nb_test_ok_changeCurrency++;
 		try{		
-			nb_test_ok++;
 			m.changeCurrency(currency,rate);
 			Assert.assertEquals("KO" , currency, m.getCurrency());
 			Assert.assertEquals("KO" , amount, m.getAmount(),0);
@@ -264,6 +261,7 @@ public class MoneyTest {
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_changeCurrency--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -277,9 +275,9 @@ public class MoneyTest {
 	public void testadd (){
 		float add = 1.23F;
 		float amount= m.getAmount();
+		nb_test_ok_add++;
 		
 		try{		
-			nb_test_ok++;
 			m.add(add);
 			amount +=add;
 			Assert.assertEquals("KO" , amount, m.getAmount(),0);
@@ -287,6 +285,7 @@ public class MoneyTest {
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_add--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -299,15 +298,15 @@ public class MoneyTest {
 	public void testadd2(){
 		float add = -1.23F;
 		float amount= m.getAmount();
-		
+		nb_test_ok_add++;
 		try{		
-			nb_test_ok++;
 			m.add(add);
 			Assert.assertEquals("KO" , amount, m.getAmount(),0);
 			System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_add--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -320,15 +319,15 @@ public class MoneyTest {
 	public void testadd3(){
 		m2.changeCurrency("EUR",1F);
 		float amount= m.getAmount()+ m2.getAmount();
-		
+		nb_test_ok_add++;
 		try{		
-			nb_test_ok++;
 			m.add(m2);
 			Assert.assertEquals("KO" , amount, m.getAmount(),0);
 			System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_add--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -341,15 +340,15 @@ public class MoneyTest {
 	public void testadd4(){
 		m2.changeCurrency("EUR",1F);
 		float amount= m2.getAmount();
-
+		nb_test_ok_add++;
 		try{		
-			nb_test_ok++;
 			m2.add(m3);
 			Assert.assertEquals("KO" , amount, m2.getAmount(),0);
 			System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m2.getAmount());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_add--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -370,15 +369,15 @@ public class MoneyTest {
 	public void testsub(){
 		float sub = -1.23F;
 		float amount= 0F;
-		
+		nb_test_ok_sub++;
 		try{		
-			nb_test_ok++;
 			m.sub(sub);
 			Assert.assertEquals("KO" , amount, m.getAmount(),0);
 			System.out.println("sub :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_sub--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -391,15 +390,15 @@ public class MoneyTest {
 	public void testsub2(){
 		float sub = 1.23F;
 		float amount= m.getAmount()-sub;
-		
+		nb_test_ok_sub++;
 		try{		
-			nb_test_ok++;
 			m.sub(sub);
 			Assert.assertEquals("KO" , amount, m.getAmount(),0);
 			System.out.println("sub :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_sub--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -412,15 +411,15 @@ public class MoneyTest {
 	public void testsub3(){
 		m2.changeCurrency("EUR",1F);
 		float amount= m.getAmount() - m2.getAmount();
-		
+		nb_test_ok_sub++;
 		try{		
-			nb_test_ok++;
 			m.sub(m2);
 			Assert.assertEquals("KO" , amount, m.getAmount(),0);
 			System.out.println("sub :\n 	attendu : " + amount+"\n 	resultat : " + m.getAmount());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_sub--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -433,15 +432,15 @@ public class MoneyTest {
 	public void testsub4(){
 		m2.changeCurrency("EUR",1F);
 		float amount= m2.getAmount();
-
+		nb_test_ok_sub++;
 		try{		
-			nb_test_ok++;
 			m2.sub(m3);
 			Assert.assertEquals("KO" , amount, m2.getAmount(),0);
 			System.out.println("sub :\n 	attendu : " + amount+"\n 	resultat : " + m2.getAmount());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_sub--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -452,15 +451,15 @@ public class MoneyTest {
 
 	@Test
 	public void testtoString(){
-
+		nb_test_ok_tostring++;
 		try{		
-			nb_test_ok++;
 			String expected = m.getAmount() +" "+m.getCurrency();
 			Assert.assertEquals("KO" , expected , m.toString());
 			System.out.println("toString :\n 	attendu : " + expected+"\n 	resultat : " + m.toString());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_tostring--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -471,15 +470,15 @@ public class MoneyTest {
 
 	@Test
 	public void testtoString2(){
-
+		nb_test_ok_tostring++;
 		try{		
-			nb_test_ok++;
 			String expected = m3.getAmount() +" "+m3.getCurrency();
 			Assert.assertEquals("KO" , expected , m3.toString());
 			System.out.println("toString :\n 	attendu : " + expected+"\n 	resultat : " + m3.toString());
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
+			nb_test_ok_tostring--;
 			nb_test_ko++;
 			System.out.println(e);
 			Assert.fail("fonction fail");
@@ -488,12 +487,21 @@ public class MoneyTest {
 
 	}
 
+	@AfterClass
+	public static void logout(){
+		System.out.println("getAmount:"+nb_test_ok_getAmount+"/2");
+		System.out.println("getCurrency:"+nb_test_ok_getCurrency+"/2");
+		System.out.println("checkCurrency:"+nb_test_ok_checkCurrency+"/3");
+		System.out.println("changeCurrency:"+nb_test_ok_changeCurrency+"/1");
+		System.out.println("add:"+nb_test_ok_add+"/4");
+		System.out.println("sub:"+nb_test_ok_sub+"/4");
+		System.out.println("toString:"+nb_test_ok_tostring+"/2");
+	}
 
 	public static void main (String [] arg)
 	{
 		Result result = JUnitCore.runClasses(MoneyTest.class);
       	
-        System.out.println(result.getFailures());
-        System.out.println(result.wasSuccessful());
-        //System.out.println("Résultat: "+nb_test_ok+"/"+nb_test);
+        // System.out.println(result.wasSuccessful());
+        System.out.println("Résultat: "+nb_test_ok+"/"+nb_test);
     }}
