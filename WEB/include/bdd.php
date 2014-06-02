@@ -1,7 +1,4 @@
 <?php
-
-
-
 	error_reporting(E_ALL);
 	$rep = array();
 
@@ -12,7 +9,7 @@
 		{
 			// On se connecte à MySQL
 			$db  = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd'], array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-			echo $string; //DEBUG
+			echo $string; 				//DEBUG
 			$tmp = $db->query( $string );
 			if($tmp != FALSE)
 			{
@@ -20,13 +17,14 @@
 				print_r( $rep ); 		//DEBUG
 			}
 			$db  = NULL;
+
 			return ( isset($rep) ) ? $rep : False;
 		}
 		catch(Exception $e)
 		{
 			// En cas d'erreur, on affiche un message et on arrête tout
 			echo 	('Impossible de se connecter a la base de donnée...');
-	        die 	('Erreur : '.$e->getMessage());
+	        die 	('Erreur : '.$e->getMessage() );
 		}
 	}
 
@@ -34,10 +32,9 @@
 	function Ins( $string )
 	{
 		try
-		{
-			// On se connecte à MySQL
+		{	// On se connecte à MySQL
 			$db = 	new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd']);
-			$nb = 	$db->exec( utf8_decode($string) );
+			$nb = 	$db->exec( utf8_decode( $string ) );
 			return 	$db->lastInsertId();
 		}
 		catch( Exception $e )
@@ -47,7 +44,4 @@
 	        die ('Erreur : '.$e->getMessage());
 		}
 	}
-
-
-
 ?>

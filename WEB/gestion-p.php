@@ -9,10 +9,10 @@
   </head>
 
   <body>
-    <div class="container">
+    <div      class="container">
 
-      <nav class="navbar navbar-inverse">
-        <ul class="nav navbar-nav">
+      <nav    class="navbar navbar-inverse">
+        <ul   class="nav navbar-nav">
           <?php acc(); 
                 cre();
                 depot();
@@ -27,17 +27,20 @@
       </nav>
 
       <?php hello(); ?>
-      <div class="row" >
-        <article class="col-sm-8 col-sm-offset-2">
+      <div        class="row" >
+        <article  class="col-sm-8 col-sm-offset-2">
           <?php
-            if( isset($_GET['P']) ){
-              $pro = Select("SELECT * FROM PROJECT WHERE PROJECT_ID=" . $_GET['P']);
-              if( isset($pro[0]) ){
-                $pro = $pro[0];
-                $res = Select("SELECT DISTINCT LOGIN FROM RESULT WHERE PROJECT_ID=". $_GET['P']);
+            if( isset($_GET['P']) )
+            {
+
+              $pro = Select("SELECT * FROM PROJECT WHERE PROJECT_ID=" . $_GET['P'] );
+              if( isset( $pro[0] ) )
+              {
+                $pro  = $pro[0];
+                $res  = Select("SELECT DISTINCT LOGIN FROM RESULT WHERE PROJECT_ID=". $_GET['P'] );
                 echo('
-                    <table class="table table-striped table-bordered table-hover table-responsive">
-                            <caption class="text-success" >' . $pro['NAME'] . '</caption>
+                    <table            class="table table-striped table-bordered table-hover table-responsive">
+                            <caption  class="text-success" >' . $pro['NAME'] . '</caption>
                       <thead>
                         <tr>
                             <th>Identifiant</th>
@@ -45,52 +48,51 @@
                         </tr>
                       </thead>
                       <tbody>');
-                        foreach ($res as $key => $val) {
-                          echo('<tr class=" text-center ">
-                              <td>' . $val[0] . '</td>
-                              <td>
-                                <a href="view.php?P='. $_GET['P'] .'&U='. $val[0] .'" class="btn btn-primary btn-success">
-                                  <span class="glyphicon glyphicon-eye-open"></span> Voir
-                                </a>
-                              </td>
-                            </tr>
-                          ');
-                        }
-                echo('</tbody>
-                    </table>
-                ');
+                foreach ($res as $key => $val) {
+                    echo('<tr class=" text-center ">
+                            <td>' . $val[0] . '</td>
+                            <td>
+                              <a      class="btn btn-primary btn-success" href="view.php?P='. $_GET['P'] .'&U='. $val[0] .'">
+                                <span class="glyphicon glyphicon-eye-open"></span> Voir
+                              </a>
+                            </td>
+                          </tr>');
+                }
+                echo '</tbody>
+                    </table> ';
 
                 // A REPRENDRE PLUS TARD OU A SUPPRIMER
-                $date_b = Select("SELECT DATE_BUTOIRE FROM PROJECT WHERE PROJECT_ID=". $_GET['P'] );
-                $lim = new DateTime(trim( $date_b[0][0] ));
-                $now = new DateTime();
-                $diff = $lim->diff( $now );
+                $date_b =   Select("SELECT DATE_BUTOIRE FROM PROJECT WHERE PROJECT_ID=". $_GET['P'] );
+                $lim    =   new DateTime( trim( $date_b[0][0] ) );
+                $now    =   new DateTime();
+                $diff   =   $lim->diff( $now );
                 echo('
                   <p>Avancement du projet</p>
-                  <div class="progress progress-striped active">
-                    <div class="progress-bar" style="width: ' . $diff->format('%a') . '%"></div>
+                  <div    class="progress progress-striped active">
+                    <div  class="progress-bar" style="width: ' . $diff->format('%a') . '%"></div>
                   </div>
                 ');
               }
-              else{
-                echo(" Le projet concerné n'a pas été trouver...");
+              else
+              {
+                echo " Le projet concerné n'a pas été trouver..." ;
                 acc();
               }
             }
-            elseif( isset($_GET['del'])){
+            elseif( isset(  $_GET['del']  ) ){
 
-              system('rm -rf ' . escapeshellarg("upload/project".$_GET['del']), $retval);
-              $nb = Ins("DELETE FROM SUBTEST WHERE PROJECT_ID=".$_GET['del'] );
-              $nb = Ins("DELETE FROM TEST WHERE PROJECT_ID=".$_GET['del'] );
-              $nb = Ins("DELETE FROM RESULT WHERE PROJECT_ID=".$_GET['del'] );
-              $nb = Ins("DELETE FROM TEACHER_PROJECT WHERE PROJECT_ID=".$_GET['del'] );
-              $nb = Ins("DELETE FROM PROJECT WHERE PROJECT_ID=".$_GET['del'] );
+              system('rm -rf ' . escapeshellarg( "upload/project"         . $_GET['del'] ), $retval );
+              $nb   = Ins("DELETE FROM SUBTEST WHERE PROJECT_ID="         . $_GET['del'] );
+              $nb   = Ins("DELETE FROM TEST WHERE PROJECT_ID="            . $_GET['del'] );
+              $nb   = Ins("DELETE FROM RESULT WHERE PROJECT_ID="          . $_GET['del'] );
+              $nb   = Ins("DELETE FROM TEACHER_PROJECT WHERE PROJECT_ID=" . $_GET['del'] );
+              $nb   = Ins("DELETE FROM PROJECT WHERE PROJECT_ID="         . $_GET['del'] );
             }
             else{
-              echo('Impossible de trouver le projet concerné...');
+              echo 'Impossible de trouver le projet concerné...' ;
               acc();
             }
-      ?>
+          ?>
         </article>
       </div>
     </div>
