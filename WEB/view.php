@@ -1,6 +1,6 @@
 <?php require 'include/bdd.php';
       require 'include/global.php';
-      //forprof();
+      connect();
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,13 +22,10 @@
       <nav  class=" navbar navbar-inverse">
         <ul class="navbar-nav nav">
           <?php acc(); 
-                cre();
+                if( C_prof() ) cre();
+                retour();
           ?>
-          <li>
-            <a id="check_del" href="gestion-p.php?del=<?= $_GET['P'] ?>" >
-              Supprimer le projet 
-            </a>
-          </li>
+
           <form class="navbar-form pull-right">  
             <li>	<?php deco(); ?>	</li>
           </form>
@@ -50,45 +47,90 @@
                   <tr>
                     <th>Fonction testée</th>
                     <th>Note du test</th>
-                    <th>Type de test</th>
-                    <th>Valeur(s) utilisée(s)</th>
-                    <th>Description</th>
+                    <?php if( C_prof() ){ 
+                      echo '<th>Type de test</th>'; 
+                      echo '<th>Valeur(s) utilisée(s)</th>';
+                    }
+                    ?>
+                    <th>retour</th>
+                    <?php if(C_prof() ) echo '<th>Description</th>'; ?>
                   </tr>
                 </thead>
           <?php
+
             $pro = $_GET['P'];
             $use = $_GET['U'];
 
-            $sql = "SELECT T.NAME, T.MARK, S.KIND, S.VALEUR, R.STATUS, R.DESCRIPTION 
-                    FROM TEST T
+            if( C_prof() )  //SI prof
+            {
+                  $sql = "SELECT T.NAME, T.MARK, S.KIND, S.VALEUR, R.STATUS, R.DESCRIPTION 
+                          FROM TEST T
 
-                    INNER JOIN SUBTEST S
-                    ON S.PROJECT_ID = T.PROJECT_ID
-                      AND S.TEST_NUM = T.TEST_NUM
+                          INNER JOIN SUBTEST S
+                          ON S.PROJECT_ID = T.PROJECT_ID
+                            AND S.TEST_NUM = T.TEST_NUM
 
-                    INNER JOIN RESULT R
-                    ON R.PROJECT_ID = T.PROJECT_ID
-                      AND R.TEST_NUM = T.TEST_NUM
-                      AND R.SUBTEST_NUM = S.SUBTEST_NUM
+                          INNER JOIN RESULT R
+                          ON R.PROJECT_ID = T.PROJECT_ID
+                            AND R.TEST_NUM = T.TEST_NUM
+                            AND R.SUBTEST_NUM = S.SUBTEST_NUM
 
-                    WHERE R.PROJECT_ID=$pro 
-                      AND R.LOGIN='$use'";
-            
-            $rep = Select( $sql );
+                          WHERE R.PROJECT_ID=$pro 
+                            AND R.LOGIN='$use'";
+                  
+                  $rep      = Select( $sql );
+                  $note     = 0;
+                  $_SESSION['bareme_a'] =   array();
+                  $_SESSION['bareme']   =   0;
 
-            foreach ($rep as $key => $val) {
-              echo "<tr>
-                      <td> $val[0] </td>
-                      <td> $val[4] / $val[1] </td>
-                      <td> $val[2] </td>
-                      <td> $val[3] </td>
-                      <td> $val[5] </td>
-                    </tr>" ;
+                  foreach ($rep as $key => $val) {
+                    $O = ( $val[4] > 0 ) ? 'OK' : 'KO';
+                    echo "<tr>
+                            <td> $val[0] </td>
+                            <td> $val[4] / $val[1] </td>
+                            <td> $val[2] </td>
+                            <td> $val[3] </td>
+                            <td>    $O   </td>
+                            <td> $val[5] </td>
+                          </tr>" ;
+                    $note     += $val[4];
+                    bareme( $pro, $val[1], $val[0]);    //ID PROJET, NOTE DU TEST, NOM DU TEST
+                  }
+            }
+            else{ // SI ELEVE
+                  $sql = "SELECT T.NAME, T.MARK, S.KIND, S.VALEUR, R.STATUS, R.DESCRIPTION 
+                          FROM TEST T
+
+                          INNER JOIN SUBTEST S
+                          ON S.PROJECT_ID = T.PROJECT_ID
+                            AND S.TEST_NUM = T.TEST_NUM
+
+                          INNER JOIN RESULT R
+                          ON R.PROJECT_ID = T.PROJECT_ID
+                            AND R.TEST_NUM = T.TEST_NUM
+                            AND R.SUBTEST_NUM = S.SUBTEST_NUM
+
+                          WHERE R.PROJECT_ID=$pro 
+                            AND R.LOGIN='$use'";
+                  
+                  $rep = Select( $sql );
+
+                  foreach ($rep as $key => $val) {
+                    $O = ( $val[4] > 0 ) ? 'OK' : 'KO';
+                    echo "<tr>
+                            <td> $val[0] </td>
+                            <td> $val[4] / $val[1] </td>
+                            <td>  $O </td>
+                          </tr>" ;
+                  }
             }
           ?>
               </table>
             </div>
           </div>
+          <?php 
+            if(C_prof()) echo "NOTE: " . $note . "/" . $_SESSION['bareme']; 
+          ?>
         </article>
       </div>
     </div>

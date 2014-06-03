@@ -93,6 +93,7 @@
               acc();
             }
           ?>
+          <a href="xls.php?P=<?= $_GET['P'] ?>" class="btn btn-lg btn-warning" target="_BLANK"><span class="glyphicon glyphicon-download-alt"></span> Télécharger le resumé ( .xls )</a>
         </article>
       </div>
     </div>
