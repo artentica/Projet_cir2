@@ -20,7 +20,8 @@
 	}
 	//PERMET DE DEPOSER UN FICHIER
 	function depot()
-	{
+	{	
+		if(isset($_GET['P']))
 		echo('<li><a href="depot.php?P=' . $_GET['P'] . '">Déposer les sources</a></li>');
 	}
 	//PERMET DE RETOURNER A LA FICHE DU PROJET
@@ -88,12 +89,5 @@
 				'. $S .'
 			</div>
 		');
-	}
-	function bareme( $id, $note, $nom ){
-		if( !in_array( $nom, $_SESSION['bareme_a']))
-		{
-			$_SESSION['bareme'] += $note;
-			array_push ( $_SESSION['bareme_a'], $nom);
-		}
 	}
 ?>

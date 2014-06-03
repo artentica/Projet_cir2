@@ -25,7 +25,7 @@
      		<?php hello(); ?>
 
     		<div    class="row" >
-          <form class="form-horizontal col-lg-8 col-offset-2" action="depot.php" method="POST" enctype="multipart/form-data">
+          <form class="form-horizontal col-lg-8 col-offset-2" action="depot.php?P=<?= $_GET['P'] ?>" method="POST" enctype="multipart/form-data">
             <fieldset>
               <legend>Dépot de fichier sources</legend>
 
@@ -49,6 +49,13 @@
         </div>
       </div>
     <?php   //DEPOT DES SOURCES
+
+      if( C_prof() ){
+        $login = 'student';
+      }
+      else{
+        $login = $_SESSION['login'];
+      }
 
       if( isset($_GET['P']) )
       {  
@@ -82,7 +89,7 @@
             }
             else               //C EST LE BON FORMAT
             {              
-                $doss = "upload/project" . $_SESSION['p_temp'] . "/" . $_SESSION['login'] . "/";
+                $doss = "upload/project" . $_SESSION['p_temp'] . "/" . $login . "/";
                 //echo $doss;
 
                 if( !is_dir( $doss ) ) //SI LE REPERTOIRE N EXISTE PAS

@@ -82,9 +82,6 @@
 					  <label 	class="col-md-4 control-label" for="submit">créer le projet</label>
 					  <div 		class="col-md-1 input-group">
 					    <input 	class="btn btn-success" type="submit"/>
-					    <span 	class="input-group-addon">
-						    <i 	class="glyphicon glyphicon-ok"></i>
-					    </span>
 					  </div>
 					</div>
 
