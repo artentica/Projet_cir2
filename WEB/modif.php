@@ -1,3 +1,7 @@
+<?php
+	require 'include/bdd.php';
+	require 'include/global.php';
+?>
 <html>
 	<head>
 		<?php require 'include/head.php';	?>
@@ -8,13 +12,45 @@
 		<script type="text/javascript" 			  src="js/clockpicker.js"></script>
 	</head>
 	<body>
-		<?php
-			require 'include/bdd.php';
-			require 'include/global.php';
+		<nav 	class="navbar navbar-inverse">
+			<ul class="nav navbar-nav">
+				<?php 
+					acc(); 
+					cre();
+					retour();
+				?>
+				<form class="navbar-form pull-right">  
+					<li>	<?php deco(); ?>	</li>
+				</form>
+			</ul>
+		</nav>
 
+		<?php
 			forprof();
 
 			$P = $_GET['P'];
+
+			//MODIFICATIONS DONNEES
+			if (	!empty($_POST['nom'])	)
+			{
+				$nb = Select("UPDATE PROJECT SET NAME='" . $_POST['nom'] . "' WHERE PROJECT_ID=" . $P);
+				success('Le nom du projet à été modifié');
+			}
+
+			if (	!empty($_POST['date'])	&&		!empty($_POST['heure'])	)
+			{
+				$date	= $_POST['date'] . " " . $_POST['heure'] . ":00";
+				$nb 	= Select("UPDATE PROJECT SET DATE_BUTOIRE='" . $date . "' WHERE PROJECT_ID=" . $P );
+				success('La date/heure du projet ont été modifiées');
+			}
+
+			if (	!empty($_FILES['class']['name'])		)
+			{
+				Dpottest( $P, $_FILES['class']);
+				success('Le fichier de test à été modifié');
+			}
+
+
 			//CHARGEMENT DES DONNEES INITIALES
 			if ( isset( $P ) ) //PRET A MODIFIER
 			{
@@ -25,20 +61,6 @@
 			else{
 				erreur('Nous avons un problème vous ne pouvez pas faire des modifications ainsi.');
 				retour();
-			}
-			//MODIFICATIONS DONNEES
-
-			if (	!empty($_POST['nom'])	)
-			{
-				echo 'nom modifier';
-			}
-			if (	!empty($_POST['date'])	&&		!empty($_POST['heure'])	)
-			{
-				echo 'date/heure modifier';
-			}
-			if (	!empty($_FILES['class']['filename'])		)
-			{
-				echo 'fichier modifier';
 			}
 
 		?>

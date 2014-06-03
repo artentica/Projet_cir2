@@ -130,9 +130,7 @@
 
 								mkdir(	"upload/project". $id, 0777);
 								mkdir(	"upload/project". $id . "/tests", 0777);
-								$nom 		= 	"upload/project". $id ."/tests/" . $_FILES['class']['name'];
-								$resultat 	= 	move_uploaded_file($_FILES['class']['tmp_name'], $nom);
-
+								$resultat = Dpottest( $id, $_FILES['class']);
 
 								if( !$resultat) 
 								{ 
