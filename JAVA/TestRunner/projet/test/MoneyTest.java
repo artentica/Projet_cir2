@@ -497,7 +497,11 @@ public class MoneyTest {
 		System.out.println("add:"+nb_test_ok_add+"/4");
 		System.out.println("sub:"+nb_test_ok_sub+"/4");
 		System.out.println("toString:"+nb_test_ok_tostring+"/2");
+		System.out.println("Résultat: "+nb_test_ok+"/"+nb_test);
 	}
+
+
+
 
 	// public static void main (String [] arg)
 	// {
