@@ -20,7 +20,8 @@
 	}
 	//PERMET DE DEPOSER UN FICHIER
 	function depot()
-	{
+	{	
+		if(isset($_GET['P']))
 		echo('<li><a href="depot.php?P=' . $_GET['P'] . '">Déposer les sources</a></li>');
 	}
 	//PERMET DE RETOURNER A LA FICHE DU PROJET
@@ -83,17 +84,22 @@
 	function success( $S )
 	{
 		echo('
-			<div class="col-sm-8 col-sm-offset-2 alert alert-dismissable alert-success">
-				<button type="button" class="close" data-dismiss="alert">×</button>
-				'. $S .'
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 alert alert-dismissable alert-success">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					'. $S .'
+				</div>
 			</div>
 		');
 	}
-	function bareme( $id, $note, $nom ){
-		if( !in_array( $nom, $_SESSION['bareme_a']))
-		{
-			$_SESSION['bareme'] += $note;
-			array_push ( $_SESSION['bareme_a'], $nom);
-		}
+	//Fonction pour deposer les tests dans le bon dossier, supprime tout si non vide
+	function Dpottest($id, $f){
+		print_r($f);
+		$path	= 	"upload/project". $id ."/tests/";
+		$nom 	= 	$path . $f['name'];
+
+		system('rm -rf ' . $path ."*" , $retval );
+		$resultat 	= 	move_uploaded_file($f['tmp_name'], $nom);
+		return true;
 	}
 ?>

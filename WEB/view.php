@@ -80,7 +80,7 @@
                   
                   $rep      = Select( $sql );
                   $note     = 0;
-                  $_SESSION['bareme_a'] =   array();
+                  $_SESSION['bareme_'. $pro ] =   array();
                   $_SESSION['bareme']   =   0;
 
                   foreach ($rep as $key => $val) {
@@ -94,8 +94,9 @@
                             <td> $val[5] </td>
                           </tr>" ;
                     $note     += $val[4];
-                    bareme( $pro, $val[1], $val[0]);    //ID PROJET, NOTE DU TEST, NOM DU TEST
                   }
+                  $B    = Select('SELECT SUM(MARK) FROM TEST WHERE PROJECT_ID=' . $pro );
+                  $bareme = $B[0][0];
             }
             else{ // SI ELEVE
                   $sql = "SELECT T.NAME, T.MARK, S.KIND, S.VALEUR, R.STATUS, R.DESCRIPTION 
@@ -129,7 +130,7 @@
             </div>
           </div>
           <?php 
-            if(C_prof()) echo "NOTE: " . $note . "/" . $_SESSION['bareme']; 
+            if(C_prof()) echo "NOTE: " . $note . "/" . $bareme; 
           ?>
         </article>
       </div>

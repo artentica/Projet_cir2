@@ -82,9 +82,6 @@
 					  <label 	class="col-md-4 control-label" for="submit">créer le projet</label>
 					  <div 		class="col-md-1 input-group">
 					    <input 	class="btn btn-success" type="submit"/>
-					    <span 	class="input-group-addon">
-						    <i 	class="glyphicon glyphicon-ok"></i>
-					    </span>
 					  </div>
 					</div>
 
@@ -133,9 +130,7 @@
 
 								mkdir(	"upload/project". $id, 0777);
 								mkdir(	"upload/project". $id . "/tests", 0777);
-								$nom 		= 	"upload/project". $id ."/tests/" . $_FILES['class']['name'];
-								$resultat 	= 	move_uploaded_file($_FILES['class']['tmp_name'], $nom);
-
+								$resultat = Dpottest( $id, $_FILES['class']);
 
 								if( !$resultat) 
 								{ 

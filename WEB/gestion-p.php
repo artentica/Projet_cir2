@@ -29,6 +29,7 @@
       <?php hello(); ?>
       <div        class="row" >
         <article  class="col-sm-8 col-sm-offset-2">
+          <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
           <?php
             if( isset($_GET['P']) )
             {
@@ -87,6 +88,7 @@
               $nb   = Ins("DELETE FROM RESULT WHERE PROJECT_ID="          . $_GET['del'] );
               $nb   = Ins("DELETE FROM TEACHER_PROJECT WHERE PROJECT_ID=" . $_GET['del'] );
               $nb   = Ins("DELETE FROM PROJECT WHERE PROJECT_ID="         . $_GET['del'] );
+              header("location: choose-p.php");
             }
             else{
               echo 'Impossible de trouver le projet concerné...' ;
