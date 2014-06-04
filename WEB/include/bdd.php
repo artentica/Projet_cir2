@@ -9,12 +9,12 @@
 		{
 			// On se connecte à MySQL
 			$db  = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd'], array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-			echo $string; 				//DEBUG
+			//echo $string; 				//DEBUG
 			$tmp = $db->query( $string );
 			if($tmp != FALSE)
 			{
 				$rep = $tmp->fetchAll() ;
-				print_r( $rep ); 		//DEBUG
+				//print_r( $rep ); 		//DEBUG
 			}
 			$db  = NULL;
 

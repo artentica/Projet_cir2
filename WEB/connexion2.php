@@ -9,17 +9,17 @@
 			require 'include/global.php';
 
 //========================================================DONNEES FACTICES
-			$userData["Login"]		 = 		"rcolli17";
+			/*$userData["Login"]		 = 		"rcolli17";
 			$userData["FirstName"]	 = 		"rémi";
 			$userData["LastName"]	 = 		"collignon";
 			$userData["Mail"] 		 = 		"rcd18@hotmail.fr";
-			$groupeISEN 			 = 		"CIR2";
+			$groupeISEN 			 = 		"CIR2";*/
 
-			/*$userData["Login"]		 = 		"prof1";
+			$userData["Login"]		 = 		"prof1";
 			$userData["FirstName"]	 = 		"mîckàèl";
 			$userData["LastName"]	 = 		"Aaron";
 			$userData["Mail"] 		 = 		"rcd18@hotmail.fr";
-			$groupeISEN 			 = 		"Personnel";*/
+			$groupeISEN 			 = 		"Personnel";
 
 
 
