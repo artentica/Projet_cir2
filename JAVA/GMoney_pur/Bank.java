@@ -20,7 +20,14 @@ public class Bank {
      */
     public void addMoney ( Money m )
     {
-	
+	   if(money.checkCurrency(m)){
+            money.add(m));
+       }
+       else{
+        String currency=m.getCurrency ();
+        float amount = m.getAmount ();
+        
+       }
     }
     /**
      * Enleve une money

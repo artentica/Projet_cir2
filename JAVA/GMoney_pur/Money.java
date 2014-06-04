@@ -51,7 +51,7 @@ public class Money {
      */
     public boolean checkCurrency ( Money m )
     {
-        return ( this.currency.equals( m.currency ) ) ? true : false;
+        return this.currency.equals( m.currency );
     }
     
     /**
@@ -63,7 +63,7 @@ public class Money {
     public boolean checkCurrency ( String m )
     {
         
-        return ( this.currency.equals( m ) ) ? true : false ;
+        return this.currency.equals( m );
     }
     
     /**
