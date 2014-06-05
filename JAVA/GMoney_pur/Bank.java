@@ -20,14 +20,13 @@ public class Bank {
      */
     public void addMoney ( Money m )
     {
-	   if(money.checkCurrency(m)){
-            money.add(m));
-       }
-       else{
+	   if(!money.checkCurrency(m)){
         String currency=m.getCurrency ();
         float amount = m.getAmount ();
-        
+        float rate = rates.getRate ( currency );
+        m.changeCurrency ( currency, rate );
        }
+       money.add(m);
     }
     /**
      * Enleve une money
@@ -36,7 +35,13 @@ public class Bank {
      */
     public void subMoney ( Money m )
     {
-	
+	   if(!money.checkCurrency(m)){
+        String currency=m.getCurrency ();
+        float amount = m.getAmount ();
+        float rate = rates.getRate ( currency );
+        m.changeCurrency ( currency, rate );
+       }
+       money.sub(m);
     }
     /**
      *	Transforme en chaine de caractere
@@ -45,7 +50,7 @@ public class Bank {
     @Override
     public String toString ()
     {
-	return "";
+	return money.toString();
     }
     
     /**

@@ -75,11 +75,12 @@ public class Money {
      */
     public void changeCurrency ( String s, float rate )
     {
-	
-	this.currency = s;
-	this.amount *= rate;
-    }
-    
+       
+       this.currency = s;
+       this.amount *= rate;
+       
+   }
+   
     /**
      *	Ajouter un montant a une money
      * @param amount 
@@ -104,11 +105,11 @@ public class Money {
     public void add ( Money m )
     {
         
-	if( this.checkCurrency( m.currency ) && m.amount>0){
-	    this.amount += m.amount;
-	}
-    }
-    
+       if( this.checkCurrency( m.currency ) && m.amount>0){
+           this.amount += m.amount;
+       }
+   }
+   
     /**
      *  Soustrait 2 money si elles ont la meme unitée
      * @param m 
@@ -117,11 +118,11 @@ public class Money {
     public void sub ( Money m )
     {
         
-	if( this.checkCurrency( m.currency ) && m.amount>0 ){
-	    this.amount -= m.amount;
-	}
-    }
-    
+       if( this.checkCurrency( m.currency ) && m.amount>0 ){
+           this.amount -= m.amount;
+       }
+   }
+   
     /**
      * Convertis les infos de la money en chaine de caractère
      * @return String chaine contenant les infos de la money

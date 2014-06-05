@@ -254,11 +254,13 @@ public class MoneyTest {
 		String currency = "EUR";
 		float amount= m.getAmount()*rate;
 		nb_test_ok_changeCurrency++;
-		try{		
+		try{
+
 			m.changeCurrency(currency,rate);
+			System.out.println("changeCurrency :\n 	attendu : (" + amount+","+currency +")\n 	resultat : (" + m.getAmount()+","+m.getCurrency()+")");		
 			Assert.assertEquals("KO" , currency, m.getCurrency());
 			Assert.assertEquals("KO" , amount, m.getAmount(),0);
-			System.out.println("changeCurrency :\n 	attendu : (" + amount+","+currency +")\n 	resultat : (" + m.getAmount()+","+m.getCurrency()+")");
+			
 		}
 		catch (AssertionError e) {
 			nb_test_ok--;
