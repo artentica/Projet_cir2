@@ -100,7 +100,7 @@ public class MoneyTest {
 	public static int nb_test_ok=0;
 	public static int nb_test=0;
 	public static int nb_test_ko=0;
-	public static int nb_test_ok_getAmount=0, nb_test_ok_getCurrency=0, nb_test_ok_checkCurrency=0, nb_test_ok_changeCurrency=0, nb_test_ok_add=0, nb_test_ok_sub=0, nb_test_ok_tostring=0;
+	public static int nb_test_ok_getAmount=0, nb_test_ok_getCurrency=0, nb_test_ok_checkCurrency=0, nb_test_ok_changeCurrency=0, nb_test_ok_add=0, nb_test_ok_sub=0, nb_test_ok_tostring=0,status=0;
 	public  Vector<Runner>  Runner=new Vector<Runner>();
 
 
@@ -109,6 +109,7 @@ public class MoneyTest {
 	public final void setUp() {
 		nb_test++;
 		nb_test_ok++;
+		status=0;
 	}
 
 	
@@ -120,6 +121,7 @@ public class MoneyTest {
 		try{
 			Assert.assertEquals("KO" , expected, m.getAmount(),0);
 			System.out.println("getAmount :\n 	attendu : " + expected +"\n 	resultat : " + m.getAmount());
+			status=1;
 			
 		}
 		catch (AssertionError e) {
@@ -130,7 +132,8 @@ public class MoneyTest {
 			Assert.fail("fonction fail");
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
-		Runner runner= new Runner("getAmount",2,expected);
+		String expectedstring = Float.toString(expected);
+		Runner runner= new Runner("getAmount",2,expectedstring,status,e,3F);
 
 	}
 
