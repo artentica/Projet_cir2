@@ -12,7 +12,7 @@
 
 	$path 	= 	"upload/project" . $_GET['P'] . '/'; 
 	$junit 	= 	"upload/junit-4.0.jar";
-	$file 	= 	"mon fichier";		//fichier resultat
+	$file 	= 	"test.txt";		//fichier resultat
 
 	if( !empty($_GET['U']) && !empty($_GET['P']))
 	{
@@ -52,24 +52,24 @@
 					success('la classe de l\'eleve a compiler...');
 					success('############################################### LANCEMENT DU TEST #######################################################<br>');
 
-					exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner 2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
+					//exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner 2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
 
-					if( $code != 0 ) print_r( $sortie );
-					{
-						if( file_exists()){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
+					if( false /*$code != 0*/ ) print_r( $sortie );
+					else{
+						if( file_exists($file)){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
 
 							success('Le test a bien été éxécuter.');
 
 							$num_test 		= 0;
 							$num_ss_test 	= 0;
 
-							$fp = fopen( $path . $file ,"r"); 
+							$fp = fopen( /*$path .*/ $file ,"r"); 
 							while (!feof($fp)) { 
 	  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
-	  							$result 	= explode("/#/", $ligne);		//recupere chaque parties sur une ligne de resultat
-	  							
-	  							$idtest 	= addTest( $P , $num_test++, $result[0], $result[6]);
-	  							$idSStest 	= addSSTest($P, $idtest, $num_ss_test++, "val", $result[2]);
+	  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
+	  							print_r($result);
+	  							$idtest 	= addTest( $P , ++$num_test, $result[0], $result[5]);
+	  							$idSStest 	= addSSTest($P, $idtest, ++$num_ss_test, "val", $result[2]);
 								addResult( $user, $P, $idtest, $idSStest, $result[3], $result[4] );
 							}
 						}
