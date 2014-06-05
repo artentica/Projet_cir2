@@ -21,29 +21,39 @@
 			array_push($users, $U);
 		}
 //####################################################################################
-		print_r($users);
+		//print_r($users);	//DEBUG
 
-		$path = "upload/project" . $P; 
+		$path = "upload/project" . $P . '/'; 
 		$file = "mon fichier";
 
-		exec("javac -cp upload/junit-4.0.jar:/var/www/Projet_cir2/JAVA/TestRunner/projet/depot:. /var/www/Projet_cir2/JAVA/TestRunner/projet/test/MoneyTest.java 2>&1", $cs);
-		print_r( $cs );
+		echo('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
+		exec("javac -encoding utf-8 -cp upload/junit-4.0.jar:. ". $path ."/tests/*.java 2>&1", $sortie, $code); // compile tout les .java contenus dans dossier tests
+		
+		if( $code != 0 ) print_r( $sortie );
+		else{
 
-		/*foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
-			
-			system();		//lance le runner et crée le fichier
+			echo('la classe de test a compiler...<br>');
+			echo('############################################### COMPILATION PROJET ######################################################<br>');
+			foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
 
-			$fp = fopen( $path . $file ,"r"); 
-			while (!feof($fp)) { 
-  				$page .= fgets($fp, 2000); // lecture du contenu de la ligne
+				system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
+				exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
+				if( $code != 0 ) print_r( $sortie );
+				else{
+					echo('la classe de l\'eleve a compiler...');
+				}
+
+				/*$fp = fopen( $path . $file ,"r"); 
+				while (!feof($fp)) { 
+	  				$page .= fgets($fp, 2000); // lecture du contenu de la ligne
 
 
-  				//stock
+	  				//stock
+				}*/
+
+				//system("rm -rf " . $path . $file , $retval);
 			}
-
-			system("rm -rf " . $path . $file , $retval);
-		}*/
-
+		}
 	}
 	else
 	{
