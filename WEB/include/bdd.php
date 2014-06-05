@@ -48,19 +48,20 @@
 	//AJOUT DE TESTS
 	function addTest( $id, $no, $nom, $note ){
 		$req = Select( 'SELECT TEST_NUM FROM TEST WHERE NAME=' . $nom);
-		if ( $req ){
+		print_r($req);
+		if ( !empty($req[0]) ){
 			return $req[0][0];
 		}
 		else //ON AJOUTE LE TEST
 		{
-			return Ins("INSERT INTO TEST VALUES( $id, $no, '$name', $note )");
+			return Ins("INSERT INTO TEST VALUES( $id, $no, '$nom', $note )");
 		}
 	}
 
 	//AJOUT DU SOUS TEST
 	function addSSTest( $id, $no, $noo, $typ, $val){
 		$req = Select('SELECT SUBTEST_NUM FROM SUB_TEST WHERE VALEUR=' . $val);
-		if ( $req )
+		if ( $req[0] )
 		{
 			return $req[0][0];
 		}
