@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 
-//Pour les tests paramétriques/////////////////////
+//Pour les tests parametriques/////////////////////
 // import org.junit.runner.RunWith;
 // import org.junit.runners.Parameterized;
 // import org.junit.runners.Parameterized.Parameters;
@@ -101,6 +101,7 @@ public class MoneyTest {
 	public static int nb_test=0;
 	public static int nb_test_ko=0;
 	public static int nb_test_ok_getAmount=0, nb_test_ok_getCurrency=0, nb_test_ok_checkCurrency=0, nb_test_ok_changeCurrency=0, nb_test_ok_add=0, nb_test_ok_sub=0, nb_test_ok_tostring=0;
+	public  Vector<Runner>  Runner=new Vector<Runner>();
 
 
 
@@ -129,6 +130,8 @@ public class MoneyTest {
 			Assert.fail("fonction fail");
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
+		Runner runner= new Runner();
+
 	}
 
 	@Test
@@ -511,7 +514,7 @@ public class MoneyTest {
       	
  //        // System.out.println(result.wasSuccessful());
 
- //        System.out.println("Résultat: "+nb_test_ok+"/"+nb_test);
+ //        System.out.println("Resultat: "+nb_test_ok+"/"+nb_test);
 
  //    }
 }
