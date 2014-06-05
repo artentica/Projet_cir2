@@ -48,7 +48,7 @@
 	//AJOUT DE TESTS
 	function addTest( $id, $no, $nom, $note ){
 		$req = Select( 'SELECT TEST_NUM FROM TEST WHERE NAME=' . $nom);
-		print_r($req);
+		//print_r($req);
 		if ( !empty($req[0]) ){
 			return $req[0][0];
 		}
