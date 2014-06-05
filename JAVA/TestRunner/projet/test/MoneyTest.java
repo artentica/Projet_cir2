@@ -130,7 +130,7 @@ public class MoneyTest {
 			Assert.fail("fonction fail");
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
-		Runner runner= new Runner();
+		Runner runner= new Runner("getAmount",2,expected);
 
 	}
 
@@ -502,7 +502,7 @@ public class MoneyTest {
 		System.out.println("add:"+nb_test_ok_add+"/4");
 		System.out.println("sub:"+nb_test_ok_sub+"/4");
 		System.out.println("toString:"+nb_test_ok_tostring+"/2");
-		System.out.println("Résultat: "+nb_test_ok+"/"+nb_test);
+		System.out.println("Resultat: "+nb_test_ok+"/"+nb_test);
 	}
 
 

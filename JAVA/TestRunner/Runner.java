@@ -4,10 +4,10 @@ import org.junit.runner.*;
 
 public class Runner{
 
-	private String name_fct, description;
+	private String name_fct, description,value_used;
 	private int nb_fct_tested,status;
-	private Float value_used, max_mark;
-	Runner (String name_fct,int nb_fct_tested, Float value_used, int status, String description, Float max_mark)
+	private Float max_mark;
+	Runner (String name_fct,int nb_fct_tested, String value_used, int status, String description, Float max_mark)
     {
      this.name_fct=name_fct;
      this.nb_fct_tested=nb_fct_tested;
