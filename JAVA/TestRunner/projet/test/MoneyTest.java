@@ -132,7 +132,7 @@ public class MoneyTest {
 			nb_test_ok_getAmount--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
 		String expectedstring = Float.toString(expected);
@@ -156,7 +156,7 @@ public class MoneyTest {
 			nb_test_ko++;
 			nb_test_ok_getAmount--;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
 		String expectedstring = Float.toString(expected);
@@ -180,7 +180,7 @@ public class MoneyTest {
 			nb_test_ko++;
 			nb_test_ok_getCurrency--;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getCurrency : OK":"	getCurrency : KO");
 		runner= new Runner("getCurrency",2,expected,status,error,3F);
@@ -203,7 +203,7 @@ public class MoneyTest {
 			nb_test_ok_getCurrency--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getCurrency : OK":"	getCurrency : KO");
 		runner= new Runner("getCurrency",2,expected,status,error,3F);
@@ -225,7 +225,7 @@ public class MoneyTest {
 			nb_test_ko++;
 			nb_test_ok_checkCurrency--;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
 		runner= new Runner("checkCurrency",3,"USR",status,error,3F);
@@ -247,7 +247,7 @@ public class MoneyTest {
 			nb_test_ok_checkCurrency--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
 		runner= new Runner("checkCurrency",3,"EUR",status,error,3F);
@@ -268,7 +268,7 @@ public class MoneyTest {
 			nb_test_ko++;
 			nb_test_ok_checkCurrency--;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
 		runner= new Runner("checkCurrency",3,expected,status,error,3F);
@@ -322,11 +322,10 @@ public class MoneyTest {
 			nb_test_ok_add--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
 		String expectedstring = Float.toString(amount);
-		
 		runner= new Runner("add",4,expectedstring,status,error,3F);
 		Runner.add(runner);
 
@@ -348,11 +347,14 @@ public class MoneyTest {
 			nb_test_ok_add--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
-
+		String expectedstring = Float.toString(amount);
+		runner= new Runner("add",4,expectedstring,status,error,3F);
+		Runner.add(runner);
 	}
+
 
 	@Test
 	public void testadd3(){
@@ -370,9 +372,12 @@ public class MoneyTest {
 			nb_test_ok_add--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
+		String expectedstring = Float.toString(amount);
+		runner= new Runner("add",4,expectedstring,status,error,3F);
+		Runner.add(runner);
 
 	}
 
@@ -392,9 +397,12 @@ public class MoneyTest {
 			nb_test_ok_add--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
+		String expectedstring = Float.toString(amount);
+		runner= new Runner("add",4,expectedstring,status,error,3F);
+		Runner.add(runner);
 
 	}
 
@@ -422,9 +430,12 @@ public class MoneyTest {
 			nb_test_ok_sub--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
+		String expectedstring = Float.toString(amount);
+		runner= new Runner("sub",4,expectedstring,status,error,3F);
+		Runner.add(runner);
 
 	}
 
@@ -444,10 +455,12 @@ public class MoneyTest {
 			nb_test_ok_sub--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
-
+		String expectedstring = Float.toString(amount);
+		runner= new Runner("sub",4,expectedstring,status,error,3F);
+		Runner.add(runner);
 	}
 
 	@Test
@@ -466,10 +479,12 @@ public class MoneyTest {
 			nb_test_ok_sub--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
-
+		String expectedstring = Float.toString(amount);
+		runner= new Runner("sub",4,expectedstring,status,error,3F);
+		Runner.add(runner);
 	}
 
 	@Test
@@ -488,17 +503,20 @@ public class MoneyTest {
 			nb_test_ok_sub--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
-
+		String expectedstring = Float.toString(amount);
+		runner= new Runner("sub",4,expectedstring,status,error,3F);
+		Runner.add(runner);
 	}
 
 	@Test
 	public void testtoString(){
 		nb_test_ok_tostring++;
+		String expected = m.getAmount() +" "+m.getCurrency();
 		try{		
-			String expected = m.getAmount() +" "+m.getCurrency();
+			
 			Assert.assertEquals("KO" , expected , m.toString());
 			System.out.println("toString :\n 	attendu : " + expected+"\n 	resultat : " + m.toString());
 			status=1;
@@ -508,17 +526,18 @@ public class MoneyTest {
 			nb_test_ok_tostring--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	toString : OK":"	toString : KO");
-
+		runner= new Runner("toString",2,expected,status,error,2F);
+		Runner.add(runner);
 	}
 
 	@Test
 	public void testtoString2(){
 		nb_test_ok_tostring++;
+		String expected = m3.getAmount() +" "+m3.getCurrency();
 		try{		
-			String expected = m3.getAmount() +" "+m3.getCurrency();
 			Assert.assertEquals("KO" , expected , m3.toString());
 			System.out.println("toString :\n 	attendu : " + expected+"\n 	resultat : " + m3.toString());
 			status=1;
@@ -528,10 +547,11 @@ public class MoneyTest {
 			nb_test_ok_tostring--;
 			nb_test_ko++;
 			System.out.println(e);
-			Assert.fail("fonction fail");
+			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	toString : OK":"	toString : KO");
-
+		runner= new Runner("toString",2,expected,status,error,2F);
+		Runner.add(runner);
 	}
 
 	@AfterClass
