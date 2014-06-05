@@ -77,7 +77,7 @@ public class Money {
     {
 	
 	this.currency = s;
-	this.amount += rate;
+	this.amount *= rate;
     }
     
     /**
