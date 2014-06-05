@@ -44,4 +44,33 @@
 	        die ('Erreur : '.$e->getMessage());
 		}
 	}
+
+	//AJOUT DE TESTS
+	function addTest( $id, $no, $nom, $note ){
+		$req = Select( 'SELECT TEST_NUM FROM TEST WHERE NAME=' . $nom);
+		if ( $req ){
+			return $req[0][0];
+		}
+		else //ON AJOUTE LE TEST
+		{
+			return Ins("INSERT INTO TEST VALUES( $id, $no, '$name', $note )");
+		}
+	}
+
+	//AJOUT DU SOUS TEST
+	function addSSTest( $id, $no, $noo, $typ, $val){
+		$req = Select('SELECT SUBTEST_NUM FROM SUB_TEST WHERE VALEUR=' . $val);
+		if ( $req )
+		{
+			return $req[0][0];
+		}
+		else{
+			return Ins("INSERT INTO SUB_TEST VALUES( $id, $no, $noo, '$typ', '$val' )");
+		}
+	}
+
+	//AJOUT DU RESULTAT
+	function addResult( $user , $P, $no, $noo, $s, $d ){
+		Ins("INSERT INTO RESULT VALUES('$user', $P, $no, $noo, $s, '$d')");
+	}
 ?>

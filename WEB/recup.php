@@ -1,3 +1,7 @@
+<html>
+	<head>
+		<?php require 'include/head.php'; ?>
+	</head>
 <?php
 	require 'include/global.php';
 	require 'include/bdd.php';
@@ -6,8 +10,10 @@
 	$P 		= $_GET['P'];
 	$users 	= array();
 
-//	executer le runner
-//####################################################################################
+	$path 	= 	"upload/project" . $_GET['P'] . '/'; 
+	$junit 	= 	"upload/junit-4.0.jar";
+	$file 	= 	"mon fichier";		//fichier resultat
+
 	if( !empty($_GET['U']) && !empty($_GET['P']))
 	{
 		if($U == 'all')
@@ -20,30 +26,67 @@
 		else{
 			array_push($users, $U);
 		}
-//####################################################################################
-		print_r($users);
-
-		$path = "upload/project" . $P; 
-		$file = "mon fichier";
-
-		exec("javac -cp upload/junit-4.0.jar:/var/www/Projet_cir2/JAVA/TestRunner/projet/depot:. /var/www/Projet_cir2/JAVA/TestRunner/projet/test/MoneyTest.java 2>&1", $cs);
-		print_r( $cs );
-
-		/*foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
-			
-			system();		//lance le runner et crée le fichier
-
-			$fp = fopen( $path . $file ,"r"); 
-			while (!feof($fp)) { 
-  				$page .= fgets($fp, 2000); // lecture du contenu de la ligne
+		//print_r($users);	//DEBUG
 
 
-  				//stock
+
+
+
+
+		success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
+		exec('javac -encoding utf-8 -cp ' . $junit . ':. '. $path .'/tests/*.java 2>&1', $sortie, $code); // compile tout les .java contenus dans dossier tests
+		
+		if( $code != 0 ) print_r( $sortie );
+		else{
+
+			success('la classe de test a compiler...<br>');
+			success('############################################### COMPILATION PROJET ######################################################<br>');
+
+			foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
+
+				system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
+				exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
+
+				if( $code != 0 ) print_r( $sortie );
+				else{
+					success('la classe de l\'eleve a compiler...');
+					success('############################################### LANCEMENT DU TEST #######################################################<br>');
+
+					exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner 2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
+
+					if( $code != 0 ) print_r( $sortie );
+					{
+						if( file_exists()){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
+
+							success('Le test a bien été éxécuter.');
+
+							$num_test 		= 0;
+							$num_ss_test 	= 0;
+
+							$fp = fopen( $path . $file ,"r"); 
+							while (!feof($fp)) { 
+	  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
+	  							$result 	= explode("/#/", $ligne);		//recupere chaque parties sur une ligne de resultat
+	  							
+	  							$idtest 	= addTest( $P , $num_test++, $result[0], $result[6]);
+	  							$idSStest 	= addSSTest($P, $idtest, $num_ss_test++, "val", $result[2]);
+								addResult( $user, $P, $idtest, $idSStest, $result[3], $result[4] );
+							}
+						}
+					}
+				}
+
+				/*$fp = fopen( $path . $file ,"r"); 
+				while (!feof($fp)) { 
+	  				$page .= fgets($fp, 2000); // lecture du contenu de la ligne
+
+
+	  				//stock
+				}*/
+
+				//system("rm -rf " . $path . $file , $retval);
 			}
-
-			system("rm -rf " . $path . $file , $retval);
-		}*/
-
+		}
 	}
 	else
 	{
