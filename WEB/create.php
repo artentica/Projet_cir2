@@ -42,13 +42,13 @@
 						    		</span>
 						  		</div>
 							</div>
-					<span class="help-block col-lg-3 col-lg-offset-4">entrez une phrase qui décrit le projet</span>  
+					<span class="help-block col-lg-3 col-lg-offset-4">Entrez une description du projet</span>  
 					</div>
 
 
 					<!--  DATE PICKER-->
 					<div class="form-group">
-						<label 			class="col-md-4 control-label" 	for="date">Date limite de depot</label>
+						<label 			class="col-md-4 control-label" 	for="date">Date limite de dépôt</label>
 						<div 			class="input-group date" 		id="datepicker-container">
   							<input 		class="form-control input-sm" 	name="date" type="text">
   								<span 	class="input-group-addon">
@@ -79,7 +79,7 @@
 
 					<!-- Button -->
 					<div 		class="form-group">
-					  <label 	class="col-md-4 control-label" for="submit">créer le projet</label>
+					  <label 	class="col-md-4 control-label" for="submit">Créez le projet</label>
 					  <div 		class="col-md-1 input-group">
 					    <input 	class="btn btn-success" type="submit"/>
 					  </div>
@@ -100,14 +100,14 @@
 					$extension = strrchr($_FILES['class']['name'], '.');
 					if( !in_array($extension, $extensions) )
 					{
-						erreur("Le format du fichier ne correspond pas...");
+						erreur("Le format du fichier ne correspond pas");
 					}
 					else 					//LE FICHIER EST BON
 					{
 						$T = Select(	"SELECT PROJECT_ID FROM PROJECT WHERE NAME='". $_POST['nom'] ."'"	);
 						if( $T )
 						{	//SI DEJA PRESENT EN BDD 
-							erreur( "Le nom ou l'heure n'est pas valide...." );
+							erreur( "Le nom et/ou l'heure n'est/ne sont pas valide" );
 						}
 						else
 						{
@@ -123,7 +123,7 @@
 
 							if( $id == 0) 
 							{
-								erreur( "La requette n'est pas passer, vérifiez le nom ainsi que la date et l'heure.");
+								erreur( "La requette n'est pas passé, vérifiez le nom ainsi que la date et l'heure.");
 							}
 							else
 							{			//LA REQUETTE EST PASSEE
@@ -134,7 +134,7 @@
 
 								if( !$resultat) 
 								{ 
-									erreur( "Le dossier n'a pas pu etre creer et le fichier copier..." ); 
+									erreur( "Le dossier n'a pas pu être créé ou le fichier transféré" ); 
 								}
 								else
 								{

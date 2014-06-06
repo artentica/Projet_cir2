@@ -3,13 +3,14 @@ import org.junit.Assert.*;
 import org.junit.runner.*;
 import java.util.*;
 import java.io.*;
-
+//Runner permet de lancer les tests des différentes classes et d'écrire le fichiers qui servira à l'ajout de valeur dans la bdd
 public class Runner{
 
 	private String name_fct, description,value_used;
 	private int nb_fct_tested,status;
 	private Float max_mark;
 	public static Vector v2;
+	//Création d'un objet runner qui contiendra les informations nécésssaire à l'ajout de la base de donné
 	Runner (String name_fct,int nb_fct_tested, String value_used, int status, String description, Float max_mark)
 	{
 		this.name_fct=name_fct;
@@ -19,10 +20,12 @@ public class Runner{
 		this.description=description;
 		this.max_mark=max_mark;
 	}
+	//back_vector permet de sauvegarder le vector créé dans le fichier de test pour l'utiliser ensuite dans le main
 	public void back_vector(Vector<Runner> Runner){
 		v2 = new Vector();
 		this.v2.addAll(Runner);
 	}
+	//write file permet d'écrire le résultat des test dans un fichier qui se trouvera au même endroit que la classe testé
 	public static void write_file (Vector<Runner> v2, String road)
 	{               
 		try {
@@ -46,7 +49,7 @@ public class Runner{
 		}
 		catch (Exception e) {} 
 	}
-
+	//Dans le main nous lancons les test et lançons le programme qui écrira le fichier
 	public static void main (String [] args)
 	{
 

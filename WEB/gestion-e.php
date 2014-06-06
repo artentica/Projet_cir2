@@ -63,12 +63,12 @@
 				                  	</div>');
 				            }
 			              	else{
-			                	echo( " Le projet concerné n'a pas été trouver..." );
+			                	echo( " Le projet concerné n'a pas été trouvé" );
 			                	acc();
 			              	}
 		            	}
 			            else{
-			              echo( 'Impossible de trouver le projet concerné...' );
+			              echo( 'Impossible de trouver le projet concerné' );
 			              acc();
 			            }
 		      		?>

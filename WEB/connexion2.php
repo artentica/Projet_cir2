@@ -16,8 +16,8 @@
 			$groupeISEN 			 = 		"CIR2";*/
 
 			$userData["Login"]		 = 		"prof1";
-			$userData["FirstName"]	 = 		"mîckàèl";
-			$userData["LastName"]	 = 		"Aaron";
+			$userData["FirstName"]	 = 		"Didier";
+			$userData["LastName"]	 = 		"Le Foll";
 			$userData["Mail"] 		 = 		"rcd18@hotmail.fr";
 			$groupeISEN 			 = 		"Personnel";
 

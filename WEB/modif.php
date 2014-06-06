@@ -34,20 +34,20 @@
 			if (	!empty($_POST['nom'])	)
 			{
 				$nb = Select("UPDATE PROJECT SET NAME='" . $_POST['nom'] . "' WHERE PROJECT_ID=" . $P);
-				success('Le nom du projet à été modifié');
+				success('Le nom du projet a été modifié');
 			}
 
 			if (	!empty($_POST['date'])	&&		!empty($_POST['heure'])	)
 			{
 				$date	= $_POST['date'] . " " . $_POST['heure'] . ":00";
 				$nb 	= Select("UPDATE PROJECT SET DATE_BUTOIRE='" . $date . "' WHERE PROJECT_ID=" . $P );
-				success('La date/heure du projet ont été modifiées');
+				success('La date et l\'heure du projet ont été modifiées');
 			}
 
 			if (	!empty($_FILES['class']['name'])		)
 			{
 				Dpottest( $P, $_FILES['class']);
-				success('Le fichier de test à été modifié');
+				success('Le fichier de test a été modifié');
 			}
 
 
@@ -59,7 +59,7 @@
 				$date 	= explode(" ", $pro['DATE_BUTOIRE']);
 			}
 			else{
-				erreur('Nous avons un problème vous ne pouvez pas faire des modifications ainsi.');
+				erreur('Nous avons un problème, vous ne pouvez pas faire de modifications ainsi.');
 				retour();
 			}
 
