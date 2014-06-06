@@ -105,8 +105,9 @@
                 $output   = shell_exec( "rm -R " . $doss . "*" ); // VIDE LE DOSSIER
 
               $zip = new ZipArchive;
+              $resultat=$zip->open($_FILES['src']['tmp_name']);
               if ($zip->open($_FILES['src']['tmp_name']) === TRUE) {
-                  $zip->extractTo($doss);
+                  $resultat=$zip->extractTo($doss);
                   $zip->close();
               }
 

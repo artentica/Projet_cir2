@@ -73,7 +73,7 @@
 					  <label 	class="col-md-4 control-label" for="class">Fichier de test</label>
 					  <div 		class="col-md-4">
 					    <input 	class="input-file" 			   id="class" name="class" type="file" required>
-					    <span 	class="help-block ">Format attendu: .java .jar .zip</span>
+					    <span 	class="help-block ">Format attendu: .zip</span>
 					  </div>
 					</div>
 
@@ -130,7 +130,16 @@
 
 								mkdir(	"upload/project". $id, 0777);
 								mkdir(	"upload/project". $id . "/tests", 0777);
-								$resultat = Dpottest( $id, $_FILES['class']);
+
+							$zip = new ZipArchive;
+							$resultat=$zip->open($_FILES['class']['tmp_name']);
+							$path	= 	"upload/project". $id ."/tests/";
+				            if ($zip->open($_FILES['class']['tmp_name']) === TRUE) {
+				                $resultat=$zip->extractTo($path);
+				                $zip->close();
+				            }
+
+								//$resultat = Dpottest( $id, $_FILES['class']);
 
 								if( !$resultat) 
 								{ 
