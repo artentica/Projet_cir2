@@ -29,20 +29,20 @@
 		//print_r($users);	//DEBUG
 
 
-		
-		
-		
-			success('la classe de test a compilé correctement...<br>');
-			success('############################################### COMPILATION PROJET ######################################################<br>');
-
-			foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
+		foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
 
 
-				success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
-				exec('javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.'/:. '. $path .'/tests/*.java 2>&1', $sortie, $code); // compile tout les .java contenus dans dossier tests
+			success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
+			$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.'/:. '. $path .'tests/*.java 2>&1';
+			echo $cmd;
+			exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
 
-				if( $code != 0 ) print_r( $sortie );
-				else{
+			
+			if( $code != 0 ) print_r( $sortie );
+			else{
+
+				success('la classe de test a compilé correctement...<br>');
+				success('############################################### COMPILATION PROJET ######################################################<br>');
 
 				system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
 				exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
@@ -53,28 +53,16 @@
 					success('############################################### LANCEMENT DU TEST #######################################################<br>');
 
 
-					 $dir = opendir($path.$user); 
-		              $delimiter=".";
-		              while($file = readdir($dir)) {
+					$dir = opendir($path.$user); 
+		            $delimiter=".";
+		            while($file = readdir($dir)) {
 		                if($file != '.' && $file != '..')
 		                {
 		                  $explode=explode($delimiter, $file);
 		                }
-		              }
+		            }
 
-		              closedir($dir);
-
-
-
-
-
-
-
-
-
-
-
-
+		            closedir($dir);
 
 
 
@@ -112,12 +100,6 @@
 						// NOM    NOTE_M   VAL_T    STATUS   DESC
 					addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
 				}
-
-
-
-
-
-
 				//system("rm -rf " . $path . $file , $retval);
 			}
 		}
