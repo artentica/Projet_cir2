@@ -46,7 +46,15 @@
 
 			if (	!empty($_FILES['class']['name'])		)
 			{
-				Dpottest( $P, $_FILES['class']);
+				//Dpottest( $P, $_FILES['class']);
+				shell_exec( "rm -R " . $path . "*" ); // VIDE LE DOSSIER
+				$zip = new ZipArchive;
+							$resultat=$zip->open($_FILES['class']['tmp_name']);
+							$path	= 	"upload/project". $id ."/tests/";
+				            if ($zip->open($_FILES['class']['tmp_name']) === TRUE) {
+				                $resultat=$zip->extractTo($path);
+				                $zip->close();
+				            }
 				success('Le fichier de test a été modifié');
 			}
 
@@ -105,7 +113,7 @@
 				  <label 	class="col-md-4 control-label" for="class">Fichier de test</label>
 				  <div 		class="col-md-4">
 				    <input 	class="input-file" 			   id="class" name="class" type="file" >
-				    <span 	class="help-block ">Format attendu: .java .jar .zip <small>Vous n'êtes pas obliger de remettre un fichier</small></span>
+				    <span 	class="help-block ">Format attendu: .zip <small>Vous n'êtes pas obligé de remettre un fichier</small></span>
 				  </div>
 				</div>
 
@@ -116,7 +124,7 @@
 				    <input 	class="btn btn-success" type="submit"/>
 				  </div>
 				</div>
-				<span class="label label-danger col-xs-offset-4">Si vous modifiez la date penser a changer l'heure et inversement</span>
+				<span class="label label-danger col-xs-offset-4">Si vous modifiez la date pensez à changer l'heure et inversement</span>
 			</fieldset>
 		</form>
 	</body>

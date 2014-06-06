@@ -107,7 +107,7 @@
 		if( !empty( $req[0][0]) )	//	LE SOUSTEST EXISTE
 		{
 			$idSSTest = $req[0][0];	
-			echo 'SStest trouver';
+			echo 'SStest trouvé';
 		}
 		else{
 			$sql = "INSERT INTO `SUBTEST`(`PROJECT_ID`, `TEST_NUM`, `SUBTEST_NUM`, `KIND`, `VALEUR`) VALUES(	$P,". $GLOBALS['num_test'] ." ,". $GLOBALS['num_ss_test']++ .", 'val', '$VT')";
