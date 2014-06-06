@@ -23,7 +23,7 @@
 		catch(Exception $e)
 		{
 			// En cas d'erreur, on affiche un message et on arrête tout
-			echo 	('Impossible de se connecter a la base de donnée...');
+			echo 	('Impossible de se connecter à la base de donnée!');
 	        die 	('Erreur : '.$e->getMessage() );
 		}
 	}
@@ -40,7 +40,7 @@
 		catch( Exception $e )
 		{
 			// En cas d'erreur, on affiche un message et on arrête tout
-			echo('Impossible de se connecter a la base de donnée...');
+			echo('Impossible de se connecter à la base de donnée!');
 	        die ('Erreur : '.$e->getMessage());
 		}
 	}

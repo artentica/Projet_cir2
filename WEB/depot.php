@@ -27,7 +27,7 @@
     		<div    class="row" >
           <form class="form-horizontal col-lg-8 col-offset-2" action="depot.php?P=<?= $_GET['P'] ?>" method="POST" enctype="multipart/form-data">
             <fieldset>
-              <legend>Dépot de fichier sources</legend>
+              <legend>Dépôt de fichiers source</legend>
 
               <!-- File Button --> 
               <div        class="form-group">
@@ -39,11 +39,12 @@
 
               <!-- Button -->
               <div        class="form-group">
-                <label    class="col-md-4 control-label" for="submit">Déposer le projet</label>
+                <label    class="col-md-4 control-label" for="submit">Déposez le projet</label>
                 <div      class="col-md-1 input-group">
                   <input  class="btn btn-success" type="submit"/>
                 </div>
               </div>
+              
               </fieldset>
           </form>
         </div>
@@ -85,7 +86,7 @@
 
             if( !in_array($extension, $extensions_src) )
             {
-              erreur("Le format du fichier ne correspond pas...");
+              erreur("Le format du fichier ne correspond pas");
             }
             else               //C EST LE BON FORMAT
             {              
@@ -95,23 +96,31 @@
                 if( !is_dir( $doss ) ) //SI LE REPERTOIRE N EXISTE PAS
                 {
                   if(mkdir($doss , 0777, true)){
-                    echo('dossier créer! '. $doss);
+                    echo('Dossier créé! '. $doss);
                   }
                   else{
-                    echo('le dossier aurais due être creer mais non....');
+                    echo('Un problème a eu lieu lors de la création du dossier');
                   }
                 }
                 $output   = shell_exec( "rm -R " . $doss . "*" ); // VIDE LE DOSSIER
 
-                $resultat = move_uploaded_file($_FILES['src']['tmp_name'], $doss . $_FILES['src']['name'] );
+              $zip = new ZipArchive;
+              if ($zip->open($_FILES['src']['tmp_name']) === TRUE) {
+                  $zip->extractTo($doss);
+                  $zip->close();
+              }
+
+          
+
+                //$resultat = move_uploaded_file($_FILES['src']['tmp_name'], $doss . $_FILES['src']['name'] );
 
                 if( !$resultat) 
                 {
-                  erreur( "Le dossier n'a pas pu etre creer et le fichier copier..." ); 
+                  erreur( "Le dossier n'a pas pu être creéé et/ou le fichier tranféré" ); 
                 }
                 else
                 {
-                  success( '<strong>Vos sources ont bien été déposer</strong>.' );
+                  success( '<strong>Vos sources ont bien été déposées</strong>.' );
                 }
             }
           }

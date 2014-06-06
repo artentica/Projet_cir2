@@ -39,7 +39,7 @@
 		if( $code != 0 ) print_r( $sortie );
 		else{
 
-			success('la classe de test a compiler...<br>');
+			success('la classe de test a compilé correctement...<br>');
 			success('############################################### COMPILATION PROJET ######################################################<br>');
 
 			foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
@@ -49,7 +49,7 @@
 
 				if( $code != 0 ) print_r( $sortie );
 				else{
-					success('la classe de l\'eleve a compiler...');
+					success('la classe de l\'élève a compilé...');
 					success('############################################### LANCEMENT DU TEST #######################################################<br>');
 
 					//exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner 2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
@@ -58,7 +58,7 @@
 					else{
 						if( file_exists($file)){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
 
-							success('Le test a bien été éxécuter.');
+							success('Le test a bien été éxécuté.');
 
 							$GLOBALS['num_test'] 		= 1;
 							$GLOBALS['num_ss_test'] 	= 1;

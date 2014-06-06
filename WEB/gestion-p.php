@@ -45,7 +45,7 @@
                       <thead>
                         <tr>
                             <th>Identifiant</th>
-                            <th>Tests effectuer</th>
+                            <th>Tests effectués</th>
                         </tr>
                       </thead>
                       <tbody>');
@@ -76,7 +76,7 @@
               }
               else
               {
-                echo " Le projet concerné n'a pas été trouver..." ;
+                echo " Le projet concerné n'a pas été trouvé" ;
                 acc();
               }
             }
@@ -91,7 +91,7 @@
               header("location: choose-p.php");
             }
             else{
-              echo 'Impossible de trouver le projet concerné...' ;
+              echo 'Impossible de trouver le projet concerné' ;
               acc();
             }
           ?>
