@@ -46,11 +46,12 @@
 
 			if (	!empty($_FILES['class']['name'])		)
 			{
+
 				//Dpottest( $P, $_FILES['class']);
-				shell_exec( "rm -R " . $path . "*" ); // VIDE LE DOSSIER
+				$path	= 	"upload/project". $P ."/tests/";
+				exec( "rm -R " . $path . "*" ); // VIDE LE DOSSIER
 				$zip = new ZipArchive;
 							$resultat=$zip->open($_FILES['class']['tmp_name']);
-							$path	= 	"upload/project". $id ."/tests/";
 				            if ($zip->open($_FILES['class']['tmp_name']) === TRUE) {
 				                $resultat=$zip->extractTo($path);
 				                $zip->close();
