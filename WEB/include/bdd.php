@@ -110,11 +110,6 @@
 		if( !empty( $req[0][0]) )	//	LE SOUSTEST EXISTE
 		{
 			$idSSTest = $req[0][0];	
-<<<<<<< HEAD
-			//echo "SStest trouvé $idSSTest";
-=======
-			echo 'SStest trouvé';
->>>>>>> 8ca69611504741823bcef418b964e200b09381c5
 		}
 		else{		//DOIT CREER LE SOUS TEST
 			$sqlb = "INSERT INTO SUBTEST ( PROJECT_ID, TEST_NUM, SUBTEST_NUM,                    KIND,  VALEUR) 
