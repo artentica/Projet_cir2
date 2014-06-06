@@ -76,11 +76,6 @@
 	  								$tab[   $i ][2] =	$result[2];
 	  								$tab[	$i ][3] =	$result[3];
 	  								$tab[	$i ][4] =	$result[4];
-
-
-	  								//$liT	= addTest( 		$P, $GLOBALS['num_test'], $result[0], $result[5]);
-	  								//$liST 	= addSSTest(  	$P, $liT, $GLOBALS['num_ss_test'], "val", $result[2]);
-	  								//addResult	  (  $user, $P, $liT, $liST, $result[3], $result[4]);
 								}
 							}
 						}
@@ -89,7 +84,7 @@
 				//print_r($tab);
 				foreach ($tab as $k => $inf) {
 						// NOM    NOTE_M   VAL_T    STATUS   DESC
-					addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4]	);
+					addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
 				}
 
 
