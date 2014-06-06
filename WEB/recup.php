@@ -35,8 +35,8 @@
 
 
 			success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
-			$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload:. '. $path .'tests/*.java 2>&1';
-			echo $cmd;
+			$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload/:. '. $path .'tests/*.java 2>&1';
+			//echo $cmd;
 			exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
 
 			
@@ -67,7 +67,7 @@
 			            closedir($dir);
 
 			            $cmd = 'java -cp ' . $junit . ':' . $path .'tests:' . $path . $user . ':upload:. Runner '. $path.$user ."/ ". $explode[0] .' 2>&1';
-			            echo $cmd.'<br>';
+			            //echo $cmd.'<br>';
 						exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
 
 						if( $code != 0 ) print_r( $sortie );
@@ -80,12 +80,16 @@
 								$GLOBALS['num_ss_test'] 	= 1;
 								$i 		= 0;
 
-								$fp = fopen( /*$path .*/ $file ,"r"); 
+								if( !$fp = fopen( $path.$user.'/'.$file ,"r")){
+									echo('<h1>fichier pas ouvert</h1>');
+								} 
 								while (!feof($fp)) { 
+									echo('coucou');
 		  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
+		  							echo $ligne;
 		  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
 		  							if( isset($result[2]) ){
-
+		  								echo 'coucou2';
 		  								$tab[ ++$i ][0] =	$result[0];
 		  								$tab[   $i ][1] =	$result[5];
 		  								$tab[   $i ][2] =	$result[2];
@@ -93,6 +97,13 @@
 		  								$tab[	$i ][4] =	$result[4];
 									}
 								}
+								success('le tableau est généré');
+								print_r($tab);
+								foreach ($tab as $k => $inf) {
+										// NOM    NOTE_M   VAL_T    STATUS   DESC
+									addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
+								}
+								//system("rm -rf " . $path . $file , $retval);
 							}
 						}
 					}
@@ -100,12 +111,6 @@
 						echo 'pas de dossier';
 					}
 				}
-				//print_r($tab);
-				foreach ($tab as $k => $inf) {
-						// NOM    NOTE_M   VAL_T    STATUS   DESC
-					addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
-				}
-				//system("rm -rf " . $path . $file , $retval);
 			}
 		}
 	}
