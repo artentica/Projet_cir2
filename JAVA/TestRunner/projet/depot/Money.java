@@ -34,7 +34,7 @@ public class Money {
      * @return float montant de la money
      */
     public float getAmount ()
-    {      return this.amount;         }
+    {      return -1000;         }
     
     /**
      * Recupère le nom de la money
