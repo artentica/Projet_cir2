@@ -60,17 +60,21 @@
 
 							success('Le test a bien été éxécuté.');
 
-							$num_test 		= 0;
-							$num_ss_test 	= 0;
+							$GLOBALS['num_test'] 		= 0;
+							$GLOBALS['num_ss_test'] 	= 0;
 
 							$fp = fopen( /*$path .*/ $file ,"r"); 
 							while (!feof($fp)) { 
 	  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
 	  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
-	  							print_r($result);
-	  							$idtest 	= addTest( $P , ++$num_test, $result[0], $result[5]);
-	  							$idSStest 	= addSSTest($P, $idtest, ++$num_ss_test, "val", $result[2]);
-								addResult( $user, $P, $idtest, $idSStest, $result[3], $result[4] );
+	  							if( isset($result[2]) ){
+
+	  								//print_r($result);
+	  								$idtest 	= addTest( $P , $GLOBALS['num_test'], $result[0], $result[5]);
+	  								$idSStest 	= addSSTest($P, $GLOBALS['num_test'], $GLOBALS['num_ss_test'], "val", $result[2]);
+									echo("<h1>".$num_ss_test."</h1>");
+									addResult( $user, $P, $GLOBALS['num_test'], $GLOBALS['num_ss_test'], $result[3], $result[4] );
+								}
 							}
 						}
 					}
