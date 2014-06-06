@@ -52,10 +52,16 @@ public class Runner{
 	//Dans le main nous lancons les test et lançons le programme qui écrira le fichier
 	public static void main (String [] args)
 	{
-
-		Result result = JUnitCore.runClasses(MoneyTest.class);
-		String road= "projet/test/";
+		String road= args[0];
+		String file= args[1];
+		try{
+		Result result = JUnitCore.runClasses(Class.forName(args[1]));
 		write_file(v2,road);
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		
 		  
 		
 
