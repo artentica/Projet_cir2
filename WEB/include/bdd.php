@@ -9,12 +9,12 @@
 		{
 			// On se connecte à MySQL
 			$db  = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd'], array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-			echo $string; 				//DEBUG
+			//echo $string; 				//DEBUG
 			$tmp = $db->query( $string );
 			if($tmp != FALSE)
 			{
 				$rep = $tmp->fetchAll() ;
-				print_r( $rep ); 		//DEBUG
+				//print_r( $rep ); 		//DEBUG
 			}
 			$db  = NULL;
 
@@ -54,31 +54,66 @@
 		}
 		else //ON AJOUTE LE TEST
 		{
-			$GLOBALS['num_test'] ++ ;
-			return Ins("INSERT INTO TEST VALUES( $id, $no, '$nom', $note )");
+			$li = Ins("INSERT INTO TEST VALUES( $id, $no, '$nom', $note )");
+			$GLOBALS['num_test'] ++;
+			$GLOBALS['num_ss_test'] = 0;
+			return $li;
 		}
 	}
 
 	//AJOUT DU SOUS TEST
 	function addSSTest( $id, $no, $noo, $typ, $val){
-		$req = Select("SELECT SUBTEST_NUM FROM SUB_TEST WHERE VALEUR='$val'");
-		print_r( $req );
+		$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='$val' AND TEST_NUM=$no ");
+		//print_r( $req );
 		if ( !empty($req[0]) )
 		{
-			return $req[0]["TEST_NUM"];
+			return $req[0][0];
 		}
 		else{
-			$sql ="INSERT INTO SUBTEST VALUES( $id, $no, $noo, '$typ', '$val' )";
-			echo $sql;
-			$GLOBALS['num_ss_test'] ++ ;
-			return Ins($sql);
+			$list =	Ins("INSERT INTO SUBTEST VALUES( $id, $no, $noo, '$typ', '$val' )");
+			$GLOBALS['num_ss_test']++;
+			return $list;
 		}
 	}
 
 	//AJOUT DU RESULTAT
 	function addResult( $user , $P, $no, $noo, $s, $d ){
 		$sql = "INSERT INTO RESULT VALUES('$user', $P, $no, $noo, $s, '$d')";
-		echo($sql);
+		//echo($sql);
 		Ins($sql);
+	}
+
+	function addM( $nom , $N, $VT, $S, $D){
+		$P = $_GET['P'];  
+
+		$sql = "SELECT TEST_NUM FROM TEST WHERE NAME='$nom' && PROJECT_ID=$P";
+		//echo $sql;
+		$req = Select($sql);
+
+		//print_r($req);
+		if( !empty( $req[0][0]) )	//	LE TEST EXISTE
+		{
+			$idTest = $req[0][0];	
+			//echo 'test trouver';
+		}
+		else{
+			$idTest = Ins("INSERT INTO TEST VALUES(	$P, ". $GLOBALS['num_test']++ .", '$nom', $N)");
+			//echo 'test ajouté';
+		}
+		//ON A L ID DU TEST
+
+		$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='". $VT ."' && PROJECT_ID=$P");
+
+		if( !empty( $req[0][0]) )	//	LE SOUSTEST EXISTE
+		{
+			$idSSTest = $req[0][0];	
+			echo 'SStest trouver';
+		}
+		else{
+			$sql = "INSERT INTO `SUBTEST`(`PROJECT_ID`, `TEST_NUM`, `SUBTEST_NUM`, `KIND`, `VALEUR`) VALUES(	$P,". $GLOBALS['num_test'] ." ,". $GLOBALS['num_ss_test']++ .", 'val', '$VT')";
+			echo '<br>'.$sql;
+			$idSSTest = Ins($sql);
+			echo 'SStest ajouté';
+		}
 	}
 ?>

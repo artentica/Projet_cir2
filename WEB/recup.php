@@ -60,8 +60,10 @@
 
 							success('Le test a bien été éxécuter.');
 
-							$GLOBALS['num_test'] 		= 0;
-							$GLOBALS['num_ss_test'] 	= 0;
+							$GLOBALS['num_test'] 		= 1;
+							$GLOBALS['num_ss_test'] 	= 1;
+							$tab 	= array();
+							$i 		= 0;
 
 							$fp = fopen( /*$path .*/ $file ,"r"); 
 							while (!feof($fp)) { 
@@ -69,24 +71,31 @@
 	  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
 	  							if( isset($result[2]) ){
 
-	  								//print_r($result);
-	  								$idtest 	= addTest( $P , $GLOBALS['num_test'], $result[0], $result[5]);
-	  								$idSStest 	= addSSTest($P, $GLOBALS['num_test'], $GLOBALS['num_ss_test'], "val", $result[2]);
-									echo("<h1>".$num_ss_test."</h1>");
-									addResult( $user, $P, $GLOBALS['num_test'], $GLOBALS['num_ss_test'], $result[3], $result[4] );
+	  								$tab[ ++$i ][0] =	$result[0];
+	  								$tab[   $i ][1] =	$result[5];
+	  								$tab[   $i ][2] =	$result[2];
+	  								$tab[	$i ][3] =	$result[3];
+	  								$tab[	$i ][4] =	$result[4];
+
+
+	  								//$liT	= addTest( 		$P, $GLOBALS['num_test'], $result[0], $result[5]);
+	  								//$liST 	= addSSTest(  	$P, $liT, $GLOBALS['num_ss_test'], "val", $result[2]);
+	  								//addResult	  (  $user, $P, $liT, $liST, $result[3], $result[4]);
 								}
 							}
 						}
 					}
 				}
+				//print_r($tab);
+				foreach ($tab as $k => $inf) {
+						// NOM    NOTE_M   VAL_T    STATUS   DESC
+					addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4]	);
+				}
 
-				/*$fp = fopen( $path . $file ,"r"); 
-				while (!feof($fp)) { 
-	  				$page .= fgets($fp, 2000); // lecture du contenu de la ligne
 
 
-	  				//stock
-				}*/
+
+
 
 				//system("rm -rf " . $path . $file , $retval);
 			}
