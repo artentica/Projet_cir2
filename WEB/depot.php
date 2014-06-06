@@ -110,16 +110,7 @@
                   $resultat=$zip->extractTo($doss);
                   $zip->close();
               }
-              $dir = opendir($doss); 
-
-              while($file = readdir($dir)) {
-                if($file != '.' && $file != '..')
-                {
-                  echo '<h1>'.$file.'</h1>';
-                }
-              }
-
-              closedir($dir);
+             
           
 
                 //$resultat = move_uploaded_file($_FILES['src']['tmp_name'], $doss . $_FILES['src']['name'] );

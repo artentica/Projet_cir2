@@ -29,16 +29,20 @@
 		//print_r($users);	//DEBUG
 
 
-		success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
-		exec('javac -encoding utf-8 -cp ' . $junit . ':. '. $path .'/tests/*.java 2>&1', $sortie, $code); // compile tout les .java contenus dans dossier tests
 		
-		if( $code != 0 ) print_r( $sortie );
-		else{
-
+		
+		
 			success('la classe de test a compilé correctement...<br>');
 			success('############################################### COMPILATION PROJET ######################################################<br>');
 
 			foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
+
+
+				success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
+				exec('javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.'/:. '. $path .'/tests/*.java 2>&1', $sortie, $code); // compile tout les .java contenus dans dossier tests
+
+				if( $code != 0 ) print_r( $sortie );
+				else{
 
 				system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
 				exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
@@ -49,6 +53,16 @@
 					success('############################################### LANCEMENT DU TEST #######################################################<br>');
 
 
+					 $dir = opendir($path.$user); 
+		              $delimiter=".";
+		              while($file = readdir($dir)) {
+		                if($file != '.' && $file != '..')
+		                {
+		                  $explode=explode($delimiter, $file);
+		                }
+		              }
+
+		              closedir($dir);
 
 
 
@@ -64,8 +78,7 @@
 
 
 
-
-					exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner '. $path.$user ."/ ". $nom_fichier .'2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
+					exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner '. $path.$user ."/ ". $explode[0] .'2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
 
 					if( $code != 0 ) print_r( $sortie );
 					else{
