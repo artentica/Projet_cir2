@@ -12,7 +12,7 @@
 
 	$path 	= 	"upload/project" . $_GET['P'] . '/'; 
 	$junit 	= 	"upload/junit-4.0.jar";
-	$file 	= 	"test.txt";		//fichier resultat
+	$file 	= 	"result.txt";		//fichier resultat
 
 	if( !empty($_GET['U']) && !empty($_GET['P']))
 	{
@@ -27,10 +27,6 @@
 			array_push($users, $U);
 		}
 		//print_r($users);	//DEBUG
-
-
-
-
 
 
 		success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
@@ -52,9 +48,26 @@
 					success('la classe de l\'élève a compilé...');
 					success('############################################### LANCEMENT DU TEST #######################################################<br>');
 
-					//exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner 2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
 
-					if( false /*$code != 0*/ ) print_r( $sortie );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner '. $path.$user ."/ ". $nom_fichier .'2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
+
+					if( $code != 0 ) print_r( $sortie );
 					else{
 						if( file_exists($file)){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
 
