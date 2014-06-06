@@ -14,6 +14,8 @@
 	$junit 	= 	"upload/junit-4.0.jar";
 	$file 	= 	"result.txt";		//fichier resultat
 
+	$tab 	= array();
+
 	if( !empty($_GET['U']) && !empty($_GET['P']))
 	{
 		if($U == 'all')
@@ -33,7 +35,7 @@
 
 
 			success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
-			$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.'/:. '. $path .'tests/*.java 2>&1';
+			$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload:. '. $path .'tests/*.java 2>&1';
 			echo $cmd;
 			exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
 
@@ -52,47 +54,50 @@
 					success('la classe de l\'élève a compilé...');
 					success('############################################### LANCEMENT DU TEST #######################################################<br>');
 
+					if( is_dir($path.'tests')){
+						$dir = opendir($path.'tests'); 
+			            $delimiter=".";
+			            while($file = readdir($dir)) {
+			                if($file != '.' && $file != '..')
+			                {
+			                  $explode=explode($delimiter, $file);
+			                }
+			            }
 
-					$dir = opendir($path.$user); 
-		            $delimiter=".";
-		            while($file = readdir($dir)) {
-		                if($file != '.' && $file != '..')
-		                {
-		                  $explode=explode($delimiter, $file);
-		                }
-		            }
+			            closedir($dir);
 
-		            closedir($dir);
+			            $cmd = 'java -cp ' . $junit . ':' . $path .'tests:' . $path . $user . ':upload:. Runner '. $path.$user ."/ ". $explode[0] .' 2>&1';
+			            echo $cmd.'<br>';
+						exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
 
+						if( $code != 0 ) print_r( $sortie );
+						else{
+							if( file_exists( $path.$user.'/'.$file )){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
 
+								success('Le test a bien été éxécuté.');
 
-					exec('java -cp ' . $junit . ':' . $path .'/tests:' . $path . $user . ':. Runner '. $path.$user ."/ ". $explode[0] .'2>&1', $sortie, $code);	//AJOUTER LES PARAMETRES
+								$GLOBALS['num_test'] 		= 1;
+								$GLOBALS['num_ss_test'] 	= 1;
+								$i 		= 0;
 
-					if( $code != 0 ) print_r( $sortie );
-					else{
-						if( file_exists($file)){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
+								$fp = fopen( /*$path .*/ $file ,"r"); 
+								while (!feof($fp)) { 
+		  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
+		  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
+		  							if( isset($result[2]) ){
 
-							success('Le test a bien été éxécuté.');
-
-							$GLOBALS['num_test'] 		= 1;
-							$GLOBALS['num_ss_test'] 	= 1;
-							$tab 	= array();
-							$i 		= 0;
-
-							$fp = fopen( /*$path .*/ $file ,"r"); 
-							while (!feof($fp)) { 
-	  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
-	  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
-	  							if( isset($result[2]) ){
-
-	  								$tab[ ++$i ][0] =	$result[0];
-	  								$tab[   $i ][1] =	$result[5];
-	  								$tab[   $i ][2] =	$result[2];
-	  								$tab[	$i ][3] =	$result[3];
-	  								$tab[	$i ][4] =	$result[4];
+		  								$tab[ ++$i ][0] =	$result[0];
+		  								$tab[   $i ][1] =	$result[5];
+		  								$tab[   $i ][2] =	$result[2];
+		  								$tab[	$i ][3] =	$result[3];
+		  								$tab[	$i ][4] =	$result[4];
+									}
 								}
 							}
 						}
+					}
+					else{
+						echo 'pas de dossier';
 					}
 				}
 				//print_r($tab);
