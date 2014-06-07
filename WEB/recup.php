@@ -12,7 +12,6 @@
 
 	$path 	= 	"upload/project" . $_GET['P'] . '/'; 
 	$junit 	= 	"upload/junit-4.0.jar";
-	$file 	= 	"result.txt";		//fichier resultat
 
 	$tab 	= array();
 
@@ -72,7 +71,7 @@
 
 						if( $code != 0 ) print_r( $sortie );
 						else{
-							if( file_exists( $path.$user.'/'.$file )){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
+							if( file_exists( $path.$user.'/result.txt' )){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
 
 								success('Le test a bien été éxécuté.');
 
@@ -80,9 +79,7 @@
 								$GLOBALS['num_ss_test'] 	= 1;
 								$i 		= 0;
 
-								$f = $path.$user.'/'.$file;
-
-								if( !$fp = fopen( $f ,"r")){
+								if( !$fp = fopen( $path.$user.'/result.txt' ,"r")){
 									echo('<h1>fichier pas ouvert</h1>');
 								} 
 								while (!feof($fp)) { 
@@ -105,7 +102,7 @@
 										// NOM    NOTE_M   VAL_T    STATUS   DESC
 									addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
 								}
-								//system("rm -rf " . $path . $file , $retval);
+								system("rm -rf " . $path.$user.'/result.txt' );
 							}
 						}
 					}
