@@ -80,16 +80,18 @@
 								$GLOBALS['num_ss_test'] 	= 1;
 								$i 		= 0;
 
-								if( !$fp = fopen( $path.$user.'/'.$file ,"r")){
+								$f = $path.$user.'/'.$file;
+
+								if( !$fp = fopen( $f ,"r")){
 									echo('<h1>fichier pas ouvert</h1>');
 								} 
 								while (!feof($fp)) { 
 									echo('coucou');
 		  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
 		  							echo $ligne;
+		  							echo 'coucou2';
 		  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
 		  							if( isset($result[2]) ){
-		  								echo 'coucou2';
 		  								$tab[ ++$i ][0] =	$result[0];
 		  								$tab[   $i ][1] =	$result[5];
 		  								$tab[   $i ][2] =	$result[2];
