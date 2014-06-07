@@ -1,0 +1,16 @@
+getAmount/$/2/$/0.0/$/1/$/pas de problemes/$/3.0
+getAmount/$/2/$/2.45/$/1/$/pas de problemes/$/3.0
+getCurrency/$/2/$/EUR/$/1/$/pas de problemes/$/3.0
+getCurrency/$/2/$/USR/$/1/$/pas de problemes/$/3.0
+checkCurrency/$/3/$/USR/$/1/$/pas de problemes/$/3.0
+checkCurrency/$/3/$/EUR/$/1/$/pas de problemes/$/3.0
+changeCurrency/$/1/$/(0.0,EUR)/$/1/$/pas de problemes/$/3.0
+add/$/4/$/1.23/$/1/$/pas de problemes/$/3.0
+add/$/4/$/0.0/$/1/$/pas de problemes/$/3.0
+add/$/4/$/2.45/$/1/$/pas de problemes/$/3.0
+sub/$/4/$/0.0/$/1/$/pas de problemes/$/3.0
+sub/$/4/$/-1.23/$/1/$/pas de problemes/$/3.0
+sub/$/4/$/-2.45/$/1/$/pas de problemes/$/3.0
+sub/$/4/$/2.45/$/1/$/pas de problemes/$/3.0
+toString/$/2/$/0.0 EUR/$/1/$/pas de problemes/$/2.0
+toString/$/2/$/-2.45 EUR/$/1/$/pas de problemes/$/2.0

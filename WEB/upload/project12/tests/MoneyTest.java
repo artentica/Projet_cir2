@@ -254,26 +254,26 @@ public class MoneyTest {
 		Runner.add(runner);
 	}
 
-	// @Test
-	// public void testcheckCurrency3 (){
-	// 	String expected = "EUR";
-	// 	nb_test_ok_checkCurrency++;
-	// 	try{		
-	// 		Assert.assertTrue(m.checkCurrency(expected));
-	// 		System.out.println("checkCurrency :\n 	attendu : " + expected +"\n 	resultat : " + m.getCurrency());
-	// 		status=1;
-	// 	}
-	// 	catch (AssertionError e) {
-	// 		nb_test_ok--;
-	// 		nb_test_ko++;
-	// 		nb_test_ok_checkCurrency--;
-	// 		System.out.println(e);
-	// 		error= e.toString();
-	// 	}
-	// 	System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
-	// 	runner= new Runner("checkCurrency",3,expected,status,error,3F);
-	// 	Runner.add(runner);
-	// }
+	@Test
+	public void testcheckCurrency3 (){
+		String expected = "EUR";
+		nb_test_ok_checkCurrency++;
+		try{		
+			Assert.assertTrue(m.checkCurrency(expected));
+			System.out.println("checkCurrency :\n 	attendu : " + expected +"\n 	resultat : " + m.getCurrency());
+			status=1;
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ko++;
+			nb_test_ok_checkCurrency--;
+			System.out.println(e);
+			error= e.toString();
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
+		runner= new Runner("checkCurrency",3,expected,status,error,3F);
+		Runner.add(runner);
+	}
 
 	@Test
 	public void testchangeCurrency (){
@@ -381,30 +381,30 @@ public class MoneyTest {
 
 	}
 
-	// @Test
-	// public void testadd4(){
-	// 	m2.changeCurrency("EUR",1F);
-	// 	float amount= m2.getAmount();
-	// 	nb_test_ok_add++;
-	// 	try{		
-	// 		m2.add(m3);
-	// 		Assert.assertEquals("KO" , amount, m2.getAmount(),0);
-	// 		System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m2.getAmount());
-	// 		status=1;
-	// 	}
-	// 	catch (AssertionError e) {
-	// 		nb_test_ok--;
-	// 		nb_test_ok_add--;
-	// 		nb_test_ko++;
-	// 		System.out.println(e);
-	// 		error= e.toString();
-	// 	}
-	// 	System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
-	// 	String expectedstring = Float.toString(amount);
-	// 	runner= new Runner("add",4,expectedstring,status,error,3F);
-	// 	Runner.add(runner);
+	@Test
+	public void testadd4(){
+		m2.changeCurrency("EUR",1F);
+		float amount= m2.getAmount();
+		nb_test_ok_add++;
+		try{		
+			m2.add(m3);
+			Assert.assertEquals("KO" , amount, m2.getAmount(),0);
+			System.out.println("add :\n 	attendu : " + amount+"\n 	resultat : " + m2.getAmount());
+			status=1;
+		}
+		catch (AssertionError e) {
+			nb_test_ok--;
+			nb_test_ok_add--;
+			nb_test_ko++;
+			System.out.println(e);
+			error= e.toString();
+		}
+		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
+		String expectedstring = Float.toString(amount);
+		runner= new Runner("add",4,expectedstring,status,error,3F);
+		Runner.add(runner);
 
-	// }
+	}
 
 
 

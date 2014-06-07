@@ -36,7 +36,7 @@
 						<label 				class="col-md-4 control-label" for="nom">Nom du projet</label>  
 					  		<div 			class="col-md-3">
 						  		<div 		class="input-group">
-						  			<input 	class="form-control input-sm" name="nom" type="text" placeholder="caffard en C++"  required>
+						  			<input 	class="form-control input-sm" name="nom" type="text" placeholder="cafard en C++"  required>
 						    		<span 	class="input-group-addon ">
 							        	<i 	class="glyphicon glyphicon-folder-open"></i>
 						    		</span>
