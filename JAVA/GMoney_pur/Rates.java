@@ -13,14 +13,14 @@ public class Rates {
     
     Rates ()
     {
-     v_currencies = new Vector<String>();
-     v_rates = new Vector<Float>();
+       v_currencies = new Vector<String>();
+       v_rates = new Vector<Float>();
 
-     if(!getDataFromInternet() && !getDataFromFile("test_rate.xml")){
+       if(!getDataFromInternet() && !getDataFromFile("test_rate.xml")){
         System.out.println("Erreur lors de l'accés au fichier et à internet, les rate n'ont pas pu être chargé");
         System.exit(1);
-     }
     }
+}
 
 
     /**
@@ -31,16 +31,16 @@ public class Rates {
      */
     public float getRate ( String currency )
     {
-     int i;
-     for(i=0; i<v_currencies.size() ; i++)
-     {
-         if( v_currencies.get(i).equals(currency) )
-         {
-          return v_rates.get(i) ; 
+       int i;
+       for(i=0; i<v_currencies.size() ; i++)
+       {
+           if( v_currencies.get(i).equals(currency) )
+           {
+              return v_rates.get(i) ; 
+          }
       }
+      return 0;
   }
-  return 0;
-}
 
     /**
      * Récupère les taux + money d'internet
@@ -75,19 +75,19 @@ public class Rates {
         // read each line and write to System.out
 
             while ((line = br.readLine()) != null) {
-             if(line.indexOf( currency )!=-1 && line.indexOf( rate )!=-1){
+               if(line.indexOf( currency )!=-1 && line.indexOf( rate )!=-1){
 
                 v_currencies.add(line.substring(19, 22));
                 v_rates.add(Float.parseFloat(line.substring(30, 36)));
-             }
             }
-            return true;
         }
-        catch(Exception e){
-            return false;
-        }
-        
+        return true;
     }
+    catch(Exception e){
+        return false;
+    }
+    
+}
 
     /**
      * Récupère les données d'un fichier
@@ -104,19 +104,19 @@ public class Rates {
             BufferedReader br=new BufferedReader(ipsr);
             String line = null, currency="currency", rate="rate";
             while ((line=br.readLine())!=null){
-               if(line.indexOf( currency )!=-1 && line.indexOf( rate )!=-1){
+             if(line.indexOf( currency )!=-1 && line.indexOf( rate )!=-1){
 
                 v_currencies.add(line.substring(19, 22));
                 v_rates.add(Float.parseFloat(line.substring(30, 36)));
-             }
             }
-            br.close();
-            return true;
-        }       
-        catch (Exception e){
-            System.out.println(e.toString());
-            return false;
         }
-     
- }
+        br.close();
+        return true;
+    }       
+    catch (Exception e){
+        System.out.println(e.toString());
+        return false;
+    }
+    
+}
 }
