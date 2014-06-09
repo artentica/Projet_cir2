@@ -250,7 +250,7 @@ public class MoneyTest {
 			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
-		runner= new Runner("checkCurrency",2,"EUR",status,error,3F);
+		runner= new Runner("checkCurrency",3,"EUR",status,error,3F);
 		Runner.add(runner);
 	}
 
@@ -376,7 +376,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
 		String expectedstring = Float.toString(amount);
-		runner= new Runner("add",3,expectedstring,status,error,3F);
+		runner= new Runner("add",4,expectedstring,status,error,3F);
 		Runner.add(runner);
 
 	}
