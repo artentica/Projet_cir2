@@ -1,6 +1,7 @@
 <?php
 	require 'include/bdd.php';
 	require 'include/global.php';
+	connect();
 ?>
 <html>
 	<head>

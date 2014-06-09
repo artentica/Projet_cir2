@@ -1,4 +1,7 @@
-<?php require 'include/global.php'; ?>
+<?php 
+	require 'include/global.php';
+	connect();
+?>
 <!DOCTYPE html>
 <html>
 	<head>

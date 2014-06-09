@@ -3,6 +3,7 @@
 	require 'include/bdd.php';
 	require 'include/PHPExcel.php';
 	require 'include/PHPExcel/Writer/Excel5.php';
+	connect();
 	forprof();
 
 	$P 			= 	$_GET['P'];

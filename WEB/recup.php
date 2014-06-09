@@ -1,10 +1,13 @@
+<?php	
+	require 'include/global.php';
+	require 'include/bdd.php';
+	connect();
+?>
 <html>
 	<head>
 		<?php require 'include/head.php'; ?>
 	</head>
 <?php
-	require 'include/global.php';
-	require 'include/bdd.php';
 
 	$U 		= $_GET['U'];
 	$P 		= $_GET['P'];
