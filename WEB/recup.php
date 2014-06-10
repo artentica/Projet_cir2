@@ -1,13 +1,8 @@
 <?php	
+	$GLOBALS['check_lunch_test'] = 'aaaaaa';
 	require 'include/global.php';
 	require 'include/bdd.php';
 	connect();
-?>
-<html>
-	<head>
-		<?php require 'include/head.php'; ?>
-	</head>
-<?php
 
 	$U 		= $_GET['U'];
 	$P 		= $_GET['P'];
@@ -37,6 +32,7 @@
 
 
 			success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
+			$GLOBALS['check_lunch_test'] = 'bbb';
 			$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload/:. '. $path .'tests/*.java 2>&1';
 			//echo $cmd;
 			exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
@@ -47,6 +43,7 @@
 
 				success('la classe de test a compilé correctement...<br>');
 				success('############################################### COMPILATION PROJET ######################################################<br>');
+				$GLOBALS['check_lunch_test'] = 'ccc';
 
 				system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
 				exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
@@ -55,6 +52,7 @@
 				else{
 					success('la classe de l\'élève a compilé...');
 					success('############################################### LANCEMENT DU TEST #######################################################<br>');
+					$GLOBALS['check_lunch_test'] = 'ddd';
 
 					if( is_dir($path.'tests')){
 						$dir = opendir($path.'tests'); 
@@ -96,12 +94,13 @@
 		  								$tab[	$i ][4] =	$result[4];
 									}
 								}
-								print_r($tab);
+								//print_r($tab);
 								foreach ($tab as $k => $inf) {
 										// NOM    NOTE_M   VAL_T    STATUS   DESC
 									addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
 								}
 								system("rm -rf " . $path.$user.'/result.txt' );
+								$GLOBALS['check_lunch_test'] = 'eee';
 							}
 						}
 					}
