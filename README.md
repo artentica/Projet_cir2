@@ -15,3 +15,8 @@ ETAT:
 
 
 -quelle page afficher si erreur? page d'index ou de choix de projet
+- clean la directory quand changement /depot /tests
+- verifier que tout les tests soient en bdd
+- gerer les notes -> xls.php et gestion-p
+- ajout possibilitée de tester dans gestion-e
+- class pour nav

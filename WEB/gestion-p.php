@@ -32,7 +32,11 @@
       <?php hello(); ?>
       <div        class="row" >
         <article  class="col-sm-8 col-sm-offset-2">
-          <?php success('<div id="etat" class="row cols-xs-12 "></div>'); ?>
+          <div class="row cols-xs-12 alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;
+            </button>
+            <p id="etat" class="text-center"><span id="loading" class="glyphicon glyphicon-refresh"></span></p>
+          </div>
           <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
           <a href="#" id="lancement_all" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
           <?php
@@ -122,13 +126,13 @@
       });
 
       $('#lancement_all').click( function() {
+        $('#etat').show();
         $.ajax({
           type: 'GET',
           url: 'recup.php?P=<?= $_GET['P'] ?>&U=all',
           timeout: 25000,
           success: function(data) {
-            $('#etat').show();
-            $('#etat').append( data );
+            $('#etat').html( data );
             //setTimeout( refresh(), 10000);
           },
           error: function() {
@@ -139,12 +143,14 @@
       });
 
       $('.test-e').click( function() {
+          //alert ( $( this ).attr('value') );
+          $('#etat').show();
         $.ajax({
           type: 'GET',
           url: 'recup.php?P=<?= $_GET['P'] ?>&U=' + $( this ).attr('value') ,
           timeout: 25000,
           success: function(data) {
-            $('#etat').append( data );
+            $('#etat').html( data );
             //setTimeout( refresh(), 10000);
           },
           error: function() {

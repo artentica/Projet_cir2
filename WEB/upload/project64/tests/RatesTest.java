@@ -7,7 +7,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-public class Ratestest{
+public class RatesTest{
 	public static Runner runner;
 	public static Vector<Runner>  Runner= new Vector<Runner>();
 	public String error;
@@ -30,6 +30,7 @@ public class Ratestest{
 		error= e.toString();
 		}
 		runner= new Runner("getDataFromInternet",1,"True",status,error,2F);
+		Runner.add(runner);
 	}
 
 	@Test public void testGetDataFromFile(){
@@ -40,7 +41,8 @@ public class Ratestest{
 		catch (AssertionError e) {
 		error= e.toString();
 		}
-		runner= new Runner("testGetDataFromFile",1,"True",status,error,2F);
+		runner= new Runner("GetDataFromFile",1,"True",status,error,2F);
+		Runner.add(runner);
 	}
 
 	@Test public void testgetRate(){
@@ -54,6 +56,12 @@ public class Ratestest{
 		}
 		String expectedstring = Float.toString(expected);
 		runner= new Runner("getRate",1,expectedstring,status,error,1F);
+		Runner.add(runner);
+	}
+
+	@AfterClass
+	public static void logout(){
+		runner.back_vector(Runner);
 	}
 
 

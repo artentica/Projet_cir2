@@ -47,18 +47,16 @@ if( !empty($_GET['U']) && !empty($_GET['P']))
 				}
 				else{
 
-					echo $user.'Compilation du projet';
+					echo 'Compilation du projet<br>';
 
 					system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
 					exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
 
 					if( $code != 0 )
-					{
 						print_r( $sortie );
-					}
 					else{
 
-						echo $user.': Lancement du test';
+						echo 'Lancement du test<br>';
 
 						if( is_dir($path.'tests')){
 							$dir = opendir($path.'tests'); 
@@ -68,13 +66,11 @@ if( !empty($_GET['U']) && !empty($_GET['P']))
 								{
 									$explode=explode($delimiter, $file);
 									$cmd = 'java -cp ' . $junit . ':' . $path .'tests:' . $path . $user . ':upload:. Runner '. $path.$user ."/ ". $explode[0] .' 2>&1';
-				            echo $cmd.'<br>';
+				            //echo $cmd.'<br>';
 							exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
-							echo $explode[0];
+							//echo $explode[0];
 							if( $code != 0 )
-							{
 								print_r( $sortie );
-							}
 						}
 					}
 
@@ -113,7 +109,7 @@ if( !empty($_GET['U']) && !empty($_GET['P']))
 			  							addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user, $inf[5]	);
 			  						}
 									system("rm -rf " . $path.$user.'/result.txt' );
-			  						echo 'fin de programme';
+			  						echo 'fin de programme<br>';
 			  					}
 
 			  				}
