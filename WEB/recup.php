@@ -106,7 +106,7 @@
 									}
 									//print_r($tab);
 									foreach ($tab as $k => $inf) {
-											// NOM    NOTE_M   VAL_T    STATUS   DESC
+											// NOM    NOTE_M   VAL_T    STATUS   DESC     LOGIN  NB_FOIS_TESTER
 										addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user, $inf[5]	);
 									}
 									// system("rm -rf " . $path.$user.'/result.txt' );

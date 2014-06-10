@@ -75,7 +75,7 @@
 		}
 		else{		//DOIT CREER LE SOUS TEST
 			$sqlb = "INSERT INTO SUBTEST ( PROJECT_ID, TEST_NUM, SUBTEST_NUM,                    KIND,  VALEUR) 
-						 		   VALUES( $P,         $idTest ,". $GLOBALS['num_ss_test']++ .", $N, '$VT' )";
+						 		   VALUES( $P,         $idTest ,". $GLOBALS['num_ss_test']++ .", $nb_fonction, '$VT' )";
 			//echo '<br>'.$sqlb;
 			$b = Ins( $sqlb );
 			$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='". $VT ."' && PROJECT_ID=$P");
