@@ -23,7 +23,7 @@
 			    	Vous venez d'être déconnecté, vous allez être redirigé.
 		    		<script type="text/javascript">
 						var obj = 'window.location.replace("<?= $GLOBALS['page_connexion'] ?>");';
-						setTimeout(obj,5000); 
+						setTimeout(obj,1500); 
 					</script>
 			  	</div>
 			</div>
