@@ -12,3 +12,6 @@ ETAT:
   Interface WEB : 0%
   Design: 0%
   Debug: 0%
+
+
+-quelle page afficher si erreur? page d'index ou de choix de projet

@@ -1,10 +1,13 @@
+<?php	
+	require 'include/global.php';
+	require 'include/bdd.php';
+	connect();
+?>
 <html>
 	<head>
 		<?php require 'include/head.php'; ?>
 	</head>
 <?php
-	require 'include/global.php';
-	require 'include/bdd.php';
 
 	$U 		= $_GET['U'];
 	$P 		= $_GET['P'];
@@ -83,10 +86,7 @@
 									echo('<h1>fichier pas ouvert</h1>');
 								} 
 								while (!feof($fp)) { 
-									echo('coucou');
 		  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
-		  							echo $ligne;
-		  							echo 'coucou2';
 		  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
 		  							if( isset($result[2]) ){
 		  								$tab[ ++$i ][0] =	$result[0];
@@ -96,7 +96,6 @@
 		  								$tab[	$i ][4] =	$result[4];
 									}
 								}
-								success('le tableau est généré');
 								print_r($tab);
 								foreach ($tab as $k => $inf) {
 										// NOM    NOTE_M   VAL_T    STATUS   DESC

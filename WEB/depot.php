@@ -1,5 +1,7 @@
-<?php require 'include/bdd.php';
-      require 'include/global.php';
+<?php 
+  require 'include/bdd.php';
+  require 'include/global.php';
+  connect();
 ?>
 <!DOCTYPE html>
 <html>

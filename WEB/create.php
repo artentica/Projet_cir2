@@ -1,5 +1,6 @@
 <?php require 'include/bdd.php';
 	  require 'include/global.php';
+	  connect();
 	  forprof();
 ?>
 <!DOCTYPE html>

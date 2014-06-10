@@ -1,6 +1,9 @@
-<?php require 'include/bdd.php';
-      require 'include/global.php';
-      forprof();
+<?php 
+  require 'include/bdd.php';
+  require 'include/global.php';
+  connect();
+  forprof();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,6 +33,7 @@
       <div        class="row" >
         <article  class="col-sm-8 col-sm-offset-2">
           <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
+          <a href="recup.php?P=<?= $_GET['P'].'&U=all' ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
           <?php
             if( isset($_GET['P']) )
             {
@@ -46,6 +50,7 @@
                         <tr>
                             <th>Identifiant</th>
                             <th>Tests effectués</th>
+                            <th>Lancer un test</th>
                         </tr>
                       </thead>
                       <tbody>');
@@ -55,6 +60,11 @@
                             <td>
                               <a      class="btn btn-primary btn-success" href="view.php?P='. $_GET['P'] .'&U='. $val[0] .'">
                                 <span class="glyphicon glyphicon-eye-open"></span> Voir
+                              </a>
+                            </td>
+                            <td>
+                              <a      class="btn btn-primary btn-success" href="recup.php?P='. $_GET['P'] .'&U='. $val[0] .'">
+                                <span class="glyphicon glyphicon-list"></span> Lancer
                               </a>
                             </td>
                           </tr>');
@@ -76,8 +86,7 @@
               }
               else
               {
-                echo " Le projet concerné n'a pas été trouvé" ;
-                acc();
+                header("location: choose-p.php");
               }
             }
             elseif( isset(  $_GET['del']  ) ){
@@ -91,11 +100,13 @@
               header("location: choose-p.php");
             }
             else{
-              echo 'Impossible de trouver le projet concerné' ;
-              acc();
+              header("location: choose-p.php");
             }
           ?>
-          <a href="xls.php?P=<?= $_GET['P'] ?>" class="btn btn-lg btn-warning" target="_BLANK"><span class="glyphicon glyphicon-download-alt"></span> Télécharger le resumé ( .xls )</a>
+          <a href="xls.php?P=<?=$_GET['P'] ?>" class="btn btn-lg btn-warning" target="_BLANK">
+            <span class="glyphicon glyphicon-download-alt"></span>
+              Télécharger le resumé ( .xls )
+          </a>
         </article>
       </div>
     </div>
