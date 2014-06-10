@@ -37,7 +37,7 @@
 			{
 				echo 'Compilation de la classe de test <br>';
 				$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload/:. '. $path .'tests/*.java 2>&1';
-				echo $cmd;
+				//echo $cmd;
 				exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
 
 				
@@ -112,14 +112,6 @@
 									system("rm -rf " . $path.$user.'/result.txt' );
 									echo 'fin de programme';
 								}
-
-								//print_r($tab);
-								foreach ($tab as $k => $inf) {
-										// NOM    NOTE_M   VAL_T    STATUS   DESC
-									addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
-								}
-								// system("rm -rf " . $path.$user.'/result.txt' );
-								echo 'fin de programme';
 							}
 						}
 						else{
