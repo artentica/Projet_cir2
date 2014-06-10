@@ -1,33 +1,33 @@
 <?php
 
-	
-	require 'include/global.php';
-	require 'include/bdd.php';
-	echo 'Début du Runner <br>';
-	connect();
 
-	$U 		= $_GET['U'];
-	echo '<h1>'.$U.'</h1>';
-	$P 		= $_GET['P'];
-	$users 	= array();
+require 'include/global.php';
+require 'include/bdd.php';
+echo 'Début du Runner <br>';
+connect();
 
-	$path 	= 	"upload/project" . $_GET['P'] . '/'; 
-	$junit 	= 	"upload/junit-4.0.jar";
+$U 		= $_GET['U'];
+echo '<h1>'.$U.'</h1>';
+$P 		= $_GET['P'];
+$users 	= array();
 
-	$tab 	= array();
+$path 	= 	"upload/project" . $_GET['P'] . '/'; 
+$junit 	= 	"upload/junit-4.0.jar";
 
-	if( !empty($_GET['U']) && !empty($_GET['P']))
+$tab 	= array();
+
+if( !empty($_GET['U']) && !empty($_GET['P']))
+{
+	if($U == 'all')
 	{
-		if($U == 'all')
-		{
-			$rep = Select('SELECT DISTINCT LOGIN  FROM STUDENT');
-			foreach ($rep as $k => $val) {
-				array_push($users, $val['LOGIN']);
-			}
+		$rep = Select('SELECT DISTINCT LOGIN  FROM STUDENT');
+		foreach ($rep as $k => $val) {
+			array_push($users, $val['LOGIN']);
 		}
-		else{
-			array_push($users, $U);
-		}
+	}
+	else{
+		array_push($users, $U);
+	}
 		//print_r($users);	//DEBUG
 
 
@@ -62,25 +62,28 @@
 
 						if( is_dir($path.'tests')){
 							$dir = opendir($path.'tests'); 
-				            $delimiter=".";
-				            while($file = readdir($dir)) {
-				                if($file != '.' && $file != '..')
-				                {
-				                  $explode=explode($delimiter, $file);
-				                }
-				            }
-
-				            closedir($dir);
-
-				            $cmd = 'java -cp ' . $junit . ':' . $path .'tests:' . $path . $user . ':upload:. Runner '. $path.$user ."/ ". $explode[0] .' 2>&1';
-				            //echo $cmd.'<br>';
+							$delimiter=".";
+							while($file = readdir($dir)) {
+								if($file != '.' && $file != '..')
+								{
+									$explode=explode($delimiter, $file);
+									$cmd = 'java -cp ' . $junit . ':' . $path .'tests:' . $path . $user . ':upload:. Runner '. $path.$user ."/ ". $explode[0] .' 2>&1';
+				            echo $cmd.'<br>';
 							exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
-
+							echo $explode[0];
 							if( $code != 0 )
 							{
 								print_r( $sortie );
 							}
-							else{
+						}
+					}
+
+					closedir($dir);
+
+
+
+
+
 								if( file_exists( $path.$user.'/result.txt' )){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
 
 									//success('Le test a bien été éxécuté.');
@@ -90,7 +93,7 @@
 									$i 		= 0;
 
 									if( !$fp = fopen( $path.$user.'/result.txt' ,"r")){
-										echo('fichier pas ouvert');
+										echo('<h1>fichier pas ouvert</h1>');
 									} 
 									while (!feof($fp)) { 
 			  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
@@ -102,29 +105,29 @@
 			  								$tab[	$i ][3] =	$result[3];
 			  								$tab[	$i ][4] =	$result[4];
 			  								$tab[	$i ][5] =	$result[1];
-										}
-									}
+			  							}
+			  						}
 									//print_r($tab);
-									foreach ($tab as $k => $inf) {
+			  						foreach ($tab as $k => $inf) {
 											// NOM    NOTE_M   VAL_T    STATUS   DESC     LOGIN  NB_FOIS_TESTER
-										addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user, $inf[5]	);
-									}
-									// system("rm -rf " . $path.$user.'/result.txt' );
-									echo 'fin de programme';
-								}
-							}
-						}
-						else{
-							//echo 'pas de dossier';
-						}
-					}
-				}
-			}
-		}
-	}
-	else
-	{
-		echo 'Les données ne sont pas bonnes.';
-	}
+			  							addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user, $inf[5]	);
+			  						}
+									system("rm -rf " . $path.$user.'/result.txt' );
+			  						echo 'fin de programme';
+			  					}
 
-?>
+			  				}
+			  				else{
+							//echo 'pas de dossier';
+			  				}
+			  			}
+			  		}
+			  	}
+			  }
+			}
+			else
+			{
+				echo 'Les données ne sont pas bonnes.';
+			}
+
+			?>
