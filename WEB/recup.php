@@ -1,7 +1,9 @@
-<?php	
-	$GLOBALS['check_lunch_test'] = 'aaaaaa';
+<?php
+
+	
 	require 'include/global.php';
 	require 'include/bdd.php';
+	echo 'Début du Runner <br>';
 	connect();
 
 	$U 		= $_GET['U'];
@@ -30,29 +32,30 @@
 
 		foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
 
-
-			success('############################################### COMPILATION CLASSE DE TEST ##############################################<br>');
-			$GLOBALS['check_lunch_test'] = 'bbb';
+			echo 'Compilation de la classe de test <br>';
 			$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload/:. '. $path .'tests/*.java 2>&1';
 			//echo $cmd;
 			exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
 
 			
-			if( $code != 0 ) print_r( $sortie );
+			if( $code != 0 )
+			{
+				print_r( $sortie ) ;
+			}
 			else{
 
-				success('la classe de test a compilé correctement...<br>');
-				success('############################################### COMPILATION PROJET ######################################################<br>');
-				$GLOBALS['check_lunch_test'] = 'ccc';
+				echo $user.'Compilation du projet';
 
 				system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
 				exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
 
-				if( $code != 0 ) print_r( $sortie );
+				if( $code != 0 )
+				{
+					print_r( $sortie );
+				}
 				else{
-					success('la classe de l\'élève a compilé...');
-					success('############################################### LANCEMENT DU TEST #######################################################<br>');
-					$GLOBALS['check_lunch_test'] = 'ddd';
+
+					echo $user.': Lancement du test';
 
 					if( is_dir($path.'tests')){
 						$dir = opendir($path.'tests'); 
@@ -70,11 +73,14 @@
 			            //echo $cmd.'<br>';
 						exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
 
-						if( $code != 0 ) print_r( $sortie );
+						if( $code != 0 )
+						{
+							print_r( $sortie );
+						}
 						else{
 							if( file_exists( $path.$user.'/result.txt' )){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
 
-								success('Le test a bien été éxécuté.');
+								//success('Le test a bien été éxécuté.');
 
 								$GLOBALS['num_test'] 		= 1;
 								$GLOBALS['num_ss_test'] 	= 1;
@@ -100,12 +106,12 @@
 									addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
 								}
 								system("rm -rf " . $path.$user.'/result.txt' );
-								$GLOBALS['check_lunch_test'] = 'eee';
+								echo 'fin de programme';
 							}
 						}
 					}
 					else{
-						echo 'pas de dossier';
+						//echo 'pas de dossier';
 					}
 				}
 			}
@@ -113,7 +119,7 @@
 	}
 	else
 	{
-		erreur('Les données ne sont pas bonnes.');
+		echo 'Les données ne sont pas bonnes.';
 	}
 
 ?>

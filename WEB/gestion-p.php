@@ -32,7 +32,7 @@
       <?php hello(); ?>
       <div        class="row" >
         <article  class="col-sm-8 col-sm-offset-2">
-          <div id="etat" class="row ">aaa</div>
+          <div id="etat" class="row "></div>
           <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
           <a href="#" id="test" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
           <?php
@@ -64,7 +64,7 @@
                               </a>
                             </td>
                             <td>
-                              <a      class="btn btn-primary btn-success" href="recup.php?P='. $_GET['P'] .'&U='. $val[0] .'">
+                              <a class="test-e" value="' . $val[0] . '" class="btn btn-primary btn-success" href="#">
                                 <span class="glyphicon glyphicon-list"></span> Lancer
                               </a>
                             </td>
@@ -112,23 +112,21 @@
       </div>
     </div>
     <script type="text/javascript">
-        var t;
 
-        function refresh(){
+        /*function refresh(){
           // traitement
           $.ajax({
-            type: 'GET',
+            type: 'POST',
             url:  'check_lunch_test.php',
-            timeout: 10000,
+            timeout: 1000,
             success:function(data) {
-              $('#etat').html('<p>' + data + '</p>');
+              $('#etat').append('<p>' + data + '</p>');
             },
             error: function() {
-              alert('pas pu verifier');
+              $('#etat').append('<p>#</p>');
             }
           });
-          t = setTimeout( refresh ,100);
-        }
+        }*/
 
 
 
@@ -141,19 +139,36 @@
       $('#test').click( function() {
         $.ajax({
           type: 'GET',
-          url: 'recup.php?P=57&U=student',
-          timeout: 10000,
+          url: 'recup.php?P=<?= $_GET['P'] ?>&U='+ this.value,
+          timeout: 25000,
           success: function(data) {
-            alert(data); 
-            clearTimeout(t);
+            $('#etat').append( data );
+            //setTimeout( refresh(), 10000);
           },
           error: function() {
             alert('La requête n\'a pas abouti'); 
-            clearTimeout(t);
+            //refresh();
           }
         });
-        refresh();
       });
+
+      $('.test-e').click( function() {
+        $.ajax({
+          type: 'GET',
+          url: 'recup.php?P=<?= $_GET['P'] ?>&U=' + this.value,
+          timeout: 25000,
+          success: function(data) {
+            $('#etat').append( data );
+            //setTimeout( refresh(), 10000);
+          },
+          error: function() {
+            alert('La requête n\'a pas abouti'); 
+            //refresh();
+          }
+        });
+      });
+
+
     </script>
   </body>
 </html>
