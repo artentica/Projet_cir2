@@ -32,8 +32,9 @@
       <?php hello(); ?>
       <div        class="row" >
         <article  class="col-sm-8 col-sm-offset-2">
+          <div id="etat" class="row ">aaa</div>
           <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
-          <a href="recup.php?P=<?= $_GET['P'].'&U=all' ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
+          <a href="#" id="test" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
           <?php
             if( isset($_GET['P']) )
             {
@@ -111,11 +112,47 @@
       </div>
     </div>
     <script type="text/javascript">
+        var t;
+
+        function refresh(){
+          // traitement
+          $.ajax({
+            type: 'GET',
+            url:  'check_lunch_test.php',
+            timeout: 10000,
+            success:function(data) {
+              $('#etat').html('<p>' + data + '</p>');
+            },
+            error: function() {
+              alert('pas pu verifier');
+            }
+          });
+          t = setTimeout( refresh ,100);
+        }
+
+
 
       $('#check_del').click( function(){
           var conf = confirm('Etes-vous sur de vouloir supprimer le projet?');
           if (conf == true) { return true; } 
           else { return false; }
+      });
+
+      $('#test').click( function() {
+        $.ajax({
+          type: 'GET',
+          url: 'recup.php?P=57&U=student',
+          timeout: 10000,
+          success: function(data) {
+            alert(data); 
+            clearTimeout(t);
+          },
+          error: function() {
+            alert('La requête n\'a pas abouti'); 
+            clearTimeout(t);
+          }
+        });
+        refresh();
       });
     </script>
   </body>
