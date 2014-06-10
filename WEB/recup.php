@@ -112,6 +112,16 @@
 									system("rm -rf " . $path.$user.'/result.txt' );
 									echo 'fin de programme';
 								}
+<<<<<<< HEAD
+								//print_r($tab);
+								foreach ($tab as $k => $inf) {
+										// NOM    NOTE_M   VAL_T    STATUS   DESC
+									addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
+								}
+								// system("rm -rf " . $path.$user.'/result.txt' );
+								echo 'fin de programme';
+=======
+>>>>>>> d1e3efbf16eb2b5920ef94c9c564bba63530cd4d
 							}
 						}
 						else{
