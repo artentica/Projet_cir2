@@ -99,8 +99,12 @@
 										// NOM    NOTE_M   VAL_T    STATUS   DESC
 									addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user	);
 								}
+<<<<<<< HEAD
 								system("rm -rf " . $path.$user.'/result.txt' );
 								$GLOBALS['check_lunch_test'] = 'eee';
+=======
+								// system("rm -rf " . $path.$user.'/result.txt' );
+>>>>>>> b687dab83b9e04ec72e31c102fd018cf5892ba4b
 							}
 						}
 					}

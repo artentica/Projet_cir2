@@ -20,7 +20,6 @@ public class RatesTest{
 	}
 
 	@Test public void testGetDataFromInternet(){
-	retour = new String("getDataFromInternet;1/null;"+rates.getDataFromInternet()+"/");
 		try{
 		 Assert.assertTrue(rate.getDataFromInternet());
 		 status=1;
@@ -29,6 +28,29 @@ public class RatesTest{
 		error= e.toString();
 		}
 		runner= new Runner("getDataFromInternet",1,"True",status,error,3F);
+	}
+
+	@Test public void testGetDataFromFile(){
+		try{
+		 Assert.assertTrue(rate.testGetDataFromFile());
+		 status=1;
+		}
+		catch (AssertionError e) {
+		error= e.toString();
+		}
+		runner= new Runner("testGetDataFromFile",1,"True",status,error,3F);
+	}
+
+	@Test public void testgetRate(){
+		float expected=OF;
+		try{
+		 Assert.assertNotEqual(rate.getRate(),expected,0);
+		 status=1;
+		}
+		catch (AssertionError e) {
+		error= e.toString();
+		}
+		runner= new Runner("getRate",1,expected,status,error,3F);
 	}
 
 
