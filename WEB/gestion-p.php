@@ -113,6 +113,8 @@
     </div>
     <script type="text/javascript">
 
+      $('#etat').hide();
+
       $('#check_del').click( function(){
           var conf = confirm('Etes-vous sur de vouloir supprimer le projet?');
           if (conf == true) { return true; } 
@@ -125,6 +127,7 @@
           url: 'recup.php?P=<?= $_GET['P'] ?>&U=all',
           timeout: 25000,
           success: function(data) {
+            $('#etat').show();
             $('#etat').append( data );
             //setTimeout( refresh(), 10000);
           },
