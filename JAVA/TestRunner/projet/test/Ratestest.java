@@ -7,10 +7,12 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-public class RatesTest{
+public class Ratestest{
 	public static Runner runner;
-	public static Vector<Runner>  Runner=new Vector<Runner>();
+	public static Vector<Runner>  Runner= new Vector<Runner>();
 	public String error;
+	public static int status;
+
 	public Rates rate = new Rates();
 
 	@Before
@@ -32,7 +34,7 @@ public class RatesTest{
 
 	@Test public void testGetDataFromFile(){
 		try{
-		 Assert.assertTrue(rate.testGetDataFromFile());
+		 Assert.assertTrue(rate.getDataFromFile("test_rate.xml"));
 		 status=1;
 		}
 		catch (AssertionError e) {
@@ -42,15 +44,16 @@ public class RatesTest{
 	}
 
 	@Test public void testgetRate(){
-		float expected=OF;
+		float expected=0F;
 		try{
-		 Assert.assertNotEqual(rate.getRate(),expected,0);
+		 Assert.assertNotSame(rate.getRate("USD"),expected);
 		 status=1;
 		}
 		catch (AssertionError e) {
 		error= e.toString();
 		}
-		runner= new Runner("getRate",1,expected,status,error,1F);
+		String expectedstring = Float.toString(expected);
+		runner= new Runner("getRate",1,expectedstring,status,error,1F);
 	}
 
 
