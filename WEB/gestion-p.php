@@ -64,7 +64,7 @@
                               </a>
                             </td>
                             <td>
-                              <a class="test-e" value="' . $val[0] . '" class="btn btn-primary btn-success" href="#">
+                              <a class="test-e btn btn-primary btn-success" value="' . $val[0] . '" href="#">
                                 <span class="glyphicon glyphicon-list"></span> Lancer
                               </a>
                             </td>

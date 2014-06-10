@@ -136,7 +136,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
 		String expectedstring = Float.toString(expected);
-		runner= new Runner("getAmount",2,expectedstring,status,error,3F);
+		runner= new Runner("getAmount",2,expectedstring,status,error,1F);
 		Runner.add(runner);
 
 	}
@@ -160,7 +160,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getAmount : OK":"	getAmount : KO");
 		String expectedstring = Float.toString(expected);
-		runner= new Runner("getAmount",2,expectedstring,status,error,3F);
+		runner= new Runner("getAmount",2,expectedstring,status,error,1F);
 		Runner.add(runner);
 
 	}
@@ -183,7 +183,7 @@ public class MoneyTest {
 			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getCurrency : OK":"	getCurrency : KO");
-		runner= new Runner("getCurrency",2,expected,status,error,3F);
+		runner= new Runner("getCurrency",2,expected,status,error,1F);
 		Runner.add(runner);
 
 	}
@@ -206,7 +206,7 @@ public class MoneyTest {
 			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	getCurrency : OK":"	getCurrency : KO");
-		runner= new Runner("getCurrency",2,expected,status,error,3F);
+		runner= new Runner("getCurrency",2,expected,status,error,1F);
 		Runner.add(runner);
 
 	}
@@ -228,7 +228,7 @@ public class MoneyTest {
 			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
-		runner= new Runner("checkCurrency",3,"USR",status,error,3F);
+		runner= new Runner("checkCurrency",2,"USR",status,error,1F);
 		Runner.add(runner);
 
 	}
@@ -250,7 +250,7 @@ public class MoneyTest {
 			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	checkCurrency : OK":"	checkCurrency : KO");
-		runner= new Runner("checkCurrency",2,"EUR",status,error,3F);
+		runner= new Runner("checkCurrency",2,"EUR",status,error,1F);
 		Runner.add(runner);
 	}
 
@@ -298,7 +298,7 @@ public class MoneyTest {
 			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	changeCurrency : OK":"	changeCurrency : KO");
-		runner= new Runner("changeCurrency",1,"(0.0,EUR)",status,error,3F);
+		runner= new Runner("changeCurrency",1,"(0.0,EUR)",status,error,2F);
 		Runner.add(runner);
 
 	}
@@ -326,7 +326,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
 		String expectedstring = Float.toString(amount);
-		runner= new Runner("add",4,expectedstring,status,error,3F);
+		runner= new Runner("add",3,expectedstring,status,error,2F);
 		Runner.add(runner);
 
 	}
@@ -351,7 +351,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
 		String expectedstring = Float.toString(amount);
-		runner= new Runner("add",4,expectedstring,status,error,3F);
+		runner= new Runner("add",3,expectedstring,status,error,2F);
 		Runner.add(runner);
 	}
 
@@ -376,7 +376,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	add : OK":"	add : KO");
 		String expectedstring = Float.toString(amount);
-		runner= new Runner("add",3,expectedstring,status,error,3F);
+		runner= new Runner("add",3,expectedstring,status,error,2F);
 		Runner.add(runner);
 
 	}
@@ -434,7 +434,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
 		String expectedstring = Float.toString(amount);
-		runner= new Runner("sub",4,expectedstring,status,error,3F);
+		runner= new Runner("sub",4,expectedstring,status,error,2F);
 		Runner.add(runner);
 
 	}
@@ -459,7 +459,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
 		String expectedstring = Float.toString(amount);
-		runner= new Runner("sub",4,expectedstring,status,error,3F);
+		runner= new Runner("sub",4,expectedstring,status,error,2F);
 		Runner.add(runner);
 	}
 
@@ -483,7 +483,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
 		String expectedstring = Float.toString(amount);
-		runner= new Runner("sub",4,expectedstring,status,error,3F);
+		runner= new Runner("sub",4,expectedstring,status,error,2F);
 		Runner.add(runner);
 	}
 
@@ -507,7 +507,7 @@ public class MoneyTest {
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	sub : OK":"	sub : KO");
 		String expectedstring = Float.toString(amount);
-		runner= new Runner("sub",4,expectedstring,status,error,3F);
+		runner= new Runner("sub",4,expectedstring,status,error,2F);
 		Runner.add(runner);
 	}
 
@@ -529,7 +529,7 @@ public class MoneyTest {
 			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	toString : OK":"	toString : KO");
-		runner= new Runner("toString",2,expected,status,error,2F);
+		runner= new Runner("toString",2,expected,status,error,1F);
 		Runner.add(runner);
 	}
 
@@ -550,7 +550,7 @@ public class MoneyTest {
 			error= e.toString();
 		}
 		System.out.println((nb_test_ok==(nb_test-nb_test_ko))?"	toString : OK":"	toString : KO");
-		runner= new Runner("toString",2,expected,status,error,2F);
+		runner= new Runner("toString",2,expected,status,error,1F);
 		Runner.add(runner);
 	}
 
