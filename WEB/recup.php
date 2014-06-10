@@ -93,7 +93,7 @@ if( !empty($_GET['U']) && !empty($_GET['P']))
 									$i 		= 0;
 
 									if( !$fp = fopen( $path.$user.'/result.txt' ,"r")){
-										echo('<h1>fichier pas ouvert</h1>');
+										echo('fichier pas ouvert');
 									} 
 									while (!feof($fp)) { 
 			  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne

@@ -32,7 +32,7 @@
       <?php hello(); ?>
       <div        class="row" >
         <article  class="col-sm-8 col-sm-offset-2">
-          <div id="etat" class="row "></div>
+          <?php success('<div id="etat" class="row cols-xs-12 "></div>'); ?>
           <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
           <a href="#" id="lancement_all" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
           <?php
@@ -138,7 +138,7 @@
       $('.test-e').click( function() {
         $.ajax({
           type: 'GET',
-          url: 'recup.php?P=<?= $_GET['P'] ?>&U=' + this.value,
+          url: 'recup.php?P=<?= $_GET['P'] ?>&U=' + $( this ).attr('value') ,
           timeout: 25000,
           success: function(data) {
             $('#etat').append( data );
