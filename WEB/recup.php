@@ -7,6 +7,7 @@
 	connect();
 
 	$U 		= $_GET['U'];
+	echo '<h1>'.$U.'</h1>';
 	$P 		= $_GET['P'];
 	$users 	= array();
 
@@ -32,74 +33,86 @@
 
 		foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
 
-			echo 'Compilation de la classe de test <br>';
-			$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload/:. '. $path .'tests/*.java 2>&1';
-			//echo $cmd;
-			exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
-
-			
-			if( $code != 0 )
+			if()
 			{
-				print_r( $sortie ) ;
-			}
-			else{
+				echo 'Compilation de la classe de test <br>';
+				$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload/:. '. $path .'tests/*.java 2>&1';
+				echo $cmd;
+				exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
 
-				echo $user.'Compilation du projet';
-
-				system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
-				exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
-
+				
 				if( $code != 0 )
 				{
-					print_r( $sortie );
+					print_r( $sortie ) ;
 				}
 				else{
 
-					echo $user.': Lancement du test';
+					echo $user.'Compilation du projet';
 
-					if( is_dir($path.'tests')){
-						$dir = opendir($path.'tests'); 
-			            $delimiter=".";
-			            while($file = readdir($dir)) {
-			                if($file != '.' && $file != '..')
-			                {
-			                  $explode=explode($delimiter, $file);
-			                }
-			            }
+					system( 'rm -rf '. $path . $user . '/*.class');	// nettoyage dossier eleve
+					exec('javac -encoding utf-8 ' . $path . $user .'/*.java 2>&1', $sortie, $code);		// compilation   sources eleve
 
-			            closedir($dir);
+					if( $code != 0 )
+					{
+						print_r( $sortie );
+					}
+					else{
 
-			            $cmd = 'java -cp ' . $junit . ':' . $path .'tests:' . $path . $user . ':upload:. Runner '. $path.$user ."/ ". $explode[0] .' 2>&1';
-			            //echo $cmd.'<br>';
-						exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
+						echo $user.': Lancement du test';
 
-						if( $code != 0 )
-						{
-							print_r( $sortie );
-						}
-						else{
-							if( file_exists( $path.$user.'/result.txt' )){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
+						if( is_dir($path.'tests')){
+							$dir = opendir($path.'tests'); 
+				            $delimiter=".";
+				            while($file = readdir($dir)) {
+				                if($file != '.' && $file != '..')
+				                {
+				                  $explode=explode($delimiter, $file);
+				                }
+				            }
 
-								//success('Le test a bien été éxécuté.');
+				            closedir($dir);
 
-								$GLOBALS['num_test'] 		= 1;
-								$GLOBALS['num_ss_test'] 	= 1;
-								$i 		= 0;
+				            $cmd = 'java -cp ' . $junit . ':' . $path .'tests:' . $path . $user . ':upload:. Runner '. $path.$user ."/ ". $explode[0] .' 2>&1';
+				            //echo $cmd.'<br>';
+							exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
 
-								if( !$fp = fopen( $path.$user.'/result.txt' ,"r")){
-									echo('<h1>fichier pas ouvert</h1>');
-								} 
-								while (!feof($fp)) { 
-		  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
-		  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
-		  							if( isset($result[2]) ){
-		  								$tab[ ++$i ][0] =	$result[0];
-		  								$tab[   $i ][1] =	$result[5];
-		  								$tab[   $i ][2] =	$result[2];
-		  								$tab[	$i ][3] =	$result[3];
-		  								$tab[	$i ][4] =	$result[4];
+							if( $code != 0 )
+							{
+								print_r( $sortie );
+							}
+							else{
+								if( file_exists( $path.$user.'/result.txt' )){	//LE FICHIER DE RESULTATS A BIEN ETE ECRIT
+
+									//success('Le test a bien été éxécuté.');
+
+									$GLOBALS['num_test'] 		= 1;
+									$GLOBALS['num_ss_test'] 	= 1;
+									$i 		= 0;
+
+									if( !$fp = fopen( $path.$user.'/result.txt' ,"r")){
+										echo('<h1>fichier pas ouvert</h1>');
+									} 
+									while (!feof($fp)) { 
+			  							$ligne 		= fgets($fp, 2000); // lecture du contenu de la ligne
+			  							$result 	= explode("/$/", $ligne);		//recupere chaque parties sur une ligne de resultat
+			  							if( isset($result[2]) ){
+			  								$tab[ ++$i ][0] =	$result[0];
+			  								$tab[   $i ][1] =	$result[5];
+			  								$tab[   $i ][2] =	$result[2];
+			  								$tab[	$i ][3] =	$result[3];
+			  								$tab[	$i ][4] =	$result[4];
+			  								$tab[	$i ][5] =	$result[1];
+										}
 									}
+									//print_r($tab);
+									foreach ($tab as $k => $inf) {
+											// NOM    NOTE_M   VAL_T    STATUS   DESC
+										addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user, $inf[5]	);
+									}
+									system("rm -rf " . $path.$user.'/result.txt' );
+									echo 'fin de programme';
 								}
+<<<<<<< HEAD
 								//print_r($tab);
 								foreach ($tab as $k => $inf) {
 										// NOM    NOTE_M   VAL_T    STATUS   DESC
@@ -107,11 +120,13 @@
 								}
 								// system("rm -rf " . $path.$user.'/result.txt' );
 								echo 'fin de programme';
+=======
+>>>>>>> d1e3efbf16eb2b5920ef94c9c564bba63530cd4d
 							}
 						}
-					}
-					else{
-						//echo 'pas de dossier';
+						else{
+							//echo 'pas de dossier';
+						}
 					}
 				}
 			}

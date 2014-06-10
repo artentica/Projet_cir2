@@ -34,7 +34,7 @@
         <article  class="col-sm-8 col-sm-offset-2">
           <div id="etat" class="row "></div>
           <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
-          <a href="#" id="test" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
+          <a href="#" id="lancement_all" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
           <?php
             if( isset($_GET['P']) )
             {
@@ -64,7 +64,7 @@
                               </a>
                             </td>
                             <td>
-                              <a class="test-e" value="' . $val[0] . '" class="btn btn-primary btn-success" href="#">
+                              <a class="test-e btn btn-primary btn-success" value="' . $val[0] . '" href="#">
                                 <span class="glyphicon glyphicon-list"></span> Lancer
                               </a>
                             </td>
@@ -93,9 +93,9 @@
             elseif( isset(  $_GET['del']  ) ){
 
               system('rm -rf ' . escapeshellarg( "upload/project"         . $_GET['del'] ), $retval );
+              $nb   = Ins("DELETE FROM RESULT WHERE PROJECT_ID="          . $_GET['del'] );
               $nb   = Ins("DELETE FROM SUBTEST WHERE PROJECT_ID="         . $_GET['del'] );
               $nb   = Ins("DELETE FROM TEST WHERE PROJECT_ID="            . $_GET['del'] );
-              $nb   = Ins("DELETE FROM RESULT WHERE PROJECT_ID="          . $_GET['del'] );
               $nb   = Ins("DELETE FROM TEACHER_PROJECT WHERE PROJECT_ID=" . $_GET['del'] );
               $nb   = Ins("DELETE FROM PROJECT WHERE PROJECT_ID="         . $_GET['del'] );
               header("location: choose-p.php");
@@ -113,33 +113,16 @@
     </div>
     <script type="text/javascript">
 
-        /*function refresh(){
-          // traitement
-          $.ajax({
-            type: 'POST',
-            url:  'check_lunch_test.php',
-            timeout: 1000,
-            success:function(data) {
-              $('#etat').append('<p>' + data + '</p>');
-            },
-            error: function() {
-              $('#etat').append('<p>#</p>');
-            }
-          });
-        }*/
-
-
-
       $('#check_del').click( function(){
           var conf = confirm('Etes-vous sur de vouloir supprimer le projet?');
           if (conf == true) { return true; } 
           else { return false; }
       });
 
-      $('#test').click( function() {
+      $('#lancement_all').click( function() {
         $.ajax({
           type: 'GET',
-          url: 'recup.php?P=<?= $_GET['P'] ?>&U='+ this.value,
+          url: 'recup.php?P=<?= $_GET['P'] ?>&U=all',
           timeout: 25000,
           success: function(data) {
             $('#etat').append( data );
