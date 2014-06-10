@@ -95,10 +95,12 @@
                             <td> $val[5] </td>
                           </tr>" ;
                     $note     += $points;
-                    
+
+
                   }
                   $B    = Select('SELECT SUM(MARK) FROM TEST WHERE PROJECT_ID=' . $pro );
                   $bareme = $B[0][0];
+                  if($note >$bareme)$note=$bareme;
             }
             else{ // SI ELEVE
                   $sql = "SELECT T.NAME, T.MARK, S.KIND, S.VALEUR, R.STATUS, R.DESCRIPTION 

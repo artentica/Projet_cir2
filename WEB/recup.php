@@ -112,7 +112,7 @@ if( !empty($_GET['U']) && !empty($_GET['P']))
 											// NOM    NOTE_M   VAL_T    STATUS   DESC     LOGIN  NB_FOIS_TESTER
 			  							addM($inf[0], $inf[1], $inf[2], $inf[3], $inf[4], $user, $inf[5]	);
 			  						}
-									// system("rm -rf " . $path.$user.'/result.txt' );
+									system("rm -rf " . $path.$user.'/result.txt' );
 			  						echo 'fin de programme';
 			  					}
 

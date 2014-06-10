@@ -41,7 +41,7 @@ public class RatesTest{
 		catch (AssertionError e) {
 		error= e.toString();
 		}
-		runner= new Runner("testGetDataFromFile",1,"True",status,error,2F);
+		runner= new Runner("GetDataFromFile",1,"True",status,error,2F);
 		Runner.add(runner);
 	}
 
