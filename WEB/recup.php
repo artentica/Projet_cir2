@@ -33,7 +33,7 @@
 
 		foreach ($users as $num => $user) { //POUR CHACUN DES ELEVES
 
-			if()
+			if( is_dir($path.$user))
 			{
 				echo 'Compilation de la classe de test <br>';
 				$cmd = 'javac -encoding utf-8 -cp ' . $junit . ':'.$path.$user.':upload/:. '. $path .'tests/*.java 2>&1';
