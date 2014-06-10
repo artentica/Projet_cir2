@@ -29,7 +29,7 @@ public class Runner{
 	public static void write_file (Vector<Runner> v2, String road)
 	{               
 		try {
-			FileOutputStream ops=new FileOutputStream(road+"result.txt");
+			FileOutputStream ops=new FileOutputStream(road+"result.txt",true);
 			PrintWriter pw=new PrintWriter(ops);
 			for (int i=0; i<v2.size(); i++) {
 				pw.print(v2.elementAt(i).name_fct);
