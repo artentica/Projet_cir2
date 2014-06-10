@@ -85,15 +85,17 @@
 
                   foreach ($rep as $key => $val) {
                     $O = ( $val[4] > 0 ) ? 'OK' : 'KO';
+                    $points=round($val[1] / $val[2],2);
                     echo "<tr>
                             <td> $val[0] </td>
-                            <td> $val[4] / $val[1] </td>
+                            <td> $points </td>
                             <td> $val[2] </td>
                             <td> $val[3] </td>
                             <td>    $O   </td>
                             <td> $val[5] </td>
                           </tr>" ;
-                    $note     += $val[4];
+                    $note     += $points;
+                    
                   }
                   $B    = Select('SELECT SUM(MARK) FROM TEST WHERE PROJECT_ID=' . $pro );
                   $bareme = $B[0][0];
