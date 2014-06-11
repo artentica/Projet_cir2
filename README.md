@@ -28,7 +28,7 @@ Ce site nécéssite l'installation de :
 
   - Apache2     Version:  2.2.22
   - PHP5        Version:  5.4.4-14
-  - MySQL       Version:  5.4.4-14
+  - MySQL       Version:  5.5.37
 
   - Vous devez autoriser apache a utiliser les fichiers .htaccess
 
