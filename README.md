@@ -7,7 +7,7 @@
 ##########################################################################
 ##########################################################################
 
-le projet de fin d'année de web et de java
+Projet de fin d'année de web et de java
 
 Equipe: Riouallon Vincent | Collignon Rémi
 
@@ -50,14 +50,15 @@ II)   modifier les droits:
       Certains fichiers ont besoin de droits particulier,
       Soit $USER$ votre nom d'utilisateur:
 
-	     sudo chown $USER$ -R /var/www/Mon_site_de_test
+	   sudo chown $USER$ -R /var/www/Mon_site_de_test
 
   	   chmod 755 -R /var/www/Mon_site_de_test
   	   
        chown www-data -R  /var/www/Mon_site_de_test/upload
   	   
        chmod 755 -R /var/www/Mon_site_de_test/upload
-       ( pour etre sûr )
+      
+      ( pour etre sûr )
 
 III)  Générer la base de donnée, 
       Vous devez créer une base de donnée avec PHPMyadmin ou avec le shell mysql
