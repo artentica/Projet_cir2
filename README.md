@@ -15,8 +15,22 @@ ETAT:
 
 
 -quelle page afficher si erreur? page d'index ou de choix de projet
-- clean la directory quand changement /depot /tests
-- verifier que tout les tests soient en bdd
-- gerer les notes -> xls.php et gestion-p
-- ajout possibilitée de tester dans gestion-e
+-- gerer les notes -> xls.php et gestion-p
 - class pour nav
+
+
+##########################################################################
+##########################################################################
+##                                                                      ##
+##                          INSTALLATION                                ##
+##                                                                      ##
+##########################################################################
+##########################################################################
+
+I) copier le contenu de Projet_cir2/ dans le dossier de /var/www/ de votre 
+	choix
+II) modifier les droits:
+	chown USER sur tout le contenu de Projet_cir2
+	chmod 755 -R Projet_cir2
+	chown www-data -R  **dossier upload**
+	chmod 755 -R **dossier upload**
