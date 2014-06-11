@@ -19,3 +19,16 @@ html, body, .container{
 		width: 200px !important;
 	}
 }
+#loading{
+	-moz-animation: tourne 5s linear infinite;
+	-webkit-animation: tourne 5s linear infinite;
+
+}
+@-webkit-keyframes tourne{
+     from { -webkit-transform: rotate(0deg); }
+     to   { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes tourne{
+	from { -moz-transform: rotate(0deg); }
+     to   { -moz-transform: rotate(360deg); }
+}
