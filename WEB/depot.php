@@ -27,7 +27,7 @@
      		<?php hello(); ?>
 
     		<div    class="row" >
-          <form class="form-horizontal col-lg-8 col-offset-2" action="depot.php?P=<?= $_GET['P'] ?>" method="POST" enctype="multipart/form-data">
+          <form class="form-horizontal col-xs-4 col-offset-4" action="depot.php?P=<?= $_GET['P'] ?>" method="POST" enctype="multipart/form-data">
             <fieldset>
               <legend>Dépôt de fichiers source</legend>
 
