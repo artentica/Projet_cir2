@@ -91,7 +91,7 @@
                 if( !is_dir( $doss ) ) //SI LE REPERTOIRE N EXISTE PAS
                 {
                   if(mkdir($doss , 0777, true)){
-                    echo('Dossier créé! '. $doss);
+                    //echo('Dossier créé! '. $doss);
                   }
                   else{
                     echo('Un problème a eu lieu lors de la création du dossier');
@@ -113,6 +113,12 @@
                 else
                 {
                   success( '<strong>Vos sources ont bien été déposées</strong>. ' );
+
+                  echo "<script type='text/javascript'>setTimeout(function() {
+                  document.location.replace('gestion-p.php?P=". $_GET['P']."');
+                  }, 4000);</script>";
+
+                  
                 }
             }
           }
