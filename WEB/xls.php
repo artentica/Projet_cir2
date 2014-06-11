@@ -14,29 +14,46 @@
 	$req 		= 	Select('SELECT * FROM PROJECT WHERE PROJECT_ID=' . $P);
 	$pro 		= 	$req[0];
 
-	//ENTETE TABLEAU
+//ENTETE TABLEAU
 	$S->setCellValueByColumnAndRow( 0, 1, "PROJET:" 			);
 	$S->setCellValueByColumnAndRow( 1, 1, $pro['NAME'] 			);
 	$S->setCellValueByColumnAndRow( 2, 1, "DATE:" 				);
 	$S->setCellValueByColumnAndRow( 3, 1, $pro['DATE_BUTOIRE'] 	);
 	$S->setCellValueByColumnAndRow( 4, 1, "MOYENNE:" 			);
 
-	//DEBUT REMPLISSAGE NOTES
-	$resume = array();
-	$req 	= Select('SELECT * FROM RESULT WHERE PROJECT_ID=' . $P );
+//DEBUT REMPLISSAGE NOTES
+	$resume 	= array();
+	$users 		= array();
+	$U 			= Select('SELECT DISTINCT LOGIN FROM RESULT WHERE PROJECT_ID='. $P );
+	//print_r($U);
+	foreach ($U as $key => $val) {		// PARCOUR TABLEAU DE LOGINS
+		$u = $val['LOGIN'];
+		$rep=  Select("SELECT T.MARK, S.KIND, R.STATUS 
+	                          FROM TEST T
 
-	foreach ($req as $k => $val) {
-			if( !isset( $resume[($val['LOGIN'])] )	){
-				$resume[ ($val['LOGIN']) ] = $val['STATUS'];
-			}
-			else{
-				$resume[ ($val['LOGIN']) ] += $val['STATUS'];
-			}	
+	                          INNER JOIN SUBTEST S
+	                          ON S.PROJECT_ID = T.PROJECT_ID
+	                            AND S.TEST_NUM = T.TEST_NUM
+
+	                          INNER JOIN RESULT R
+	                          ON R.PROJECT_ID = T.PROJECT_ID
+	                            AND R.TEST_NUM = T.TEST_NUM
+	                            AND R.SUBTEST_NUM = S.SUBTEST_NUM
+
+	                          WHERE R.PROJECT_ID=$P 
+	                            AND R.LOGIN='" . $u . "'");
+	    $note 		= 0;
+	    foreach ($rep as $k => $val) {
+	    	if($val[2] >0 )
+	    		$note += round( $val[0] / $val[1], 2 );
+	    }
+	    $resume[ $u ] = $note;
 	}
+
 
 	//BAREME
 	$B 		= Select('SELECT SUM(MARK) FROM TEST WHERE PROJECT_ID=' . $P );
-	$bareme = $B[0][0];
+    $bareme = $B[0][0];
 
 	$i = 3; 	//COMMENCE A LA LIGNE 3
 
@@ -49,7 +66,7 @@
 
 	$S->setCellValueByColumnAndRow( 5, 1, '=(SUM(B3:B200))/' . count($resume) );			//MOYENNE
 
-	print_r($resume);
+	//print_r($resume);
 
 	//STYLE FEUILLE
 
