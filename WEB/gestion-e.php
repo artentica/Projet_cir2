@@ -11,7 +11,6 @@
 
   	<body>
     	<div 		class="container">
-
       		<nav 	class="navbar navbar-inverse">
         		<ul class="nav navbar-nav">
           			<?php acc(); 
@@ -31,7 +30,7 @@
 		            	</button>
 		            	<p id="etat" class="text-center"><span id="loading" class="glyphicon glyphicon-refresh"></span></p>
 		        	</div>
-		        	<a href="#" id="lancement" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests</a>
+		        	<a href="#" value="<?= $_SESSION['login'] ?>" class="btn btn-xs btn-primary test-e"><span class="glyphicon glyphicon-list"></span> Lancer les tests</a>
 		        	<?php
 		            	if( isset($_GET['P']) ){
 			              	$pro 	= Select("SELECT * FROM PROJECT WHERE PROJECT_ID=" . $_GET['P']	);
@@ -80,5 +79,11 @@
 			              acc();
 			            }
 		      		?>
-        </article>
-      </div>
+        		</article>
+        	</div>
+      	</div>
+      	<script type="text/javascript">
+      		var p = <?= $_GET['P']?>
+    	</script>
+    </body>
+</html>
