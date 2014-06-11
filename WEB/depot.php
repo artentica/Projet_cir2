@@ -113,22 +113,17 @@
                 else
                 {
                   success( '<strong>Vos sources ont bien été déposées</strong>. ' );
-<<<<<<< HEAD
-                  if (C_prof())echo "<script type='text/javascript'>setTimeout(function() {
-                  document.location.replace('gestion-p.php?P=". $_GET['P']."&launcher=0');
-                  }, 4000);</script>";
-                  else echo "<script type='text/javascript'>setTimeout(function() {
-                  document.location.replace('gestion-e.php?P=". $_GET['P']."&launcher=0');
-                  }, 4000);</script>";
-                
-=======
 
-                  echo "<script type='text/javascript'>setTimeout(function() {
-                  document.location.replace('gestion-p.php?P=". $_GET['P']."');
-                  }, 3000);</script>";
->>>>>>> 192f272feeb8514908b9157ef0c8d96d5bdcb2f0
-
-                  
+                  if (C_prof()){
+                    echo "<script type='text/javascript'>setTimeout(function() {
+                              document.location.replace('gestion-p.php?P=". $_GET['P']."&launcher=0');
+                          }, 4000);</script>";
+                  }
+                  else{ 
+                    echo "<script type='text/javascript'>setTimeout(function() {
+                            document.location.replace('gestion-e.php?P=". $_GET['P']."&launcher=0');
+                          }, 4000);</script>";
+                  }
                 }
             }
           }
