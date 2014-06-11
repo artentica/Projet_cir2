@@ -15,17 +15,14 @@
       }
     </style>
   </head>
-
   <body>
     <div    class="container">
-
       <nav  class=" navbar navbar-inverse">
         <ul class="navbar-nav nav">
           <?php acc(); 
                 if( C_prof() ) cre();
                 retour();
           ?>
-
           <form class="navbar-form pull-right">  
             <li>	<?php deco(); ?>	</li>
           </form>
@@ -37,9 +34,7 @@
         <article  class="col-sm-8 col-sm-offset-2">
           <div    class="panel panel-primary">
             <div  class="panel-heading">
-              <h3 class="panel-title">
-                Résultats:
-              </h3>
+              <h3 class="panel-title">   Résultats:  </h3>
             </div>
             <div      class="panel-body">
               <table  class="table table-striped table-bordered table-hover text-center" >
@@ -47,10 +42,9 @@
                   <tr>
                     <th>Fonction testée</th>
                     <?php if( !C_prof() ){ 
-                    echo '<th>Resultat des tests</th>';
+                      echo '<th>Resultat des tests</th>';
                     }
-                    ?>
-                    <?php if( C_prof() ){ 
+                    else{ 
                       echo '<th>Note du test</th>';
                       echo '<th>Type de test</th>'; 
                       echo '<th>Valeur(s) utilisée(s)</th>';
@@ -60,10 +54,10 @@
                     <?php if(C_prof() ) echo '<th>Description</th>'; ?>
                   </tr>
                 </thead>
-          <?php
+                <?php
 
-            $pro = $_GET['P'];
-            $use = $_GET['U'];
+                  $P = $_GET['P'];
+                  $use = $_GET['U'];
 
             if( C_prof() )  //SI prof
             {
@@ -79,12 +73,12 @@
                             AND R.TEST_NUM = T.TEST_NUM
                             AND R.SUBTEST_NUM = S.SUBTEST_NUM
 
-                          WHERE R.PROJECT_ID=$pro 
+                          WHERE R.PROJECT_ID=$P 
                             AND R.LOGIN='$use'";
                   
                   $rep      = Select( $sql );
                   $note     = 0;
-                  $_SESSION['bareme_'. $pro ] =   array();
+                  $_SESSION['bareme_'. $P ] =   array();
                   $_SESSION['bareme']   =   0;
 
                   foreach ($rep as $key => $val) {
@@ -105,7 +99,7 @@
 
 
                   }
-                  $B    = Select('SELECT SUM(MARK) FROM TEST WHERE PROJECT_ID=' . $pro );
+                  $B    = Select('SELECT SUM(MARK) FROM TEST WHERE PROJECT_ID=' . $P );
                   $bareme = $B[0][0];
                   if($note >$bareme)$note=$bareme;
             }
@@ -122,7 +116,7 @@
                             AND R.TEST_NUM = T.TEST_NUM
                             AND R.SUBTEST_NUM = S.SUBTEST_NUM
 
-                          WHERE R.PROJECT_ID=$pro 
+                          WHERE R.PROJECT_ID=$P 
                             AND R.LOGIN='$use'";
                   
                   $rep = Select( $sql );
