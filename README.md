@@ -28,6 +28,8 @@ Ce site nécéssite l'installation de :
 
   - Débian 7.5 	WHEEZY
 
+  - java(JRE)   Version:  1.7
+  - java(JDK)   Version:  1.7
   - Apache2     Version:  2.2.22
   - PHP5        Version:  5.4.4-14
   - MySQL       Version:  5.5.37
