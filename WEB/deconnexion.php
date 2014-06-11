@@ -22,7 +22,7 @@
 			  	<div 	class="panel-body">
 			    	Vous venez d'être déconnecté, vous allez être redirigé.
 		    		<script type="text/javascript">
-						var obj = 'window.location.replace("<?= $GLOBALS['page_connexion'] ?>");';
+						var obj = 'window.location.replace("<?= page_connexion ?>");';
 						setTimeout(obj,1500); 
 					</script>
 			  	</div>

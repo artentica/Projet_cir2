@@ -37,7 +37,7 @@
 			$_SESSION['groupe'] = $groupeISEN;
 //===============================================================================================================================================
 
-			$prof = ( $_SESSION['groupe'] == $GLOBALS['p_group'] ) ? TRUE : FALSE ; // DETECTE SI C'EST UN PROF
+			$prof = ( $_SESSION['groupe'] == p_group ) ? TRUE : FALSE ; // DETECTE SI C'EST UN PROF
 
 			$user = ($prof) ? Select("SELECT * FROM TEACHER WHERE TEACHER.LOGIN='" . $userData["Login"] ."'") :	//LE RECHERCHE DANS LA BASE DE DONNEE
 							  Select("SELECT * FROM STUDENT WHERE STUDENT.LOGIN='" . $userData["Login"] ."'");

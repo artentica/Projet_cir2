@@ -23,7 +23,7 @@ public class RatesTest{
 
 	@Test public void testGetDataFromFile(){
 		try{
-		 Assert.assertTrue(rate.getDataFromFile("test_rate.xml"));
+		 Assert.assertTrue(rate.getDataFromFile("../test_rate.xml"));
 		 status=1;
 		}
 		catch (AssertionError e) {
@@ -50,9 +50,9 @@ public class RatesTest{
 
 	
 	@Test public void testgetRate(){
-		float expected=0F;
+		float expected=0;
 		try{
-		 Assert.assertNotSame(rate.getRate("USD"),expected);
+		 Assert.assertFalse(rate.getRate("USD")==expected);
 		 status=1;
 		}
 		catch (AssertionError e) {
