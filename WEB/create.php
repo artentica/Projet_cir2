@@ -148,8 +148,9 @@
 								}
 								else
 								{
-									success( '<strong>Le projet a été créé avec succès</strong> Nom: ' . $_POST['nom'] . '  
-											<a href="gestion-p.php?P='. $id .'" class="alert-link"> Voir le projet</a>.');
+									echo "<script type='text/javascript'>document.location.replace('gestion-p.php?P=". $id."');</script>";
+									// success( '<strong>Le projet a été créé avec succès</strong> Nom: ' . $_POST['nom'] . '  
+									// 		<a href="gestion-p.php?P='. $id .'" class="alert-link"> Voir le projet</a>.');
 								}
 							}
 						}
