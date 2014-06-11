@@ -58,14 +58,14 @@ public class Bank {
      * @param arg 
      *	    parametre par defaut
      */
-    public static void main ( String [] arg )
-    {
-	System.out.println("Demarrage du programme");
+    // public static void main ( String [] arg )
+    // {
+	// System.out.println("Demarrage du programme");
 	
-	money = new Money( (float) 1.0, "USD" );
-	money.add( (float) 50 );
-	System.out.println( money.toString() );
+	// money = new Money( (float) 1.0, "USD" );
+	// money.add( (float) 50 );
+	// System.out.println( money.toString() );
 	
-	System.out.println("Fin du programme");
-    }
+	// System.out.println("Fin du programme");
+ //    }
 }

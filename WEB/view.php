@@ -85,7 +85,10 @@
 
                   foreach ($rep as $key => $val) {
                     $O = ( $val[4] > 0 ) ? 'OK' : 'KO';
-                    $points=round($val[1] / $val[2],2);
+                    if ($val[4]>0) {
+                      $points=round($val[1] / $val[2],2);
+                    }
+                    else $points=0;
                     echo "<tr>
                             <td> $val[0] </td>
                             <td> $points </td>
