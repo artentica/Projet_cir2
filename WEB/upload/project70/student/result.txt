@@ -19,7 +19,7 @@ toString/$/2/$/0.0 EUR/$/1/$/pas de problemes/$/1.0
 toString/$/2/$/-2.45 EUR/$/1/$/pas de problemes/$/1.0
 addMoney/$/1/$/25.0/$/1/$/pas de problemes/$/2.0
 subMoney/$/1/$/10.0/$/1/$/pas de problemes/$/2.0
-toString/$/1/$/coucou/$/0/$/org.junit.ComparisonFailure: KO expected:<[coucou]> but was:<[0.0 EUR]>/$/1.0
+toStringBank/$/1/$/coucou/$/0/$/org.junit.ComparisonFailure: KO expected:<[coucou]> but was:<[0.0 EUR]>/$/1.0
 GetDataFromFile/$/1/$/True/$/0/$/java.lang.AssertionError: null/$/2.0
 getDataFromInternet/$/1/$/True/$/1/$/pas de problemes/$/2.0
 getRate/$/1/$/0.0/$/1/$/pas de problemes/$/1.0
@@ -41,4 +41,4 @@ toString/$/2/$/0.0 EUR/$/1/$/pas de problemes/$/1.0
 toString/$/2/$/-2.45 EUR/$/1/$/pas de problemes/$/1.0
 addMoney/$/1/$/25.0/$/1/$/pas de problemes/$/2.0
 subMoney/$/1/$/10.0/$/1/$/pas de problemes/$/2.0
-toString/$/1/$/coucou/$/0/$/org.junit.ComparisonFailure: KO expected:<[coucou]> but was:<[0.0 EUR]>/$/1.0
+toStringBank/$/1/$/coucou/$/0/$/org.junit.ComparisonFailure: KO expected:<[coucou]> but was:<[0.0 EUR]>/$/1.0
