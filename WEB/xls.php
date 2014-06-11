@@ -93,10 +93,10 @@
 
 	//RENDU DU FICHIER ET ENVOI
 	$writer 	= new PHPExcel_Writer_Excel5($workbook);
-	$records 	= $path . $GLOBALS['nom_xls'];
+	$records 	= $path . nom_xls;
 	$writer->save($records);
 
-	$file = $path . $GLOBALS['nom_xls'];
+	$file = $path . nom_xls ;
 	if (file_exists($file)) {
 	    header('Content-Description: File Transfer');
 	    header('Content-Type: application/octet-stream');

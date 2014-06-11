@@ -6,7 +6,7 @@
 	// Ajoute un boutton acceuil
 	function acc()
 	{
-		$page = ($_SESSION['groupe'] == $GLOBALS['p_group']) ? "choose-p" : "choose-p" ;
+		$page = ($_SESSION['groupe'] == p_group ) ? "choose-p" : "choose-p" ;
       	echo ('
       		<div class="navbar-header">
         		<a class="navbar-brand" href="' . $page . '.php">Accueil</a>
@@ -54,7 +54,7 @@
 	//fonction de test si la personne connéctée est un prof
 	function C_prof()
 	{
-		return ($_SESSION['groupe'] == $GLOBALS['p_group'] ) ? TRUE : FALSE ;
+		return ($_SESSION['groupe'] == p_group ) ? TRUE : FALSE ;
 	}
 	// pages reserver aux professeurs
 	function forprof()
@@ -66,7 +66,7 @@
 	// pages reservées aux etudiants
 	function foretud()
 	{
-			if( !in_array( $_SESSION['groupe'], $GLOBALS['p_group'] ) ){
+			if( !in_array( $_SESSION['groupe'], p_group ) ){
 				header("Location: erreur.php?erreur=droit");
 			}
 	}

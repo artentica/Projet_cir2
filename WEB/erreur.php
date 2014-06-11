@@ -11,7 +11,7 @@
     <body>
       <div  class="jumbotron" >
       <h1>Une erreur est survenue...</h1>
-      <a    class="btn btn-lg btn-warning" href="<?= $GLOBALS['page_connexion'] ?>" >
+      <a    class="btn btn-lg btn-warning" href="<?= page_connexion ?>" >
          <span class="glyphicon glyphicon-home"></span>
          Retour au site
       </a>

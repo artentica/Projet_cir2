@@ -8,7 +8,7 @@
 		try
 		{
 			// On se connecte à MySQL
-			$db  = new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd'], array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+			$db  = new PDO('mysql:host=' . host . ';dbname='. dbname, userdb, passwd, array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 			//echo $string; 				//DEBUG
 			$tmp = $db->query( $string );
 			if($tmp != FALSE)
@@ -33,7 +33,7 @@
 	{
 		try
 		{	// On se connecte à MySQL
-			$db = 	new PDO('mysql:host=' . $GLOBALS['host'] . ';dbname='. $GLOBALS['dbname'], $GLOBALS['userdb'], $GLOBALS['passwd']);
+			$db = 	new PDO('mysql:host=' . host . ';dbname='. dbname, userdb, passwd);
 			$nb = 	$db->exec( utf8_decode( $string ) );
 			return 	$db->lastInsertId();
 		}

@@ -116,7 +116,7 @@
 
                   echo "<script type='text/javascript'>setTimeout(function() {
                   document.location.replace('gestion-p.php?P=". $_GET['P']."');
-                  }, 4000);</script>";
+                  }, 3000);</script>";
 
                   
                 }
