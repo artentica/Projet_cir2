@@ -21,6 +21,10 @@
 	$S->setCellValueByColumnAndRow( 3, 1, $pro['DATE_BUTOIRE'] 	);
 	$S->setCellValueByColumnAndRow( 4, 1, "MOYENNE:" 			);
 
+	$S->setCellValueByColumnAndRow( 0, 3, "NOM:" 			);
+	$S->setCellValueByColumnAndRow( 1, 3, "NOTE:" 			);
+	$S->setCellValueByColumnAndRow( 2, 3, "BAREME:" 		);
+
 //DEBUT REMPLISSAGE NOTES
 	$resume 	= array();
 	$users 		= array();
@@ -55,7 +59,7 @@
 	$B 		= Select('SELECT SUM(MARK) FROM TEST WHERE PROJECT_ID=' . $P );
     $bareme = $B[0][0];
 
-	$i = 3; 	//COMMENCE A LA LIGNE 3
+	$i = 5; 	//COMMENCE A LA LIGNE 3
 
 	foreach ($resume as $k => $v) {
 		$S->setCellValueByColumnAndRow( 0, $i, $k 		);
