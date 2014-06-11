@@ -32,7 +32,7 @@
       <?php hello(); ?>
       <div        class="row" >
         <article  class="col-sm-8 col-sm-offset-2">
-          <div class="row cols-xs-12 alert alert-success">
+          <div id="Cetat" class="row cols-xs-12 alert alert-success">
             <button type="button" class="close" data-dismiss="alert">&times;
             </button>
             <p id="etat" class="text-center"><span id="loading" class="glyphicon glyphicon-refresh"></span></p>
@@ -117,7 +117,7 @@
     </div>
     <script type="text/javascript">
 
-      $('#etat').hide();
+      $('#Cetat').hide();
 
       $('#check_del').click( function(){
           var conf = confirm('Etes-vous sur de vouloir supprimer le projet?');
@@ -126,7 +126,7 @@
       });
 
       $('#lancement_all').click( function() {
-        $('#etat').show();
+        $('#Cetat').show();
         $.ajax({
           type: 'GET',
           url: 'recup.php?P=<?= $_GET['P'] ?>&U=all',
@@ -144,7 +144,7 @@
 
       $('.test-e').click( function() {
           //alert ( $( this ).attr('value') );
-          $('#etat').show();
+          $('#Cetat').show();
         $.ajax({
           type: 'GET',
           url: 'recup.php?P=<?= $_GET['P'] ?>&U=' + $( this ).attr('value') ,
