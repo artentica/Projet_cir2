@@ -90,7 +90,7 @@ public class BankTest {
 			nb_test_ko++;
 			error= e.toString();
 		}
-		runner = new Runner("toStringBank",1,expected,status,error,1F);
+		runner = new Runner("toString",1,expected,status,error,1F);
 		Runner.add(runner);
 	}
 

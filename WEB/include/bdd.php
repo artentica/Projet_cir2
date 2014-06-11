@@ -60,9 +60,9 @@
 		}
 		else{
 			$t = Ins("INSERT INTO TEST VALUES(	$P, ". $GLOBALS['num_test']++ .", '$nom', $N)");
-			$a = Select("SELECT TEST_NUM FROM TEST WHERE NAME='$nom' && PROJECT_ID=$P");
+			//$a =Select("SELECT TEST_NUM FROM TEST WHERE NAME='$nom' && PROJECT_ID=$P");
 			//print_r($a);
-			$idTest = $a[0][0];
+			$idTest = $t;
 			//echo 'test ajouté';
 		}
 		//ON A L ID DU TEST
@@ -78,14 +78,14 @@
 						 		   VALUES( $P,         $idTest ,". $GLOBALS['num_ss_test']++ .", $nb_fonction, '$VT' )";
 			//echo '<br>'.$sqlb;
 			$b = Ins( $sqlb );
-			$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='". $VT ."' && PROJECT_ID=$P");
-			$idSSTest = $req[0][0];
+			//$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='". $VT ."' && PROJECT_ID=$P");
+			$idSSTest = $b;
 			echo 'SStest ajouté';
 		}
 		//ON A L ID SS TEST
 
 		$sqlc = "INSERT INTO RESULT VALUES('$u', $P, $idTest, $idSSTest, $S, '$D'  )";
-		echo $sqlc."<br>";
+		//echo $sqlc."<br>";
 		$n = Ins($sqlc);
 	}
 ?>
