@@ -50,9 +50,9 @@ public class RatesTest{
 
 	
 	@Test public void testgetRate(){
-		float expected=0F;
+		float expected=0;
 		try{
-		 Assert.assertNotSame(rate.getRate("USD"),expected);
+		 Assert.assertFalse(rate.getRate("USD")==expected);
 		 status=1;
 		}
 		catch (AssertionError e) {

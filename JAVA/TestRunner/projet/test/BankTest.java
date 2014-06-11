@@ -78,8 +78,8 @@ public class BankTest {
 	@Test 
 	public void testtoString(){
 		nb_test_ok_toString ++;
-		Money m1 = new Money();
-		String expected = "coucou";
+		//Money m1 = new Money(25F,"EUR");
+		String expected = b1.money.getAmount() +" "+b1.money.getCurrency();
 		try{
 			Assert.assertEquals("KO",expected,b1.toString());
 			status = 1;

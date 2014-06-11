@@ -58,6 +58,10 @@
 				                $zip->close();
 				            }
 				success('Le fichier de test a été modifié');
+
+				////////SUPRESSIOS DES ANCIENS RESULTATS///////////////////////////
+				
+
 			}
 
 
