@@ -49,43 +49,34 @@
 		$P = $_GET['P'];  
 
 		$sql = "SELECT TEST_NUM FROM TEST WHERE NAME='$nom' && PROJECT_ID=$P";
-		//echo $sql;
 		$req = Select($sql);
-		//print_r($req);
 
 		if( !empty( $req[0][0]) )	//	LE TEST EXISTE
-		{
 			$idTest = $req[0][0];	
-			//echo "testn $idTest<br>";
-		}
-		else{
-			$t = Ins("INSERT INTO TEST VALUES(	$P, ". $GLOBALS['num_test']++ .", '$nom', $N)");
-			//$a =Select("SELECT TEST_NUM FROM TEST WHERE NAME='$nom' && PROJECT_ID=$P");
-			//print_r($a);
-			$idTest = $t;
-			//echo 'test ajouté';
+		else
+		{
+			$a = Ins("INSERT INTO TEST VALUES(	$P, ". $GLOBALS['num_test']++ .", '$nom', $N)");
+
+			$req = Select("SELECT TEST_NUM FROM TEST WHERE NAME='$nom'");
+
+			$idTest = $req[0][0];
 		}
 		//ON A L ID DU TEST
 
-		$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='". $VT ."' && PROJECT_ID=$P && TEST_NUM=$idTest");
-		//print_r( $req );
+		$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='$VT' && TEST_NUM=$idTest && PROJECT_ID=$P ");
+		
 		if( !empty( $req[0][0]) )	//	LE SOUSTEST EXISTE
-		{
 			$idSSTest = $req[0][0];	
-		}
-		else{		//DOIT CREER LE SOUS TEST
-			$sqlb = "INSERT INTO SUBTEST ( PROJECT_ID, TEST_NUM, SUBTEST_NUM,                    KIND,  VALEUR) 
-						 		   VALUES( $P,         $idTest ,". $GLOBALS['num_ss_test']++ .", $nb_fonction, '$VT' )";
-			//echo '<br>'.$sqlb;
-			$b = Ins( $sqlb );
-			//$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='". $VT ."' && PROJECT_ID=$P");
-			$idSSTest = $b;
-			echo 'SStest ajouté';
+		else 			//DOIT CREER LE SOUS TEST
+		{		
+			$a = Ins("INSERT INTO SUBTEST ( PROJECT_ID, TEST_NUM, SUBTEST_NUM,                    KIND,  VALEUR) 
+						 		   VALUES( $P,         $idTest ,". $GLOBALS['num_ss_test']++ .", $nb_fonction, '$VT' )");
+
+			$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='$VT' && TEST_NUM=$idTest && PROJECT_ID=$P ");
+			$idSSTest = $req[0][0];
 		}
 		//ON A L ID SS TEST
 
-		$sqlc = "INSERT INTO RESULT VALUES('$u', $P, $idTest, $idSSTest, $S, '$D'  )";
-		//echo $sqlc."<br>";
-		$n = Ins($sqlc);
+		$n = Ins("INSERT INTO RESULT VALUES('$u', $P, $idTest, $idSSTest, $S, '$D'  )");
 	}
 ?>

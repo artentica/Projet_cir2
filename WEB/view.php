@@ -77,7 +77,6 @@
                               AND R.LOGIN='$user'";
                     
                     $rep      = Select( $sql );
-                    print_r($rep);
                     $note     = 0;
 
                     foreach ($rep as $key => $val) {
