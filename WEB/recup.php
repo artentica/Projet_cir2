@@ -62,7 +62,8 @@ if( !empty($_GET['U']) && !empty($_GET['P']))
 							$dir = opendir($path.'tests'); 
 							$delimiter=".";
 							while($file = readdir($dir)) {
-								if($file != '.' && $file != '..')
+
+								if($file != '.' && $file != '..' && !strstr( $file, ".java" ))
 								{
 									$explode=explode($delimiter, $file);
 									$cmd = 'java -cp ' . $junit . ':' . $path .'tests:' . $path . $user . ':upload:. Runner '. $path.$user ."/ ". $explode[0] .' 2>&1';

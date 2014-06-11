@@ -53,17 +53,10 @@
       </div>
     <?php   //DEPOT DES SOURCES
 
-      if( C_prof() ){
-        $login = 'student';
-      }
-      else{
-        $login = $_SESSION['login'];
-      }
+      $login = C_prof() ? 'student' : $_SESSION['login'];
 
       if( isset($_GET['P']) )
-      {  
           $_SESSION['p_temp'] = $_GET['P'];
-      }
 
       if( isset($_FILES['src']) ) // ON A ENVOYER UN FICHIER
       {
@@ -106,16 +99,12 @@
                 }
                 $output   = shell_exec( "rm -R " . $doss . "*" ); // VIDE LE DOSSIER
 
-              $zip = new ZipArchive;
-              $resultat=$zip->open($_FILES['src']['tmp_name']);
-              if ($zip->open($_FILES['src']['tmp_name']) === TRUE) {
-                  $resultat=$zip->extractTo($doss);
-                  $zip->close();
-              }
-             
-          
-
-                //$resultat = move_uploaded_file($_FILES['src']['tmp_name'], $doss . $_FILES['src']['name'] );
+                $zip = new ZipArchive;
+                $resultat=$zip->open($_FILES['src']['tmp_name']);
+                if ($zip->open($_FILES['src']['tmp_name']) === TRUE) {
+                    $resultat=$zip->extractTo($doss);
+                    $zip->close();
+                }
 
                 if( !$resultat) 
                 {
@@ -123,7 +112,7 @@
                 }
                 else
                 {
-                  success( '<strong>Vos sources ont bien été déposées</strong>.' );
+                  success( '<strong>Vos sources ont bien été déposées</strong>. ' );
                 }
             }
           }

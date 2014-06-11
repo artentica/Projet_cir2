@@ -119,4 +119,9 @@ public class Rates {
     }
     
 }
+// public static void main (String [] args)
+//     {
+//         Rates rate = new Rates();
+//         System.out.println(rate.getDataFromFile("test_rate.xml"));
+//         }
 }
