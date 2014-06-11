@@ -85,5 +85,26 @@
       	<script type="text/javascript">
       		var p = <?= $_GET['P']?>
     	</script>
+    	<?php
+    	if( isset($_GET['launcher'])){
+            echo "<script type=\"text/javascript\">
+            $( document ).ready( function(){
+              $('#Cetat').show();
+              $.ajax({
+                type: 'GET',
+                url: 'recup.php?P=' + '".$_GET['P']."' + '&U=".$_SESSION['login']."',
+                timeout: 25000,
+                success: function(data) {
+                  $('#etat').html( data );
+                  //setTimeout( refresh(), 10000);
+                },
+                error: function() {
+                  alert('La requête n\'a pas abouti'); 
+                  //refresh();
+                }
+              });});</script>";
+            }
+            ?>
+
     </body>
 </html>

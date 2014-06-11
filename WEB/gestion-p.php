@@ -40,6 +40,7 @@
           <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
           <a href="#" id="lancement_all" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
           <?php
+          
             if( isset($_GET['P']) )
             {
 
@@ -118,5 +119,27 @@
     <script type="text/javascript">
       var p = <?= $_GET['P']?>
     </script>
+    <?php if( isset($_GET['launcher']) && $_GET['launcher']=='1')
+            {echo "<script type=\"text/javascript\">
+            $( document ).ready( function(){
+              $('#Cetat').show();
+              $.ajax({
+                type: 'GET',
+                url: 'recup.php?P=' + '".$_GET['P']."' + '&U=all',
+                timeout: 25000,
+                success: function(data) {
+                  $('#etat').html( data );
+                  //setTimeout( refresh(), 10000);
+                },
+                error: function() {
+                  alert('La requête n\'a pas abouti'); 
+                  //refresh();
+                }
+              });});</script>";
+          
+            }
+          
+
+            ?>
   </body>
 </html>

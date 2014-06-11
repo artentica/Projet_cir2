@@ -59,8 +59,11 @@
 				            }
 				success('Le fichier de test a été modifié');
 
-				////////SUPRESSIOS DES ANCIENS RESULTATS///////////////////////////
-				
+				////////RECOMPILATIONS AVEC LES NOUVEAUX TEST///////////////////////////
+				echo "<script type='text/javascript'>setTimeout(function() {
+                  document.location.replace('gestion-p.php?P=". $_GET['P']."&launcher=1');
+                  }, 2500);</script>";
+					
 
 			}
 

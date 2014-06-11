@@ -113,10 +113,13 @@
                 else
                 {
                   success( '<strong>Vos sources ont bien été déposées</strong>. ' );
-
-                  echo "<script type='text/javascript'>setTimeout(function() {
-                  document.location.replace('gestion-p.php?P=". $_GET['P']."');
+                  if (C_prof())echo "<script type='text/javascript'>setTimeout(function() {
+                  document.location.replace('gestion-p.php?P=". $_GET['P']."&launcher=0');
                   }, 4000);</script>";
+                  else echo "<script type='text/javascript'>setTimeout(function() {
+                  document.location.replace('gestion-e.php?P=". $_GET['P']."&launcher=0');
+                  }, 4000);</script>";
+                
 
                   
                 }

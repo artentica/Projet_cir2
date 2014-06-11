@@ -46,8 +46,12 @@
                 <thead>
                   <tr>
                     <th>Fonction testée</th>
-                    <th>Note du test</th>
+                    <?php if( !C_prof() ){ 
+                    echo '<th>Resultat des tests</th>';
+                    }
+                    ?>
                     <?php if( C_prof() ){ 
+                      echo '<th>Note du test</th>';
                       echo '<th>Type de test</th>'; 
                       echo '<th>Valeur(s) utilisée(s)</th>';
                     }
@@ -70,7 +74,7 @@
                           ON S.PROJECT_ID = T.PROJECT_ID
                             AND S.TEST_NUM = T.TEST_NUM
 
-                          INNER JOIN RESULT R
+                          INNERJOIN RESULT R
                           ON R.PROJECT_ID = T.PROJECT_ID
                             AND R.TEST_NUM = T.TEST_NUM
                             AND R.SUBTEST_NUM = S.SUBTEST_NUM
@@ -106,7 +110,7 @@
                   if($note >$bareme)$note=$bareme;
             }
             else{ // SI ELEVE
-                  $sql = "SELECT T.NAME, T.MARK, S.KIND, S.VALEUR, R.STATUS, R.DESCRIPTION 
+                  $sql = "SELECT T.NAME, R.STATUS
                           FROM TEST T
 
                           INNER JOIN SUBTEST S
@@ -122,15 +126,47 @@
                             AND R.LOGIN='$use'";
                   
                   $rep = Select( $sql );
-
+                  $name_tmp="lol";
+                  $name_tmp2="loli";
+                  $total=0;
+                  $total_tmp=0;
+                  $total_tmp2=0;
                   foreach ($rep as $key => $val) {
-                    $O = ( $val[4] > 0 ) ? 'OK' : 'KO';
+                    //$O = ( $val[4] > 0 ) ? 'OK' : 'KO';
+                    $name_fct=$val[0];
+
+                    if ($name_tmp2==$name_tmp && $name_tmp2!="loli") {
+                      $total++;
+                    }
+                    elseif ($name_tmp2!="lol" && $name_tmp2!="loli"){
+                      $total++;
                     echo "<tr>
-                            <td> $val[0] </td>
-                            <td> $val[4] / $val[1] </td>
-                            <td>  $O </td>
+                            <td> $name_tmp2 </td>
+                            <td> ".$total."</td>
+                            <td>   </td>
+                          </tr>" ;
+                   
+                    $total=0;
+                        }
+                         $name_tmp2=$name_tmp;
+                    $name_tmp=$val[0];
+                  }
+                  if ($name_tmp!=$name_tmp2) {
+                   echo "<tr>
+                            <td> $name_tmp2 </td>
+                            <td> ".++$total."</td>
+                            <td>   </td>
                           </tr>" ;
                   }
+                  else $total+=2;
+                      echo "<tr>
+                            <td> $name_tmp </td>
+                            <td> ".$total."</td>
+                            <td>   </td>
+                          </tr>" ;
+                    
+                    
+
             }
           ?>
               </table>
