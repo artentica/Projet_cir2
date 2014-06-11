@@ -26,6 +26,8 @@ A améliorer:
 
 Ce site nécéssite l'installation de :
 
+  - Débian 7.5 	WHEEZY
+
   - Apache2     Version:  2.2.22
   - PHP5        Version:  5.4.4-14
   - MySQL       Version:  5.5.37
