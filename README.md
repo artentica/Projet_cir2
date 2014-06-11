@@ -28,7 +28,7 @@ Ce site nécéssite l'installation de :
 
   - Apache2     Version:  2.2.22
   - PHP5        Version:  5.4.4-14
-  - MySQL       Version:  5.4.4-14
+  - MySQL       Version:  5.5.37
 
   - Vous devez autoriser apache a utiliser les fichiers .htaccess
 
@@ -50,13 +50,13 @@ II)   modifier les droits:
       Certains fichiers ont besoin de droits particulier,
       Soit $USER$ votre nom d'utilisateur:
 
-	   sudo chown $USER$ -R /var/www/Mon_site_de_test
+	sudo chown $USER$ -R /var/www/Mon_site_de_test
 
-  	   chmod 755 -R /var/www/Mon_site_de_test
+  	chmod 755 -R /var/www/Mon_site_de_test
   	   
-       chown www-data -R  /var/www/Mon_site_de_test/upload
+  	chown www-data -R  /var/www/Mon_site_de_test/upload
   	   
-       chmod 755 -R /var/www/Mon_site_de_test/upload
+   	chmod 755 -R /var/www/Mon_site_de_test/upload
       
       ( pour etre sûr )
 
