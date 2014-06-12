@@ -124,44 +124,51 @@
                     $total_tmp=0;
                     $total_tmp2=0;
                     $fct_success=0;
+                    $fct_successtmp=0;
+                    $fct_successtmp2=0;
+                    $OK="";
                     foreach ($rep as $key => $val) {
                       //$O = ( $val[4] > 0 ) ? 'OK' : 'KO';
                       $name_fct=$val[0];
-
+                       $fct_success=$val[1];
                       if ($name_tmp2==$name_tmp && $name_tmp2!="loli") {
                         $total++;
-                        $fct_success+=$val[1];
+                       
                       }
                       elseif ($name_tmp2!="lol" && $name_tmp2!="loli"){
                         $total++;
-                        $fct_success+=$val[1];
+                      ($fct_successtmp2==$total)?$OK="OK":$OK="KO";
                       echo "<tr>
                               <td> $name_tmp2 </td>
-                              <td> ".$fct_success."/".$total."</td>
-                              <td>   </td>
+                              <td> ".$fct_successtmp2."/".$total."</td>
+                              <td> ".$OK."  </td>
                             </tr>" ;
                      
                       $total=0;
-                      $fct_success=0;
+                      $fct_successtmp2=0;
+                     
                           }
-                           $name_tmp2=$name_tmp;
+                      $fct_successtmp2+=$fct_successtmp;
+                      $fct_successtmp=$fct_success;
+                      $name_tmp2=$name_tmp;
                       $name_tmp=$val[0];
                       
                     }
                     if ($name_tmp!=$name_tmp2 && $name_tmp2!="loli") {
+                      ($fct_successtmp2==++$total)?$OK="OK":$OK="KO";
                      echo "<tr>
                               <td> $name_tmp2 </td>
-                              <td> ".$fct_success."/".++$total."</td>
-                              <td>   </td>
+                              <td> ".$fct_successtmp2."/".$total."</td>
+                              <td> ".$OK."  </td>
                             </tr>" ;
                     }
                     if ( $name_tmp!="lol") {
                       
-                     
+                     ($fct_successtmp==$total)?$OK="OK":$OK="KO";
                         echo "<tr>
                               <td> $name_tmp </td>
-                              <td> ".$fct_success."/".$total."</td>
-                              <td>   </td>
+                              <td> ".$fct_successtmp."/".$total."</td>
+                              <td> ".$OK."  </td>
                             </tr>" ;
                              }
                     
