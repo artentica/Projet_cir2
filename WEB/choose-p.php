@@ -57,9 +57,17 @@
 													<li> Date butoire: <b>". $val[2] .'</b></li>
 													<li> Nombre de dépot: <b>' . $N_D . '</b></li>
 												</ul>
-												<a class="col-md-2 col-md-offset-10 btn btn-primary btn-warning" href="gestion-'. $prof .'.php?P=' . $val[0] . '">
+												<a class="col-md-2 col-md-offset-2 btn btn-primary btn-warning" href="gestion-'. $prof .'.php?P=' . $val[0] . '">
 													<span class="glyphicon glyphicon-briefcase"></span>
 													Voir le Projet
+												</a>
+												<a class="raz col-md-2 col-md-offset-1 btn btn-primary btn-danger" value="'. $val[0] .'" href="#">
+													<span class="glyphicon glyphicon-floppy-remove"></span>
+													RAZ résultat
+												</a>
+												<a id="check_del" class="col-md-2 col-md-offset-1 btn btn-primary btn-danger" href="gestion-p.php?del='. $val[0] .'">
+													<span class="glyphicon glyphicon-trash"></span>
+													Supprimer projet
 												</a>
 											</div>
 										</div>

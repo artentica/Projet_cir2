@@ -2,7 +2,7 @@ $( document ).ready( function(){
 	$('#Cetat').hide();
 	
 	$('#check_del').click( function(){
-        var conf = confirm('Etes-vous sur de vouloir supprimer le projet?');
+        var conf = confirm('Etes-vous sûr de vouloir supprimer le projet?');
         if (conf == true) { return true; } 
         else { return false; }
     });
@@ -40,5 +40,22 @@ $( document ).ready( function(){
             //refresh();
           }
         });
+    });
+
+    $('.raz').click( function(){
+      var conf = confirm('Etes-vous sûr de vouloir remettre à zero les résultats?');
+      if (conf == true) { 
+        $.ajax({
+          type: 'GET',
+          url: 'raz_result.php?P=' + $( this ).attr('value') ,
+          timeout: 25000,
+          success: function(data) {
+            alert('ok les résultats ont été reinitialisés.');
+          },
+          error: function() {
+            alert('La requête n\'a pas abouti'); 
+          }
+        });
+      } 
     });
 });
