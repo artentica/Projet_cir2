@@ -11,10 +11,18 @@
 //======================================================== DONNEES FACTICES ISSUENT DE L ENT =====================================================
 			if( isset($_POST['choix']) && $_POST['choix'] == 'elev'){
 
-				$userData["Login"]		 = 		"rcolli17";
-				$userData["FirstName"]	 = 		"rémi";
-				$userData["LastName"]	 = 		"collignon";
-				$userData["Mail"] 		 = 		"rcd18@hotmail.fr";
+				$userData["Login"]		 = 		"Eleve1";
+				$userData["FirstName"]	 = 		"Prenom_eleve1";
+				$userData["LastName"]	 = 		"Nom_eleve1";
+				$userData["Mail"] 		 = 		"Eleve1@isen.fr";
+				$groupeISEN 			 = 		"CIR2";
+			}
+			elseif (isset($_POST['choix']) && $_POST['choix'] == 'elev2'){
+
+				$userData["Login"]		 = 		"Eleve2";
+				$userData["FirstName"]	 = 		"Prenom_eleve2";
+				$userData["LastName"]	 = 		"Nom_eleve2";
+				$userData["Mail"] 		 = 		"Eleve2@isen.fr";
 				$groupeISEN 			 = 		"CIR2";
 			}
 			else{
@@ -22,7 +30,7 @@
 				$userData["Login"]		 = 		"prof1";
 				$userData["FirstName"]	 = 		"Didier";
 				$userData["LastName"]	 = 		"Le Foll";
-				$userData["Mail"] 		 = 		"rcd18@hotmail.fr";
+				$userData["Mail"] 		 = 		"didier@isen.fr";
 				$groupeISEN 			 = 		"Personnel";
 			}
 
