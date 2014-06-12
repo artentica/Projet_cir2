@@ -25,7 +25,7 @@
 		else{
 			array_push($users, $U);
 		}
-			//print_r($users);	//DEBUG
+		if( D_cmd ) print_r($users);	//DEBUG
 
 
 		foreach ($users as $num => $user)		//POUR CHACUN DES ELEVES 
@@ -38,8 +38,11 @@
 				if(D_cmd) echo "<code>$cmd</code>";
 				exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
 				
-				if( $code != 0 )
-					print_r( $sortie ) ;
+				if( $code != 0 ){
+					$sortie2 = implode('<br>', $sortie);
+					echo "<code>Erreur:</code>";
+					echo str_replace("upload/project" . $P . "/tests/", "", $sortie2);
+				}
 				else
 				{
 					echo 'Compilation du projet<br>';
@@ -50,7 +53,11 @@
 					exec($cmd, $sortie, $code);		// compilation   sources eleve
 
 					if( $code != 0 )
-						print_r( $sortie );
+					{
+						$sortie2 = implode(',', $sortie);
+						echo "<code>Erreur:</code>";
+						echo str_replace("upload/project" . $P . "/tests", "", $sortie2);
+					}
 					else
 					{
 						echo 'Lancement du test<br>';
@@ -68,7 +75,9 @@
 									if(D_cmd) echo "<code>$cmd</code>";
 									exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
 									if( $code != 0 )
-										print_r( $sortie );
+										$sortie2 = implode(',', $sortie);
+										echo "<code>Erreur:</code>";
+										echo str_replace("upload/project" . $P . "/tests", "", $sortie2);
 								}
 							}
 							closedir($dir);
@@ -86,6 +95,7 @@
 
 								if( !$fp = fopen( $path.$user.'/result.txt' ,"r"))
 								{
+									echo "<code>Erreur:</code>";
 									echo('<h1>fichier pas ouvert</h1>');
 								} 
 								while (!feof($fp)) 

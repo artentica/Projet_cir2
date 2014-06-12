@@ -39,6 +39,7 @@
           </div>
           <a href="modif.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-wrench"></span> Modifier</a>
           <a href="#" id="lancement_all" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-list"></span> Lancer les tests pour tout le monde</a>
+          <a href="gestion-p.php?P=<?= $_GET['P'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-refresh"></span> Rafraîchir la vue</a>
           <?php
           
             if( isset($_GET['P']) )
