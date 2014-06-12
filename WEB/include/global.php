@@ -1,32 +1,30 @@
 <?php
 	session_start();
 	require 'include/global.conf';		// INCLUSION DU FICHIER DE CONFIGURATION
-	//# des fonctions a implementer dans le site
+	//# DES FONCTIONS A IMPLEMENTER DANS LE SITE
 
-//########################################MENU#############################################
+//########################################  MENU  #############################################
 	
-	// Ajoute un boutton acceuil
+	// AJOUTE UN BOUTTON ACCEUIL
 	function acc()
 	{
 		$page = ($_SESSION['groupe'] == p_group ) ? "choose-p" : "choose-p" ;
-      	echo ('
-      		<div class="navbar-header">
-        		<a class="navbar-brand" href="' . $page . '.php">Accueil</a>
-      		</div>
-      	');
+      	echo ('<div class="navbar-header">
+        			<a class="navbar-brand" href="' . $page . '.php">Accueil</a>
+      		   </div>');
 	}
-	// Ajoute boutton creer un projet
+	// AJOUTE BOUTTON CREER UN PROJET
 	function cre()
 	{
 		echo '<li>	<a href="create.php" >Créer un projet</a></li>';
 	}
-	//PERMET DE DEPOSER UN FICHIER
+	// PERMET DE DEPOSER UN FICHIER
 	function depot()
 	{	
 		if(isset($_GET['P']))
 		echo('<li><a href="depot.php?P=' . $_GET['P'] . '">Déposer les sources</a></li>');
 	}
-	//PERMET DE METTRE UN BOUTON POUR RETOURNER A LA FICHE DU PROJET
+	// PERMET DE METTRE UN BOUTON POUR RETOURNER A LA FICHE DU PROJET
 	function retour()
 	{
 		$page    = ( C_prof() ) ? 'p' : 'e';
@@ -36,70 +34,69 @@
             	</a>
           	</li>');
 	}
-	//FONCTION QUI AFFEICHE LE BOUTTON POUR DECONNECTER
+	// FONCTION QUI AFFEICHE LE BOUTTON POUR DECONNECTER
 	function deco()
 	{
 		echo('<a href="deconnexion.php" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user"></span> Deconnexion</a>');
 	}
-	//FONCTION HELLO A VINCENT ;-)
+	// FONCTION HELLO A VINCENT ;-)
 	function hello()
 	{
 		echo( "<p>Bonjour <b>" . $_SESSION['prenom'] ." ". $_SESSION['nom'] ."</b>, il est <b>". date("H:i") ."</b> nous sommes le <b>" . date("d/m/Y") . "</b>.</p>" );
 	}
 
-//########################################UTILISATEUR#######################################
+//########################################  UTILISATEUR  #######################################
 
-	//VERIFIE SI L UTILISATEUR EST CONNECTER
+	// VERIFIE SI L UTILISATEUR EST CONNECTER
 	function connect()
 	{
 		if( !isset($_SESSION['login']) ){
 			header("Location: erreur.php?erreur=droit");
 		}
 	}
-	//FONCTION DE TEST SI LA PERSONNE CONNÉCTÉE EST UN PROF
+	// FONCTION DE TEST SI LA PERSONNE CONNÉCTÉE EST UN PROF
 	function C_prof()
 	{
 		return ($_SESSION['groupe'] == p_group ) ? TRUE : FALSE ;
 	}
-	// pages reserver aux professeurs
+	// A AJOUTER AUX PAGES RESERVEES AUX PROFESSEURS
 	function forprof()
 	{
-			if( !C_prof() ){
-				header("Location: erreur.php?erreur=droit");
-			}
+		if( !C_prof() ){
+			header("Location: erreur.php?erreur=droit");
+		}
 	}
-	// pages reservées aux etudiants
+	// A AJOUTER AUX PAGES RESERVÉES AUX ETUDIANTS
 	function foretud()
 	{
-			if( !in_array( $_SESSION['groupe'], p_group ) ){
-				header("Location: erreur.php?erreur=droit");
-			}
+		if( !in_array( $_SESSION['groupe'], p_group ) ){
+			header("Location: erreur.php?erreur=droit");
+		}
 	}
-	//fonction pour afficher les erreurs
+
+//########################################  AFFICHAGES  #######################################
+
+	// FONCTION POUR AFFICHER LES ERREURS
 	function erreur( $E )
 	{
-		echo('
-			<div class="col-sm-8 col-sm-offset-2 alert alert-dismissable alert-danger">
+		echo('<div class="col-sm-8 col-sm-offset-2 alert alert-dismissable alert-danger">
 			    <button type="button" class="close" data-dismiss="alert">×</button>
 			    <strong>Oups...</strong> ' . $E . '.
-			</div>
-		');
+			  </div>');
 	}
-	//AFFICHE UNE BOX POUR QUELQUE CHOSE QUI A REUSSI
+	// FONCTION QUI AFFICHE UNE BOX POUR QUELQUE CHOSE QUI A REUSSI
 	function success( $S )
 	{
-		echo('
-			<div class="row">
+		echo('<div class="row">
 				<div class="col-sm-8 col-sm-offset-2 alert alert-dismissable alert-success">
 					<button type="button" class="close" data-dismiss="alert">×</button>
 					'. $S .'
 				</div>
-			</div>
-		');
+			  </div>');
 	}
-	//Fonction pour deposer les tests dans le bon dossier, supprime tout si non vide
+	// FONCTION POUR DEPOSER LES TESTS DANS LE BON DOSSIER, SUPPRIME TOUT SI DEJA QUELQUE CHOSE DEDANS
 	function Dpottest($id, $f){
-		print_r($f);
+		if(D_cmd) print_r($f);
 		$path	= 	"upload/project". $id ."/tests/";
 		$nom 	= 	$path . $f['name'];
 

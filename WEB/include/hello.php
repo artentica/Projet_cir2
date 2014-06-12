@@ -1,1 +1,0 @@
-<p>Bonjour <?php echo $_SESSION['name']; ?></p>
