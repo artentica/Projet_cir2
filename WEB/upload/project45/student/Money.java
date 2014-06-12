@@ -77,7 +77,7 @@ public class Money {
     {
 	
 	this.currency = s;
-	this.amount += rate;
+	this.amount *= rate;
     }
     
     /**
@@ -105,7 +105,7 @@ public class Money {
     {
         
 	if( this.checkCurrency( m.currency ) && m.amount>0){
-	    this.amount *= m.amount;
+	    this.amount += m.amount;
 	}
     }
     
@@ -118,7 +118,7 @@ public class Money {
     {
         
 	if( this.checkCurrency( m.currency ) && m.amount>0 ){
-	    this.amount += m.amount;
+	    this.amount -= m.amount;
 	}
     }
     

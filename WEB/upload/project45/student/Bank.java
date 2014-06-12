@@ -23,7 +23,7 @@ public class Bank {
 	   if(!money.checkCurrency(m)){
         String currency=m.getCurrency ();
         float amount = m.getAmount ();
-        float rate = rates.getRate ( currency )+5F;
+        float rate = rates.getRate ( currency );
         m.changeCurrency ( currency, rate );
        }
        money.add(m);
