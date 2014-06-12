@@ -78,7 +78,8 @@
                     
                     $rep      = Select( $sql );
                     $note     = 0;
-
+                    $name_fct="";
+                    $name_fcttampon="lolilol";
                     foreach ($rep as $key => $val) {
                       $OK = ( $val[4] > 0 ) ? 'OK' : 'KO'; //SI STATUS >0
 
@@ -87,8 +88,20 @@
                       else 
                         $points=0;
 
+                       
+                      if (($name_fcttampon==$val[0] || $name_fct==$val[0]) && $name_fct!=""){
+                        $name_fcttampon=$name_fct;
+                        $name_fct="";
+                      }
+                      elseif ($name_fcttampon==$val[0]) {
+                        $name_fct="";
+                        }  
+                      else{
+                        $name_fct=$val[0];
+                      }
+                      //if ($start)$name_fct=$val[0];
                       echo "<tr>
-                              <td> $val[0] </td>
+                              <td> $name_fct </td>
                               <td> $points </td>
                               <td> $val[2] </td>
                               <td> $val[3] </td>
