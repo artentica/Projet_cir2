@@ -28,9 +28,9 @@
 			else{
 
 				$userData["Login"]		 = 		"prof1";
-				$userData["FirstName"]	 = 		"Didier";
-				$userData["LastName"]	 = 		"Le Foll";
-				$userData["Mail"] 		 = 		"didier@isen.fr";
+				$userData["FirstName"]	 = 		"nom_Prof";
+				$userData["LastName"]	 = 		"prenom_Prof";
+				$userData["Mail"] 		 = 		"Prenom_Prof.Nom_Prof@isen.fr";
 				$groupeISEN 			 = 		"Personnel";
 			}
 

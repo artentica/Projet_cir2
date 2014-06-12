@@ -54,7 +54,7 @@
 
 					if( $code != 0 )
 					{
-						$sortie2 = implode(',', $sortie);
+						$sortie2 = implode('<br>', $sortie);
 						echo "<code>Erreur:</code>";
 						echo str_replace("upload/project" . $P . "/tests", "", $sortie2);
 					}
@@ -74,10 +74,12 @@
 									$cmd = "java -cp $junit:$path"."tests:$path"."$user:upload:. Runner $path"."$user/ $explode[0] 2>&1";
 									if(D_cmd) echo "<code>$cmd</code>";
 									exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
-									if( $code != 0 )
-										$sortie2 = implode(',', $sortie);
+
+									if( $code != 0 ){
+										$sortie2 = implode('<br>', $sortie);
 										echo "<code>Erreur:</code>";
-										echo str_replace("upload/project" . $P . "/tests", "", $sortie2);
+										echo str_replace("upload/project" . $P . "/tests", "", $sortie2 );
+									}
 								}
 							}
 							closedir($dir);
