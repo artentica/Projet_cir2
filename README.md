@@ -63,6 +63,8 @@ II)   modifier les droits:
 
             sudo chown $USER$ -R /var/www/Mon_site_de_test
 
+            sudo chown www-data -R /var/www/Mon_site_de_test/css/global.css
+
             chmod 755 -R /var/www/Mon_site_de_test
            
             chown www-data -R  /var/www/Mon_site_de_test/upload
