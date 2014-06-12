@@ -11,6 +11,9 @@ body .container {
 body .container b {
   color: #428bca;
 }
+body .container .label-warning {
+  font-size: 120% !important;
+}
 .navbar-form {
   margin-right: 0;
 }

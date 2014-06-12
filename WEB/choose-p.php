@@ -1,12 +1,12 @@
-<?php require 'include/bdd.php';
-	  require 'include/global.php';
+<?php require_once 'include/bdd.php';
+	  require_once 'include/global.php';
 	  connect();
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<?php 
-			require 'include/head.php'; 
+			require_once 'include/head.php'; 
 			$prof 	 = ( C_prof() ) ? 'p' : 'e';
 			$projets = ( C_prof() ) ? Select("SELECT * FROM PROJECT") : Select("SELECT * FROM PROJECT"); 
 		?>
@@ -36,7 +36,11 @@
 
 					<div class="panel-group" id="accordion1">
 						<?php
-							foreach ($projets as $key => $val) {
+							foreach ($projets as $key => $val) 	//POUR CHAQUE PROJET DANS LA TABLE PROJECT
+							{	
+								$req = Select('SELECT COUNT( DISTINCT LOGIN) FROM RESULT WHERE PROJECT_ID=' . $val[0] );
+								$N_D = $req[0][0];
+
 								echo('<div 	 	   class="panel panel-default">
 										<div 	   class="panel-heading">
 											<h4    class="panel-title">
@@ -50,7 +54,8 @@
 												Projet N°'. $val[0] . ":
 												<ul>
 													<li> Nom: <b>" . $val[1] . "</b></li>
-													<li> date butoire: <b>". $val[2] .'</b></li>
+													<li> Date butoire: <b>". $val[2] .'</b></li>
+													<li> Nombre de dépot: <b>' . $N_D . '</b></li>
 												</ul>
 												<a class="col-md-2 col-md-offset-10 btn btn-primary btn-warning" href="gestion-'. $prof .'.php?P=' . $val[0] . '">
 													<span class="glyphicon glyphicon-briefcase"></span>
@@ -64,7 +69,6 @@
 	            	</div>
 	        	</div>
 	    	</div>
-
 		</div>
 	</body>
 </html>

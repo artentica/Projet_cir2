@@ -2,23 +2,22 @@
 	error_reporting(E_ALL);
 	$rep = array();
 
-	//Permet de faire des requettes de type SELECT dans la Base de donnée
+	//  PERMET DE FAIRE DES REQUETTES DE TYPE "SELECT" DANS LA BASE DE DONNÉE
 	function Select( $string )
 	{
 		try
 		{
-			if(D_sql) echo "<code>$string</code>";
+			if( D_sql ) echo "<code>$string</code>";
 			// On se connecte à MySQL
 			$db  = new PDO('mysql:host=' . host . ';dbname='. dbname, userdb, passwd, array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-			//echo $string; 				//DEBUG
 			$tmp = $db->query( $string );
+
 			if($tmp != FALSE)
 			{
 				$rep = $tmp->fetchAll() ;
-				//print_r( $rep ); 		//DEBUG
+				if(D_sql) print_r( $rep ); 		//DEBUG
 			}
 			$db  = NULL;
-
 			return ( isset($rep) ) ? $rep : False;
 		}
 		catch(Exception $e)
@@ -29,12 +28,12 @@
 		}
 	}
 
-	//Permet de faire des requettes de type INSERT ou DELETE dans la Base de donnée
+	//  PERMET DE FAIRE DES REQUETTES DE TYPE "INSERT" "UPDATE" OU "DELETE" DANS LA BASE DE DONNÉE
 	function Ins( $string )
 	{
 		try
 		{	
-			if(D_sql) echo "<code>$string</code>";
+			if( D_sql ) echo "<code>$string</code>";
 			// On se connecte à MySQL
 			$db = 	new PDO('mysql:host=' . host . ';dbname='. dbname, userdb, passwd);
 			$nb = 	$db->exec( utf8_decode( $string ) );
@@ -53,8 +52,6 @@
 
 		$sql = "SELECT TEST_NUM FROM TEST WHERE NAME='$nom' && PROJECT_ID=$P";
 		$req = Select($sql);
-
-
 
 		if( !empty( $req[0][0]) )	//	LE TEST EXISTE
 			$idTest = $req[0][0];	
@@ -83,7 +80,8 @@
 			$idSSTest = $req[0][0];
 		}
 		//ON A L ID SS TEST
-
-		$n = Ins("INSERT INTO RESULT VALUES('$u', $P, $idTest, $idSSTest, $S, '$D'  )");
+		$sql = "INSERT INTO RESULT VALUES('$u', $P, $idTest, $idSSTest, $S, '$D'  )";
+		if( D_sql ) echo "<code>$cmd</code>";
+		$n = Ins($sql);
 	}
 ?>

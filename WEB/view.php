@@ -180,7 +180,7 @@
             </div>
           </div>
           <?php 
-            if(C_prof()) echo "NOTE: " . $note . "/" . $bareme; 
+            if(C_prof()) echo "<span class=\"label label-warning\" >NOTE:  $note / $bareme </span>"; 
           ?>
         </article>
       </div>
