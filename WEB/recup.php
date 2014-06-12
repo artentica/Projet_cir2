@@ -35,6 +35,7 @@
 				echo 'Compilation de la classe de test <br>';
 
 				$cmd = "javac -encoding utf-8 -cp $junit:$path$user:upload/:. $path"."tests/*.java 2>&1";
+				if(D_cmd) echo "<code>$cmd</code>";
 				exec( $cmd , $sortie, $code); // compile tout les .java contenus dans dossier tests
 				
 				if( $code != 0 )
@@ -44,7 +45,9 @@
 					echo 'Compilation du projet<br>';
 
 					system( "rm -rf $path$user/*.class");	// nettoyage dossier eleve
-					exec("javac -encoding utf-8 $path$user/*.java 2>&1", $sortie, $code);		// compilation   sources eleve
+					$cmd = "javac -encoding utf-8 $path$user/*.java 2>&1";
+					if(D_cmd) echo "<code>$cmd</code>";
+					exec($cmd, $sortie, $code);		// compilation   sources eleve
 
 					if( $code != 0 )
 						print_r( $sortie );
@@ -62,6 +65,7 @@
 								{
 									$explode=explode( ".", $file);
 									$cmd = "java -cp $junit:$path"."tests:$path"."$user:upload:. Runner $path"."$user/ $explode[0] 2>&1";
+									if(D_cmd) echo "<code>$cmd</code>";
 									exec( $cmd , $sortie, $code);	//AJOUTER LES PARAMETRES
 									if( $code != 0 )
 										print_r( $sortie );

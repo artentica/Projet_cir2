@@ -26,15 +26,22 @@ A améliorer:
 
 Ce site nécéssite l'installation de :
 
-  - Débian 7.5 	WHEEZY
+  - Débian 7.5  WHEEZY
 
-  - java(JRE)   Version:  1.7
-  - java(JDK)   Version:  1.7
+  - java(JRE)   Version:  1.7         
+          (Pour verrifier: $: update-alternatives --config java )
+
+  - java(JDK)   Version:  1.7         
+          (Pour verrifier: $: update-alternatives --config javac )
+
   - Apache2     Version:  2.2.22
+
   - PHP5        Version:  5.4.4-14
+
   - MySQL       Version:  5.5.37
 
   - Vous devez autoriser apache a utiliser les fichiers .htaccess
+          ( config apache2: AllowOverride All )
 
 ##########################################################################
 ##########################################################################
@@ -44,32 +51,33 @@ Ce site nécéssite l'installation de :
 ##########################################################################
 ##########################################################################
 
-I)    Décompresser l'archive Projet_cir2.zip
+I)    ** Décompresser l'archive Projet_cir2.zip
 
-II)   Copier le contenu de WEB/ dans le dossier de /var/www/ de votre 
-	    choix.
-      par exemple: /var/www/Mon_site_de_test
+II)   ** Copier le contenu de WEB/ dans le dossier de /var/www/ de votre 
+          choix.
+          par exemple: /var/www/Mon_site_de_test
 
 II)   modifier les droits:
-      Certains fichiers ont besoin de droits particulier,
-      Soit $USER$ votre nom d'utilisateur:
+      ** Certains fichiers ont besoin de droits particulier,
+          Soit $USER$ votre nom d'utilisateur, dans un terminal tapez:
 
-	sudo chown $USER$ -R /var/www/Mon_site_de_test
+            sudo chown $USER$ -R /var/www/Mon_site_de_test
 
-  	chmod 755 -R /var/www/Mon_site_de_test
-  	   
-  	chown www-data -R  /var/www/Mon_site_de_test/upload
-  	   
-   	chmod 755 -R /var/www/Mon_site_de_test/upload
-      
-      ( pour etre sûr )
+            chmod 755 -R /var/www/Mon_site_de_test
+           
+            chown www-data -R  /var/www/Mon_site_de_test/upload
+           
+            chmod 755 -R /var/www/Mon_site_de_test/upload
+          
+              ( pour etre sûr )
 
-III)  Générer la base de donnée, 
-      Vous devez créer une base de donnée avec PHPMyadmin ou avec le shell mysql
-      Ensuite, Executer le script SQL nommé Projet_cir2.sql
+III)  Générer la base de donnée:
+      ** Commencer par verifier que votre base utilise bien l' UTF-8
+      ** Vous devez créer une base de donnée avec PHPMyadmin ou avec le shell mysql
+      ** Ensuite, Executer le script SQL nommé Projet_cir2.sql
 
 
 IV)  Configuration du site:
-      Toute la configuration du site se fait dans le fichier
+      ** Toute la configuration du site se fait dans le fichier
        /var/www/Mon_site_de_test/include/global.conf
        Vous pourrez modifier les paramètre de la base de donnée

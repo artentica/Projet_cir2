@@ -7,6 +7,7 @@
 	{
 		try
 		{
+			if(D_sql) echo "<code>$string</code>";
 			// On se connecte à MySQL
 			$db  = new PDO('mysql:host=' . host . ';dbname='. dbname, userdb, passwd, array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 			//echo $string; 				//DEBUG
@@ -32,7 +33,9 @@
 	function Ins( $string )
 	{
 		try
-		{	// On se connecte à MySQL
+		{	
+			if(D_sql) echo "<code>$string</code>";
+			// On se connecte à MySQL
 			$db = 	new PDO('mysql:host=' . host . ';dbname='. dbname, userdb, passwd);
 			$nb = 	$db->exec( utf8_decode( $string ) );
 			return 	$db->lastInsertId();
@@ -51,6 +54,8 @@
 		$sql = "SELECT TEST_NUM FROM TEST WHERE NAME='$nom' && PROJECT_ID=$P";
 		$req = Select($sql);
 
+
+
 		if( !empty( $req[0][0]) )	//	LE TEST EXISTE
 			$idTest = $req[0][0];	
 		else
@@ -65,6 +70,8 @@
 
 		$req = Select("SELECT SUBTEST_NUM FROM SUBTEST WHERE VALEUR='$VT' && TEST_NUM=$idTest && PROJECT_ID=$P ");
 		
+
+
 		if( !empty( $req[0][0]) )	//	LE SOUSTEST EXISTE
 			$idSSTest = $req[0][0];	
 		else 			//DOIT CREER LE SOUS TEST
