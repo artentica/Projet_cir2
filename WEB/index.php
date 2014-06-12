@@ -8,7 +8,8 @@
 			<label>Séléctionner un utilisateur</label>
 			<select name="choix">
 				<option value="prof">professeur</option>
-				<option value="elev">élève</option>
+				<option value="elev">élève1</option>
+				<option value="elev2">élève2</option>
 			</select>
 			<input type="submit"/>
 

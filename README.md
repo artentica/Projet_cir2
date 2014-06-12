@@ -74,7 +74,7 @@ II)   modifier les droits:
 III)  Générer la base de donnée:
       ** Commencer par verifier que votre base utilise bien l' UTF-8
       ** Vous devez créer une base de donnée avec PHPMyadmin ou avec le shell mysql
-      ** Ensuite, Executer le script SQL nommé Projet_cir2.sql
+      ** Ensuite, Executer le script SQL nommé bdd_6.sql
 
 
 IV)  Configuration du site:
