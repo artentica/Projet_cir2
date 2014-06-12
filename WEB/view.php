@@ -123,39 +123,47 @@
                     $total=0;
                     $total_tmp=0;
                     $total_tmp2=0;
+                    $fct_success=0;
                     foreach ($rep as $key => $val) {
                       //$O = ( $val[4] > 0 ) ? 'OK' : 'KO';
                       $name_fct=$val[0];
 
                       if ($name_tmp2==$name_tmp && $name_tmp2!="loli") {
                         $total++;
+                        $fct_success+=$val[1];
                       }
                       elseif ($name_tmp2!="lol" && $name_tmp2!="loli"){
                         $total++;
+                        $fct_success+=$val[1];
                       echo "<tr>
                               <td> $name_tmp2 </td>
-                              <td> ".$total."</td>
+                              <td> ".$fct_success."/".$total."</td>
                               <td>   </td>
                             </tr>" ;
                      
                       $total=0;
+                      $fct_success=0;
                           }
                            $name_tmp2=$name_tmp;
                       $name_tmp=$val[0];
+                      
                     }
-                    if ($name_tmp!=$name_tmp2) {
+                    if ($name_tmp!=$name_tmp2 && $name_tmp2!="loli") {
                      echo "<tr>
                               <td> $name_tmp2 </td>
-                              <td> ".++$total."</td>
+                              <td> ".$fct_success."/".++$total."</td>
                               <td>   </td>
                             </tr>" ;
                     }
-                    else $total+=2;
+                    if ( $name_tmp!="lol") {
+                      
+                     
                         echo "<tr>
                               <td> $name_tmp </td>
-                              <td> ".$total."</td>
+                              <td> ".$fct_success."/".$total."</td>
                               <td>   </td>
                             </tr>" ;
+                             }
                     
                     
 
