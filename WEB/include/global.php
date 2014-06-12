@@ -1,8 +1,10 @@
 <?php
 	session_start();
-	require 'include/global.conf';
+	require 'include/global.conf';		// INCLUSION DU FICHIER DE CONFIGURATION
 	//# des fonctions a implementer dans le site
 
+//########################################MENU#############################################
+	
 	// Ajoute un boutton acceuil
 	function acc()
 	{
@@ -13,7 +15,7 @@
       		</div>
       	');
 	}
-	// ajoute boutton creer un projet
+	// Ajoute boutton creer un projet
 	function cre()
 	{
 		echo '<li>	<a href="create.php" >Créer un projet</a></li>';
@@ -24,7 +26,7 @@
 		if(isset($_GET['P']))
 		echo('<li><a href="depot.php?P=' . $_GET['P'] . '">Déposer les sources</a></li>');
 	}
-	//PERMET DE RETOURNER A LA FICHE DU PROJET
+	//PERMET DE METTRE UN BOUTON POUR RETOURNER A LA FICHE DU PROJET
 	function retour()
 	{
 		$page    = ( C_prof() ) ? 'p' : 'e';
@@ -34,16 +36,19 @@
             	</a>
           	</li>');
 	}
-	//Fonction qui affeiche le boutton pour deconnecter
+	//FONCTION QUI AFFEICHE LE BOUTTON POUR DECONNECTER
 	function deco()
 	{
 		echo('<a href="deconnexion.php" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user"></span> Deconnexion</a>');
 	}
-	//fonction hello a vincent ;-)
+	//FONCTION HELLO A VINCENT ;-)
 	function hello()
 	{
-		echo( "<p>Bonjour " . $_SESSION['prenom'] ." ". $_SESSION['nom'] .", il est <b>". date("H:i") ."</b> nous sommes le <b>" . date("d/m/Y") . "</b></p>" );
+		echo( "<p>Bonjour <b>" . $_SESSION['prenom'] ." ". $_SESSION['nom'] ."</b>, il est <b>". date("H:i") ."</b> nous sommes le <b>" . date("d/m/Y") . "</b>.</p>" );
 	}
+
+//########################################UTILISATEUR#######################################
+
 	//VERIFIE SI L UTILISATEUR EST CONNECTER
 	function connect()
 	{
@@ -51,7 +56,7 @@
 			header("Location: erreur.php?erreur=droit");
 		}
 	}
-	//fonction de test si la personne connéctée est un prof
+	//FONCTION DE TEST SI LA PERSONNE CONNÉCTÉE EST UN PROF
 	function C_prof()
 	{
 		return ($_SESSION['groupe'] == p_group ) ? TRUE : FALSE ;
