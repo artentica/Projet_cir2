@@ -138,6 +138,26 @@
               });});</script>";
           
             }
+
+            if( isset($_GET['launcher']) && $_GET['launcher']=='0')
+            {echo "<script type=\"text/javascript\">
+            $( document ).ready( function(){
+              $('#Cetat').show();
+              $.ajax({
+                type: 'GET',
+                url: 'recup.php?P=' + '".$_GET['P']."' + '&U=student',
+                timeout: 25000,
+                success: function(data) {
+                  $('#etat').html( data );
+                  //setTimeout( refresh(), 10000);
+                },
+                error: function() {
+                  alert('La requête n\'a pas abouti'); 
+                  //refresh();
+                }
+              });});</script>";
+          
+            }
           
 
             ?>
