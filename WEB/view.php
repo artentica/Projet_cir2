@@ -118,7 +118,7 @@
                               AND R.SUBTEST_NUM = S.SUBTEST_NUM
 
                             WHERE R.PROJECT_ID=$P 
-                              AND R.LOGIN='$use'");
+                              AND R.LOGIN='$_SESSION[login]'");
                     $name_tmp="lol";
                     $name_tmp2="loli";
                     $total=0;
